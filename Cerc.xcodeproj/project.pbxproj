@@ -3,27 +3,50 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D70D175C22EC67AA009AB0D4 /* PickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D175B22EC67AA009AB0D4 /* PickButton.swift */; };
+		D716CEF722FAA90800F180EA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D716CEF622FAA90800F180EA /* Model.swift */; };
+		D779B18222E4C28100CC1D8B /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18022E4C25B00CC1D8B /* RoundedCorners.swift */; };
+		D779B18322E4C28100CC1D8B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18122E4C25B00CC1D8B /* RoundedButton.swift */; };
+		D779B18422E4C28100CC1D8B /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B17F22E4C25B00CC1D8B /* BlurView.swift */; };
+		D779B18622E4C31300CC1D8B /* LocalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18522E4C31300CC1D8B /* LocalService.swift */; };
+		D779B18D22E4C35600CC1D8B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18B22E4C35600CC1D8B /* Extensions.swift */; };
+		D779B18E22E4C35600CC1D8B /* Nameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18C22E4C35600CC1D8B /* Nameable.swift */; };
 		D7AB7DEF22E197C000A34336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB7DEE22E197C000A34336 /* AppDelegate.swift */; };
 		D7AB7DF122E197C000A34336 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB7DF022E197C000A34336 /* SceneDelegate.swift */; };
-		D7AB7DF322E197C000A34336 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB7DF222E197C000A34336 /* ContentView.swift */; };
+		D7AB7DF322E197C000A34336 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB7DF222E197C000A34336 /* MainContentView.swift */; };
 		D7AB7DF522E197C200A34336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AB7DF422E197C200A34336 /* Assets.xcassets */; };
 		D7AB7DF822E197C200A34336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AB7DF722E197C200A34336 /* Preview Assets.xcassets */; };
 		D7AB7DFB22E197C200A34336 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AB7DF922E197C200A34336 /* LaunchScreen.storyboard */; };
+		D7C5B73522E199A100003298 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D7C5B73422E199A100003298 /* SwiftSoup */; };
+		D7C5B74F22E1AB4100003298 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = D7C5B74D22E1AB4100003298 /* stations.json */; };
+		D7C5B75022E1AB4100003298 /* zones.json in Resources */ = {isa = PBXBuildFile; fileRef = D7C5B74E22E1AB4100003298 /* zones.json */; };
+		D7DAA32122F455140075C1D6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DAA32022F455140075C1D6 /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D70D175B22EC67AA009AB0D4 /* PickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickButton.swift; path = ../../../../../../../System/Volumes/Data/Users/kevs/Developer/Cerc/Cerc/Views/Components/PickButton.swift; sourceTree = "<group>"; };
+		D716CEF622FAA90800F180EA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D779B17F22E4C25B00CC1D8B /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		D779B18022E4C25B00CC1D8B /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		D779B18122E4C25B00CC1D8B /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		D779B18522E4C31300CC1D8B /* LocalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalService.swift; sourceTree = "<group>"; };
+		D779B18B22E4C35600CC1D8B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D779B18C22E4C35600CC1D8B /* Nameable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nameable.swift; sourceTree = "<group>"; };
 		D7AB7DEB22E197C000A34336 /* Cerc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cerc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AB7DEE22E197C000A34336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7AB7DF022E197C000A34336 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D7AB7DF222E197C000A34336 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D7AB7DF222E197C000A34336 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		D7AB7DF422E197C200A34336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7AB7DF722E197C200A34336 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7AB7DFA22E197C200A34336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7AB7DFC22E197C200A34336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7C5B74D22E1AB4100003298 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
+		D7C5B74E22E1AB4100003298 /* zones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zones.json; sourceTree = "<group>"; };
+		D7DAA32022F455140075C1D6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Store.swift; path = ../../../../../../../System/Volumes/Data/Users/kevs/Developer/Cerc/Cerc/Application/Common/Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +54,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7C5B73522E199A100003298 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D779B17E22E4C25B00CC1D8B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D779B18022E4C25B00CC1D8B /* RoundedCorners.swift */,
+				D779B18122E4C25B00CC1D8B /* RoundedButton.swift */,
+				D779B17F22E4C25B00CC1D8B /* BlurView.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		D7AB7DE222E197C000A34336 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +90,10 @@
 		D7AB7DED22E197C000A34336 /* Cerc */ = {
 			isa = PBXGroup;
 			children = (
-				D7AB7DEE22E197C000A34336 /* AppDelegate.swift */,
-				D7AB7DF022E197C000A34336 /* SceneDelegate.swift */,
-				D7AB7DF222E197C000A34336 /* ContentView.swift */,
-				D7AB7DF422E197C200A34336 /* Assets.xcassets */,
-				D7AB7DF922E197C200A34336 /* LaunchScreen.storyboard */,
-				D7AB7DFC22E197C200A34336 /* Info.plist */,
-				D7AB7DF622E197C200A34336 /* Preview Content */,
+				D7C5B72F22E1983C00003298 /* Application */,
+				D7C5B73022E1984D00003298 /* Views */,
+				D7C5B75122E1AB5B00003298 /* Services */,
+				D7AB7E0222E197DC00A34336 /* Resources */,
 			);
 			path = Cerc;
 			sourceTree = "<group>";
@@ -73,6 +104,66 @@
 				D7AB7DF722E197C200A34336 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D7AB7E0222E197DC00A34336 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D7C5B74E22E1AB4100003298 /* zones.json */,
+				D7C5B74D22E1AB4100003298 /* stations.json */,
+				D7AB7DF422E197C200A34336 /* Assets.xcassets */,
+				D7AB7DF922E197C200A34336 /* LaunchScreen.storyboard */,
+				D7AB7DFC22E197C200A34336 /* Info.plist */,
+				D7AB7DF622E197C200A34336 /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D7C5B72F22E1983C00003298 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D7AB7DEE22E197C000A34336 /* AppDelegate.swift */,
+				D7AB7DF022E197C000A34336 /* SceneDelegate.swift */,
+				D7C5B73B22E1A38B00003298 /* Common */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		D7C5B73022E1984D00003298 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D779B17E22E4C25B00CC1D8B /* Util */,
+				D7C5B75722E221CF00003298 /* Components */,
+				D7AB7DF222E197C000A34336 /* MainContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D7C5B73B22E1A38B00003298 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D779B18B22E4C35600CC1D8B /* Extensions.swift */,
+				D779B18C22E4C35600CC1D8B /* Nameable.swift */,
+				D716CEF622FAA90800F180EA /* Model.swift */,
+				D7DAA32022F455140075C1D6 /* Store.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D7C5B75122E1AB5B00003298 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D779B18522E4C31300CC1D8B /* LocalService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D7C5B75722E221CF00003298 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D70D175B22EC67AA009AB0D4 /* PickButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +182,9 @@
 			dependencies = (
 			);
 			name = Cerc;
+			packageProductDependencies = (
+				D7C5B73422E199A100003298 /* SwiftSoup */,
+			);
 			productName = Cerc;
 			productReference = D7AB7DEB22E197C000A34336 /* Cerc.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +213,9 @@
 				Base,
 			);
 			mainGroup = D7AB7DE222E197C000A34336;
+			packageReferences = (
+				D7C5B73322E199A100003298 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = D7AB7DEC22E197C000A34336 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -135,6 +232,8 @@
 			files = (
 				D7AB7DFB22E197C200A34336 /* LaunchScreen.storyboard in Resources */,
 				D7AB7DF822E197C200A34336 /* Preview Assets.xcassets in Resources */,
+				D7C5B74F22E1AB4100003298 /* stations.json in Resources */,
+				D7C5B75022E1AB4100003298 /* zones.json in Resources */,
 				D7AB7DF522E197C200A34336 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,9 +245,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D716CEF722FAA90800F180EA /* Model.swift in Sources */,
+				D70D175C22EC67AA009AB0D4 /* PickButton.swift in Sources */,
+				D779B18422E4C28100CC1D8B /* BlurView.swift in Sources */,
 				D7AB7DEF22E197C000A34336 /* AppDelegate.swift in Sources */,
+				D7DAA32122F455140075C1D6 /* Store.swift in Sources */,
+				D779B18222E4C28100CC1D8B /* RoundedCorners.swift in Sources */,
+				D779B18622E4C31300CC1D8B /* LocalService.swift in Sources */,
 				D7AB7DF122E197C000A34336 /* SceneDelegate.swift in Sources */,
-				D7AB7DF322E197C000A34336 /* ContentView.swift in Sources */,
+				D779B18D22E4C35600CC1D8B /* Extensions.swift in Sources */,
+				D7AB7DF322E197C000A34336 /* MainContentView.swift in Sources */,
+				D779B18E22E4C35600CC1D8B /* Nameable.swift in Sources */,
+				D779B18322E4C28100CC1D8B /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,10 +393,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "Cerc/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "Cerc/Resources/Preview\\ Content";
 				DEVELOPMENT_TEAM = YUN383XGPH;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Cerc/Info.plist;
+				INFOPLIST_FILE = Cerc/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,10 +413,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "Cerc/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "Cerc/Resources/Preview\\ Content";
 				DEVELOPMENT_TEAM = YUN383XGPH;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Cerc/Info.plist;
+				INFOPLIST_FILE = Cerc/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,6 +450,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D7C5B73322E199A100003298 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D7C5B73422E199A100003298 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7C5B73322E199A100003298 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D7AB7DE322E197C000A34336 /* Project object */;
 }

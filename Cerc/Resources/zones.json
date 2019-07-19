@@ -1,0 +1,62 @@
+[
+	{
+		"id": "20",
+		"name": "Asturias",
+		"map": "http://www.renfe.com/img/mobi/planos/asturias.png"
+	},
+	{
+		"id": "50",
+		"name": "Barcelona",
+		"map": "http://www.renfe.com/img/mobi/planos/barcelona.png"
+	},
+	{
+		"id": "60",
+		"name": "Bilbao",
+		"map": "http://www.renfe.com/img/mobi/planos/bilbao.png"
+	},
+	{
+		"id": "31",
+		"name": "Cádiz",
+		"map": "http://www.renfe.com/img/mobi/planos/cadiz.png"
+	},
+	{
+		"id": "10",
+		"name": "Madrid",
+		"map": "http://www.renfe.com/img/mobi/planos/madrid.png"
+	},
+	{
+		"id": "32",
+		"name": "Málaga",
+		"map": "http://www.renfe.com/img/mobi/planos/malaga.png"
+	},
+	{
+		"id": "41",
+		"name": "Múrcia/Alicante",
+		"map": "http://www.renfe.com/img/mobi/planos/murciaalicante.png"
+	},
+	{
+		"id": "62",
+		"name": "Santander",
+		"map": "http://www.renfe.com/img/mobi/planos/santander.png"
+	},
+	{
+		"id": "61",
+		"name": "San Sebastián",
+		"map": "http://www.renfe.com/img/mobi/planos/sansebastian.png"
+	},
+	{
+		"id": "30",
+		"name": "Sevilla",
+		"map": "http://www.renfe.com/img/mobi/planos/sevilla.png"
+	},
+	{
+		"id": "40",
+		"name": "Valencia",
+		"map": "http://www.renfe.com/img/mobi/planos/valencia.png"
+	},
+	{
+		"id": "70",
+		"name": "Zaragoza",
+		"map": "http://www.renfe.com/img/mobi/planos/zaragoza.png"
+	}
+]
