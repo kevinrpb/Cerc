@@ -19,6 +19,7 @@ struct MainContentView: View {
             VStack {
                 Header()
                 Picks()
+                    .padding(.top, 40)
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
         }
@@ -34,10 +35,11 @@ extension MainContentView {
     @ViewBuilder
     func Header() -> some View {
         HStack {
-            Image("")
-            Text("Cerc")
-                .font(.largeTitle)
+            Image("CercHeader")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
         }
+        .frame(height: 48)
         .padding(.bottom, 18)
     }
 
