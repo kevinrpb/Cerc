@@ -56,32 +56,42 @@ extension CercStore {
     func selectZone(_ id: String) {
         let matching = self.zones.filter { $0.id == id }
 
-        guard matching.count == 1,
-            let zone = matching.first else { return }
+        guard matching.count == 1, let zone = matching.first else {
+            self.selectedZone = nil
+            return
+        }
 
         self.selectedZone = zone
     }
 
     func selectOrigin(_ id: String) {
-        guard let zone = selectedZone,
-            let zoneStations = stations[zone.id] else { return }
+        guard let zone = selectedZone, let zoneStations = stations[zone.id] else {
+            self.selectedOrigin = nil
+            return
+        }
 
         let matching = zoneStations.filter { $0.id == id }
 
-        guard matching.count == 1,
-            let station = matching.first else { return }
+        guard matching.count == 1, let station = matching.first else {
+            self.selectedOrigin = nil
+            return
+        }
 
         self.selectedOrigin = station
     }
 
     func selectDestination(_ id: String) {
-        guard let zone = selectedZone,
-            let zoneStations = stations[zone.id] else { return }
+        guard let zone = selectedZone, let zoneStations = stations[zone.id] else {
+            self.selectedDestination = nil
+            return
+        }
 
         let matching = zoneStations.filter { $0.id == id }
 
-        guard matching.count == 1,
-            let station = matching.first else { return }
+        guard matching.count == 1, let station = matching.first else {
+            self.selectedDestination = nil
+            return
+        }
 
         self.selectedDestination = station
     }

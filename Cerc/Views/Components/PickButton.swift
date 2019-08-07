@@ -18,6 +18,14 @@ struct PickButton: View {
 
     @EnvironmentObject var store: CercStore
 
+    private var shouldShow: Bool {
+        switch pickType {
+        case .zone:        return true
+        case .origin,
+             .destination: return store.selectedZone != nil
+        }
+    }
+
     private var isSet: Bool {
         switch pickType {
         case .zone:        return store.selectedZone != nil
@@ -34,7 +42,16 @@ struct PickButton: View {
         }
     }
 
+    private var animationDelay: Double {
+        switch pickType {
+        case .zone:        return 0.0
+        case .origin:      return store.selectedZone == nil ? 0.1 : 0.0
+        case .destination: return store.selectedZone == nil ? 0.0 : 0.1
+        }
+    }
+
     let pickType: PickType
+    let label: String
     let action: () -> Void
 
     @ViewBuilder
@@ -47,12 +64,17 @@ struct PickButton: View {
     }
 
     var body: some View {
-        Button(action: self.action, label: {
-            self.ButtonContent()
-                .frame(width: 200, height: 40, alignment: .center)
-                .background(PickButtonBackground(isSet: isSet))
-                .animation(.interactiveSpring())
-        })
+        VStack(spacing: 5) {
+            Text(self.label)
+            Button(action: self.action, label: {
+                self.ButtonContent()
+                    .frame(width: 200, height: 40, alignment: .center)
+                    .background(PickButtonBackground(isSet: isSet))
+            })
+        }
+        .scaleEffect(self.shouldShow ? 1 : 0)
+        .opacity(self.shouldShow ? 1 : 0)
+            .animation(Animation.interactiveSpring().delay(self.animationDelay))
     }
 
 }

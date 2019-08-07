@@ -60,31 +60,26 @@ extension MainContentView {
 
     @ViewBuilder
     func ZonePick() -> some View {
-        VStack(spacing: 5) {
-            Text("Select Zone")
-            PickButton(pickType: .zone) {
-
+        PickButton(pickType: .zone, label: "Zone") {
+            if self.store.selectedZone == nil {
+                self.store.selectZone("10")
+            } else {
+                self.store.selectZone("-1")
             }
         }
     }
 
     @ViewBuilder
     func OriginPick() -> some View {
-        VStack(spacing: 5) {
-            Text("Select Origin")
-            PickButton(pickType: .origin) {
+        PickButton(pickType: .origin, label: "Origin") {
 
-            }
         }
     }
 
     @ViewBuilder
     func DestinationPick() -> some View {
-        VStack(spacing: 5) {
-            Text("Select Destination")
-            PickButton(pickType: .destination) {
+        PickButton(pickType: .destination, label: "Destination") {
 
-            }
         }
     }
 
