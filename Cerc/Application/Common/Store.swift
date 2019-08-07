@@ -18,6 +18,8 @@ class CercStore: ObservableObject {
     @Published var selectedOrigin: CercModel.Station? = nil
     @Published var selectedDestination: CercModel.Station? = nil
 
+    @Published var selectedDate: Date = Date()
+
 }
 
 extension CercStore {
@@ -64,6 +66,10 @@ extension CercStore {
         self.selectedZone = zone
     }
 
+    func clearZone() {
+        self.selectedZone = nil
+    }
+
     func selectOrigin(_ id: String) {
         guard let zone = selectedZone, let zoneStations = stations[zone.id] else {
             self.selectedOrigin = nil
@@ -80,6 +86,10 @@ extension CercStore {
         self.selectedOrigin = station
     }
 
+    func clearOrigin() {
+        self.selectedOrigin = nil
+    }
+
     func selectDestination(_ id: String) {
         guard let zone = selectedZone, let zoneStations = stations[zone.id] else {
             self.selectedDestination = nil
@@ -94,6 +104,10 @@ extension CercStore {
         }
 
         self.selectedDestination = station
+    }
+
+    func clearDestination() {
+        self.selectedDestination = nil
     }
 
 }

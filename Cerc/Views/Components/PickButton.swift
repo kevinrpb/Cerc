@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - PickButton
 
 enum PickType {
-    case zone, origin, destination
+    case zone, origin, destination, date
 }
 
 struct PickButton: View {
@@ -23,6 +23,7 @@ struct PickButton: View {
         case .zone:        return true
         case .origin,
              .destination: return store.selectedZone != nil
+        case .date:        return store.selectedZone != nil && store.selectedOrigin != nil && store.selectedDestination != nil
         }
     }
 
@@ -31,6 +32,7 @@ struct PickButton: View {
         case .zone:        return store.selectedZone != nil
         case .origin:      return store.selectedOrigin != nil
         case .destination: return store.selectedDestination != nil
+        case .date:        return true
         }
     }
 
@@ -39,14 +41,7 @@ struct PickButton: View {
         case .zone:        return store.selectedZone?.name ?? ""
         case .origin:      return store.selectedOrigin?.name ?? ""
         case .destination: return store.selectedDestination?.name ?? ""
-        }
-    }
-
-    private var animationDelay: Double {
-        switch pickType {
-        case .zone:        return 0.0
-        case .origin:      return store.selectedZone == nil ? 0.1 : 0.0
-        case .destination: return store.selectedZone == nil ? 0.0 : 0.1
+        case .date:        return store.selectedDate.simpleString
         }
     }
 
@@ -74,7 +69,7 @@ struct PickButton: View {
         }
         .scaleEffect(self.shouldShow ? 1 : 0)
         .opacity(self.shouldShow ? 1 : 0)
-            .animation(Animation.interactiveSpring().delay(self.animationDelay))
+        .animation(.interactiveSpring())
     }
 
 }

@@ -55,6 +55,7 @@ extension MainContentView {
             ZonePick()
             OriginPick()
             DestinationPick()
+            DatePick()
         }
     }
 
@@ -64,7 +65,7 @@ extension MainContentView {
             if self.store.selectedZone == nil {
                 self.store.selectZone("10")
             } else {
-                self.store.selectZone("-1")
+                self.store.clearZone()
             }
         }
     }
@@ -72,13 +73,28 @@ extension MainContentView {
     @ViewBuilder
     func OriginPick() -> some View {
         PickButton(pickType: .origin, label: "Origin") {
-
+            if self.store.selectedOrigin == nil {
+                self.store.selectOrigin("10202")
+            } else {
+                self.store.clearOrigin()
+            }
         }
     }
 
     @ViewBuilder
     func DestinationPick() -> some View {
         PickButton(pickType: .destination, label: "Destination") {
+            if self.store.selectedDestination == nil {
+                self.store.selectDestination("10203")
+            } else {
+                self.store.clearDestination()
+            }
+        }
+    }
+
+    @ViewBuilder
+    func DatePick() -> some View {
+        PickButton(pickType: .date, label: "Date") {
 
         }
     }
