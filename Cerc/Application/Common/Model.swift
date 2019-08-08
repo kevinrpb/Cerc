@@ -10,7 +10,7 @@ import Foundation
 
 struct CercModel {
 
-    struct Zone: Codable {
+    struct Zone: Codable, Nameable {
         let id: String
         let name: String
         let mapURL: String
@@ -22,7 +22,7 @@ struct CercModel {
         }
     }
 
-    struct Station: Codable {
+    struct Station: Codable, Nameable {
         let id: String
         let name: String
     }
@@ -30,3 +30,6 @@ struct CercModel {
     typealias StationsRepresentation = [String: [Station]]
 
 }
+
+typealias CercZone = CercModel.Zone
+typealias CercStation = CercModel.Station

@@ -64,6 +64,8 @@ extension CercStore {
         }
 
         self.selectedZone = zone
+        self.selectedOrigin = nil
+        self.selectedDestination = nil
     }
 
     func clearZone() {

@@ -10,7 +10,7 @@ import SwiftUI
 
 protocol Nameable: Identifiable {
 
-    associatedtype NAME: Hashable, CustomStringConvertible
+    associatedtype NAME: StringProtocol
 
     var name: Self.NAME { get }
 
