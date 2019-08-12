@@ -8,6 +8,19 @@
 
 import SwiftUI
 
+fileprivate struct ModalHandler: View {
+
+    var body: some View {
+        HStack {
+            RoundedRectangle(cornerRadius: 3, style: .continuous)
+                .foregroundColor(.gray)
+                .frame(width: 40, height: 6)
+                .padding(.vertical)
+        }
+    }
+
+}
+
 // MARK: - Types
 
 enum SelectionType {
@@ -29,16 +42,18 @@ struct ZoneSelectionList: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 15) {
-                ForEach(items) { item in
-                    SelectionListRow(title: item.name) {
-                        self.action(item)
+        VStack(spacing: 0) {
+            ModalHandler()
+            
+            ScrollView {
+                VStack(spacing: 15) {
+                    ForEach(items) { item in
+                        SelectionListRow(title: item.name) { self.action(item) }
+                        .tag(item.id)
                     }
-                    .tag(item.id)
                 }
+                .padding()
             }
-            .padding(.all)
         }
     }
 
@@ -55,16 +70,18 @@ struct StationSelectionList: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                ForEach(items) { item in
-                    SelectionListRow(title: item.name) {
-                        self.action(item)
+        VStack(spacing: 0) {
+            ModalHandler()
+
+            ScrollView {
+                VStack(spacing: 20) {
+                    ForEach(items) { item in
+                        SelectionListRow(title: item.name) { self.action(item) }
+                        .tag(item.id)
                     }
-                    .tag(item.id)
                 }
+                .padding(.all)
             }
-            .padding(.all)
         }
     }
 
@@ -90,12 +107,13 @@ fileprivate struct SelectionListRow: View {
 
                 Image(systemName: self.isFavourite ? "star.fill" : "star")
                     .foregroundColor(self.isFavourite ? .yellow : .black)
+                    .shadow(radius: 2)
                     .animation(.interactiveSpring())
                     .onTapGesture { self.isFavourite.toggle() }
             }
         }
         .padding()
-        .background(SelectionListRowBackground())
+        .background(SelectionListRowBackground(isFavourite: $isFavourite))
         .shadow(radius: 2)
     }
 
@@ -103,10 +121,13 @@ fileprivate struct SelectionListRow: View {
 
 fileprivate struct SelectionListRowBackground: View {
 
+    @Binding var isFavourite: Bool
+
     var body: some View {
         GeometryReader { geometry in
             RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(Color.blue)
+                .fill(self.isFavourite ? Color.red : Color.blue)
+                .animation(.interactiveSpring())
         }
     }
 
