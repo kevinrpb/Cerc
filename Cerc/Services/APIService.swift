@@ -65,8 +65,8 @@ class APIService {
                 var object: Any
 
                 switch resource {
-                case .trip:
-                     object = try self.parseTrip(from: data)
+                case .trip(let request):
+                    object = try self.parseTrip(from: data, request: request)
                 }
 
                 DispatchQueue.main.async {
@@ -86,31 +86,73 @@ class APIService {
 
 extension APIService {
 
-    private func parseTrip(from data: Data) throws -> CercTrip {
+    private func parseTrip(from data: Data, request: CercTripRequest) throws -> CercTrip {
         let html = String(data: data, encoding: .isoLatin1)!
 
         let document: Document = try SwiftSoup.parse(html)
 
         let rows = try document.select("table tr")
 
-        let hasTransfer = try rows.filter {
+        let transferRow = try rows.filter {
             let cols = try $0.select("td")
             return !$0.hasClass("par") && !$0.hasClass("impar") && cols.count < 2
-        }.count > 0
+        }.first
+        let hasTransfer = transferRow != nil
 
-        return hasTransfer ? try parseMultiTrip(rows) : try parseSingleTrip(rows)
+        let timeRows = rows.filter { $0.hasClass("par") || $0.hasClass("impar") }
+
+        return hasTransfer ?
+            try parseMultiTrip(timeRows, request: request, transferRow: transferRow!) :
+            try parseSingleTrip(timeRows, request: request)
     }
 
-    private func parseSingleTrip(_ rows: Elements) throws -> CercTrip {
-        print(">> NO TRANSFER")
+    private func parseSingleTrip(_ rows: [Element], request: CercTripRequest) throws -> CercTrip {
+        let times: [CercTripTime] = try rows.map {
+            let columns = try $0.select("td").filter { try $0.select("span.rojo4").first() == nil }
 
-        return CercTrip()
+            let line = try columns[0].select("span").first()?.text() ?? ""
+            let departureTime = try columns[1].text()
+            let arrivalTime = try columns[2].text()
+            let duration = try columns[3].select("span").first()?.text() ?? ""
+
+            return CercTripTime(line: line,
+                                departureTime: departureTime,
+                                arrivalTime: arrivalTime,
+                                duration: duration)
+        }
+
+        return CercTrip(origin: request.origin,
+                        destination: request.destination,
+                        times: times)
     }
 
-    private func parseMultiTrip(_ rows: Elements) throws -> CercTrip {
-        print(">> TRANSFER")
+    private func parseMultiTrip(_ rows: [Element], request: CercTripRequest, transferRow: Element) throws -> CercTrip {
+        let transfer = try transferRow.select("td").first()?.text()
 
-        return CercTrip()
+        let times: [CercTripTime] = try rows.map {
+            let columns = try $0.select("td").filter { try $0.select("span.rojo4").first() == nil }
+
+            let line = try columns[0].select("span").first()?.text() ?? ""
+            let departureTime = try columns[1].text()
+            let arrivalTime = try columns[5].text()
+            let transferLine = try columns[4].select("span").first()?.text()
+            let transferArrivalTime = try columns[2].text()
+            let transferDepartureTime = try columns[3].text()
+            let duration = try columns[6].select("span").first()?.text() ?? ""
+
+            return CercTripTime(line: line,
+                                departureTime: departureTime,
+                                arrivalTime: arrivalTime,
+                                transferLine: transferLine,
+                                transferArrivalTime: transferArrivalTime,
+                                transferDepartureTime: transferDepartureTime,
+                                duration: duration)
+        }
+
+        return CercTrip(origin: request.origin,
+                        destination: request.destination,
+                        transfer: transfer,
+                        times: times)
     }
 
 }
