@@ -30,15 +30,20 @@ struct MainContentView: View {
             VStack {
                 Header()
                 Picks()
-                    .padding(.top, 40)
+                    .padding(.vertical, 40)
+                SubmitButton()
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
         }
-        .onAppear { self.store.loadAll() }
+        .onAppear {
+            self.store.loadAll()
+            self.fake()
+        }
         .sheet(isPresented: $displayModal) {
             if self.modal == .zones {
                 ZoneSelectionList { zone in
-                    self.store.selectZone(zone.id)
+//                    self.store.selectZone(zone.id)
+                    self.fake()
                     self.modal = .none
                 }
                 .environmentObject(self.store)
@@ -59,6 +64,12 @@ struct MainContentView: View {
                     .onAppear { self.modal = .none }
             }
         }
+    }
+
+    func fake() {
+        store.selectZone("10")
+        store.selectOrigin("10202")
+        store.selectDestination("70003")
     }
 
 }
@@ -134,6 +145,39 @@ extension MainContentView {
     func DatePick() -> some View {
         PickButton(pickType: .date, label: "Date") {
 
+        }
+    }
+
+}
+
+// MARK: - SubmitButton
+
+extension MainContentView {
+
+    var shouldShowSubmit: Bool {
+        return store.selectedZone != nil && store.selectedOrigin != nil && store.selectedDestination != nil
+    }
+
+    @ViewBuilder
+    func SubmitButton() -> some View {
+        RoundButton(action: self.loadTrip) {
+            Text("Get Times")
+        }
+        .scaleEffect(self.shouldShowSubmit ? 1 : 0)
+        .opacity(self.shouldShowSubmit ? 1 : 0)
+        .animation(.interactiveSpring())
+    }
+
+    // MARK: Functions
+
+    func loadTrip() {
+        let request = CercTripRequest(core: store.selectedZone?.id ?? "",
+                                      origin: store.selectedOrigin?.id ?? "",
+                                      destination: store.selectedDestination?.id ?? "",
+                                      date: store.selectedDate.cercString)
+
+        APIService.shared.load(.trip(request)) { (result: Result<CercTrip, APIService.APIError>) in
+            print(result)
         }
     }
 

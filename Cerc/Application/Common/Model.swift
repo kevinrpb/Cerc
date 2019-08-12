@@ -29,7 +29,39 @@ struct CercModel {
 
     typealias StationsRepresentation = [String: [Station]]
 
+    struct Trip: Codable {
+
+        struct Request: Codable {
+            let core: String
+            let origin: String
+            let destination: String
+            let date: String
+
+            let originTime: String = "00"
+            let destinationTime: String = "26"
+
+            let i: String = "s"
+            let cp: String = "NO"
+            let TXTInfo: String = ""
+
+            enum CodingKeys: String, CodingKey {
+                case core = "nucleo"
+                case origin = "o"
+                case destination = "d"
+                case date = "df"
+
+                case originTime = "ho"
+                case destinationTime = "hd"
+
+                case i, cp, TXTInfo
+            }
+        }
+
+    }
+
 }
 
 typealias CercZone = CercModel.Zone
 typealias CercStation = CercModel.Station
+typealias CercTrip = CercModel.Trip
+typealias CercTripRequest = CercModel.Trip.Request
