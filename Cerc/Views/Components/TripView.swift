@@ -24,6 +24,9 @@ struct TripView: View {
                 }
 
                 TripStationView(kind: .destination)
+
+                TripTimesView()
+                    .padding(.top, 25)
             }
             .padding()
         }
@@ -108,3 +111,84 @@ fileprivate struct TripSegmentView: View {
     }
 
 }
+
+// MARK: - Trip Times
+
+fileprivate struct TripTimesView: View {
+
+    @EnvironmentObject var store: CercStore
+
+    var times: [CercTripTime] {
+        return store.loadedTrip?.times ?? []
+    }
+
+    var columnWidth: CGFloat {
+        return 90
+    }
+
+    var body: some View {
+        VStack {
+            TimesHeader()
+            Divider()
+
+            ForEach(0..<times.count) {
+                self.TimesRow(timeIndex: $0)
+                    .tag($0)
+            }
+        }
+    }
+
+    @ViewBuilder
+    func TimesHeader() -> some View {
+        HStack {
+            Text("Origin").frame(width: columnWidth)
+
+            if store.tripTransfer != nil {
+                Text("Transfer").frame(width: 2 * columnWidth)
+            }
+
+            Text("Destination").frame(width: columnWidth)
+        }
+    }
+
+    @ViewBuilder
+    func TimesRow(timeIndex: Int) -> some View {
+        HStack {
+            Text(times[timeIndex].departureTime).frame(width: columnWidth)
+                .overlay(times[timeIndex].departureTime != "" ? SegmentOverlay() : nil)
+
+            if store.tripTransfer != nil {
+                Text(times[timeIndex].transferArrivalTime ?? "xx.xx").frame(width: columnWidth)
+                    .overlay(WaitOverlay())
+                Text(times[timeIndex].transferDepartureTime ?? "xx.xx").frame(width: columnWidth)
+                    .overlay(SegmentOverlay())
+            }
+
+            Text(times[timeIndex].arrivalTime).frame(width: columnWidth)
+        }
+
+        if !times.indices.contains(timeIndex + 1) || times[timeIndex + 1].departureTime != "" {
+            Divider()
+        }
+    }
+
+    @ViewBuilder
+    func SegmentOverlay() -> some View {
+        Image(systemName: "arrow.right")
+            .resizable()
+            .frame(width: 15, height: 10, alignment: .center)
+            .foregroundColor(.gray)
+            .offset(x: columnWidth / 2 + 4)
+    }
+
+    @ViewBuilder
+    func WaitOverlay() -> some View {
+        Image(systemName: "clock")
+            .resizable()
+            .frame(width: 15, height: 15, alignment: .center)
+            .foregroundColor(.gray)
+            .offset(x: columnWidth / 2 + 4)
+    }
+
+}
+

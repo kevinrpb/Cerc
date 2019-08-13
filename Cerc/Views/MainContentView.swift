@@ -43,8 +43,8 @@ struct MainContentView: View {
             ModalView {
                 if self.modal == .zones {
                     ZoneSelectionList { zone in
-    //                    self.store.selectZone(zone.id)
-                        self.fake()
+                        self.store.selectZone(zone.id)
+//                        self.fake()
                         self.modal = .none
                     }
                     .environmentObject(self.store)
