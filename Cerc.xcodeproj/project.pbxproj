@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		D70D175C22EC67AA009AB0D4 /* PickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D175B22EC67AA009AB0D4 /* PickButton.swift */; };
 		D716CEF722FAA90800F180EA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D716CEF622FAA90800F180EA /* Model.swift */; };
-		D779B18222E4C28100CC1D8B /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18022E4C25B00CC1D8B /* RoundedCorners.swift */; };
-		D779B18322E4C28100CC1D8B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18122E4C25B00CC1D8B /* RoundedButton.swift */; };
 		D779B18422E4C28100CC1D8B /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B17F22E4C25B00CC1D8B /* BlurView.swift */; };
 		D779B18622E4C31300CC1D8B /* LocalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18522E4C31300CC1D8B /* LocalService.swift */; };
 		D779B18D22E4C35600CC1D8B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18B22E4C35600CC1D8B /* Extensions.swift */; };
@@ -27,6 +25,9 @@
 		D7DAA32122F455140075C1D6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DAA32022F455140075C1D6 /* Store.swift */; };
 		D7E18E632301418700EB121F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E18E622301418700EB121F /* APIService.swift */; };
 		D7E18E652301556600EB121F /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E18E642301556600EB121F /* RoundButton.swift */; };
+		D7E18E672302902600EB121F /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E18E662302902600EB121F /* TripView.swift */; };
+		D7E18E692302942B00EB121F /* Modals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E18E682302942B00EB121F /* Modals.swift */; };
+		D7E18E6B2302A16D00EB121F /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E18E6A2302A16D00EB121F /* ActivityView.swift */; };
 		D7E7AD5C22FBFEBB0063A7EA /* SelectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E7AD5B22FBFEBB0063A7EA /* SelectionList.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,8 +35,6 @@
 		D70D175B22EC67AA009AB0D4 /* PickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickButton.swift; path = ../../../../../../../System/Volumes/Data/Users/kevs/Developer/Cerc/Cerc/Views/Components/PickButton.swift; sourceTree = "<group>"; };
 		D716CEF622FAA90800F180EA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D779B17F22E4C25B00CC1D8B /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		D779B18022E4C25B00CC1D8B /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
-		D779B18122E4C25B00CC1D8B /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		D779B18522E4C31300CC1D8B /* LocalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalService.swift; sourceTree = "<group>"; };
 		D779B18B22E4C35600CC1D8B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D779B18C22E4C35600CC1D8B /* Nameable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nameable.swift; sourceTree = "<group>"; };
@@ -52,6 +51,9 @@
 		D7DAA32022F455140075C1D6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Store.swift; path = ../../../../../../../System/Volumes/Data/Users/kevs/Developer/Cerc/Cerc/Application/Common/Store.swift; sourceTree = "<group>"; };
 		D7E18E622301418700EB121F /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		D7E18E642301556600EB121F /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		D7E18E662302902600EB121F /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
+		D7E18E682302942B00EB121F /* Modals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modals.swift; sourceTree = "<group>"; };
+		D7E18E6A2302A16D00EB121F /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		D7E7AD5B22FBFEBB0063A7EA /* SelectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,16 +69,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D779B17E22E4C25B00CC1D8B /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				D779B18022E4C25B00CC1D8B /* RoundedCorners.swift */,
-				D779B18122E4C25B00CC1D8B /* RoundedButton.swift */,
-				D779B17F22E4C25B00CC1D8B /* BlurView.swift */,
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
 		D7AB7DE222E197C000A34336 = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +130,7 @@
 		D7C5B73022E1984D00003298 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D779B17E22E4C25B00CC1D8B /* Util */,
+				D7D449CE2302A86D0009907B /* Util */,
 				D7C5B75722E221CF00003298 /* Components */,
 				D7AB7DF222E197C000A34336 /* MainContentView.swift */,
 			);
@@ -169,10 +161,21 @@
 			isa = PBXGroup;
 			children = (
 				D70D175B22EC67AA009AB0D4 /* PickButton.swift */,
-				D7E18E642301556600EB121F /* RoundButton.swift */,
 				D7E7AD5B22FBFEBB0063A7EA /* SelectionList.swift */,
+				D7E18E662302902600EB121F /* TripView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		D7D449CE2302A86D0009907B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D779B17F22E4C25B00CC1D8B /* BlurView.swift */,
+				D7E18E642301556600EB121F /* RoundButton.swift */,
+				D7E18E6A2302A16D00EB121F /* ActivityView.swift */,
+				D7E18E682302942B00EB121F /* Modals.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,9 +260,11 @@
 				D716CEF722FAA90800F180EA /* Model.swift in Sources */,
 				D70D175C22EC67AA009AB0D4 /* PickButton.swift in Sources */,
 				D779B18422E4C28100CC1D8B /* BlurView.swift in Sources */,
+				D7E18E672302902600EB121F /* TripView.swift in Sources */,
 				D7AB7DEF22E197C000A34336 /* AppDelegate.swift in Sources */,
+				D7E18E692302942B00EB121F /* Modals.swift in Sources */,
+				D7E18E6B2302A16D00EB121F /* ActivityView.swift in Sources */,
 				D7DAA32122F455140075C1D6 /* Store.swift in Sources */,
-				D779B18222E4C28100CC1D8B /* RoundedCorners.swift in Sources */,
 				D7E18E652301556600EB121F /* RoundButton.swift in Sources */,
 				D779B18622E4C31300CC1D8B /* LocalService.swift in Sources */,
 				D7AB7DF122E197C000A34336 /* SceneDelegate.swift in Sources */,
@@ -267,7 +272,6 @@
 				D779B18D22E4C35600CC1D8B /* Extensions.swift in Sources */,
 				D7AB7DF322E197C000A34336 /* MainContentView.swift in Sources */,
 				D779B18E22E4C35600CC1D8B /* Nameable.swift in Sources */,
-				D779B18322E4C28100CC1D8B /* RoundedButton.swift in Sources */,
 				D7E7AD5C22FBFEBB0063A7EA /* SelectionList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

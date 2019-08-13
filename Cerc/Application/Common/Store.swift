@@ -11,15 +11,18 @@ import Combine
 
 class CercStore: ObservableObject {
 
-    @Published var zones: [CercModel.Zone] = []
-    @Published var stations: CercModel.StationsRepresentation = [:]
+    @Published var loading: Bool = false
 
-    @Published var selectedZone: CercModel.Zone? = nil
-    @Published var selectedOrigin: CercModel.Station? = nil
-    @Published var selectedDestination: CercModel.Station? = nil
+    @Published var zones: [CercZone] = []
+    @Published var stations: CercStationsRepresentation = [:]
+
+    @Published var selectedZone: CercZone? = nil
+    @Published var selectedOrigin: CercStation? = nil
+    @Published var selectedDestination: CercStation? = nil
 
     @Published var selectedDate: Date = Date()
 
+    @Published var loadedTrip: CercTrip? = nil
 }
 
 extension CercStore {
@@ -30,24 +33,32 @@ extension CercStore {
     }
 
     func loadZones() {
-        LocalService.shared.load(.zones) { (result: Result<[CercModel.Zone], LocalService.LocalError>) in
+        self.loading = true
+
+        LocalService.shared.load(.zones) { (result: Result<[CercZone], LocalService.LocalError>) in
             switch result {
             case .success(let zones):
                 self.zones = zones
             case .failure(let error):
                 print(error.localizedDescription)
             }
+
+            self.loading = false
         }
     }
 
     func loadStations() {
-        LocalService.shared.load(.stations) { (result: Result<CercModel.StationsRepresentation, LocalService.LocalError>) in
+        self.loading = true
+
+        LocalService.shared.load(.stations) { (result: Result<CercStationsRepresentation, LocalService.LocalError>) in
             switch result {
             case .success(let stations):
                 self.stations = stations
             case .failure(let error):
                 print(error.localizedDescription)
             }
+
+            self.loading = false
         }
     }
 
@@ -110,6 +121,57 @@ extension CercStore {
 
     func clearDestination() {
         self.selectedDestination = nil
+    }
+
+}
+
+extension CercStore {
+
+    func loadTrip(_ completion: (() -> Void)? = nil) {
+        self.loading = true
+
+        guard let zone = selectedZone,
+            let origin = selectedOrigin,
+            let destination = selectedDestination else { self.loading = false; return }
+
+        let request = CercTripRequest(core: zone.id,
+                                      origin: origin.id,
+                                      destination: destination.id,
+                                      date: selectedDate.cercString)
+
+        APIService.shared.load(.trip(request)) { (result: Result<CercTrip, APIService.APIError>) in
+            switch result {
+            case .success(let trip):
+                self.loadedTrip = trip
+                completion?()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+
+            self.loading = false
+        }
+    }
+
+    func clearTrip() {
+        self.loadedTrip = nil
+    }
+
+    var tripOrigin: CercStation? {
+        guard let trip = loadedTrip else { return nil }
+
+        return stations[trip.zone]?.first(where: { $0.id == trip.origin })
+    }
+
+    var tripDestination: CercStation? {
+        guard let trip = loadedTrip else { return nil }
+
+        return stations[trip.zone]?.first(where: { $0.id == trip.destination })
+    }
+
+    var tripTransfer: CercStation? {
+        guard let trip = loadedTrip else { return nil }
+
+        return stations[trip.zone]?.first(where: { $0.id == trip.transfer })
     }
 
 }

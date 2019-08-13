@@ -34,3 +34,22 @@ struct BlurView: UIViewRepresentable {
     func updateUIView(_ uiView: UIView,
                       context: UIViewRepresentableContext<BlurView>) {}
 }
+
+struct BlurBackgroundView: View {
+
+    let style: UIBlurEffect.Style
+
+    init(_ style: UIBlurEffect.Style = .systemMaterial) {
+        self.style = style
+    }
+
+    var body: some View {
+        GeometryReader { geometry in
+            BlurView(style: self.style)
+                .frame(width: geometry.size.width, height: geometry.size.height)
+                .padding()
+            
+        }
+    }
+
+}

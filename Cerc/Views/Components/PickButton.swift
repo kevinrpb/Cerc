@@ -69,7 +69,7 @@ struct PickButton: View {
         }
         .scaleEffect(self.shouldShow ? 1 : 0)
         .opacity(self.shouldShow ? 1 : 0)
-        .animation(.interactiveSpring())
+        .animation(Animation.interactiveSpring().delay(0.3))
     }
 
 }

@@ -40,21 +40,28 @@ extension CercModel {
     typealias StationsRepresentation = [String: [Station]]
 
 }
-
 typealias CercStation = CercModel.Station
+typealias CercStationsRepresentation = CercModel.StationsRepresentation
 
 // MARK: - Trip
 
 extension CercModel {
 
     struct Trip: Codable {
+        let zone: String
+
         let origin: String
         let destination: String
         let transfer: String?
 
         let times: [Time]
 
-        init(origin: String, destination: String, transfer: String? = nil, times: [Time]) {
+        init(zone: String,
+             origin: String,
+             destination: String,
+             transfer: String? = nil, 
+             times: [Time]) {
+            self.zone = zone
             self.origin = origin
             self.destination = destination
             self.transfer = transfer

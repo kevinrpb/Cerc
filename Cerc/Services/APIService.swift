@@ -91,19 +91,12 @@ extension APIService {
 
         let document: Document = try SwiftSoup.parse(html)
 
-        let rows = try document.select("table tr")
+        let transfer = try? document.select("span#codigoOrigenTransbordo").text()
+        let rows = try document.select("table tr").filter { $0.hasClass("par") || $0.hasClass("impar") }
 
-        let transferRow = try rows.filter {
-            let cols = try $0.select("td")
-            return !$0.hasClass("par") && !$0.hasClass("impar") && cols.count < 2
-        }.first
-        let hasTransfer = transferRow != nil
-
-        let timeRows = rows.filter { $0.hasClass("par") || $0.hasClass("impar") }
-
-        return hasTransfer ?
-            try parseMultiTrip(timeRows, request: request, transferRow: transferRow!) :
-            try parseSingleTrip(timeRows, request: request)
+        return (transfer != nil && transfer != "") ?
+            try parseMultiTrip(rows, request: request, transfer: transfer!) :
+            try parseSingleTrip(rows, request: request)
     }
 
     private func parseSingleTrip(_ rows: [Element], request: CercTripRequest) throws -> CercTrip {
@@ -121,14 +114,13 @@ extension APIService {
                                 duration: duration)
         }
 
-        return CercTrip(origin: request.origin,
+        return CercTrip(zone: request.core,
+                        origin: request.origin,
                         destination: request.destination,
                         times: times)
     }
 
-    private func parseMultiTrip(_ rows: [Element], request: CercTripRequest, transferRow: Element) throws -> CercTrip {
-        let transfer = try transferRow.select("td").first()?.text()
-
+    private func parseMultiTrip(_ rows: [Element], request: CercTripRequest, transfer: String) throws -> CercTrip {
         let times: [CercTripTime] = try rows.map {
             let columns = try $0.select("td").filter { try $0.select("span.rojo4").first() == nil }
 
@@ -149,7 +141,8 @@ extension APIService {
                                 duration: duration)
         }
 
-        return CercTrip(origin: request.origin,
+        return CercTrip(zone: request.core,
+                        origin: request.origin,
                         destination: request.destination,
                         transfer: transfer,
                         times: times)

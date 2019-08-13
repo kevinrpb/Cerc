@@ -8,19 +8,6 @@
 
 import SwiftUI
 
-fileprivate struct ModalHandler: View {
-
-    var body: some View {
-        HStack {
-            RoundedRectangle(cornerRadius: 3, style: .continuous)
-                .foregroundColor(.gray)
-                .frame(width: 40, height: 6)
-                .padding(.vertical)
-        }
-    }
-
-}
-
 // MARK: - Types
 
 enum SelectionType {
@@ -80,7 +67,7 @@ struct StationSelectionList: View {
                         .tag(item.id)
                     }
                 }
-                .padding(.all)
+                .padding()
             }
         }
     }

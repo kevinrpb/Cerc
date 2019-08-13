@@ -9,7 +9,7 @@
 import SwiftUI
 
 enum DisplayingModal {
-    case none, zones, origin, destination
+    case none, zones, origin, destination, date, trip
 }
 
 struct MainContentView: View {
@@ -26,12 +26,12 @@ struct MainContentView: View {
     // MARK: - Body
 
     var body: some View {
-        ZStack(alignment: .top) {
+        LoadingView(isLoading: $store.loading) {
             VStack {
-                Header()
-                Picks()
+                self.Header()
+                self.Picks()
                     .padding(.vertical, 40)
-                SubmitButton()
+                self.SubmitButton()
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
         }
@@ -59,6 +59,12 @@ struct MainContentView: View {
                     self.modal = .none
                 }
                 .environmentObject(self.store)
+            } else if self.modal == .date {
+                EmptyView()
+                    .onAppear { self.modal = .none }
+            } else if self.modal == .trip {
+                TripView()
+                    .environmentObject(self.store)
             } else {
                 EmptyView()
                     .onAppear { self.modal = .none }
@@ -108,11 +114,6 @@ extension MainContentView {
     @ViewBuilder
     func ZonePick() -> some View {
         PickButton(pickType: .zone, label: "Zone") {
-//            if self.store.selectedZone == nil {
-//                self.store.selectZone("10")
-//            } else {
-//                self.store.clearZone()
-//            }
             self.modal = .zones
         }
     }
@@ -120,11 +121,6 @@ extension MainContentView {
     @ViewBuilder
     func OriginPick() -> some View {
         PickButton(pickType: .origin, label: "Origin") {
-//            if self.store.selectedOrigin == nil {
-//                self.store.selectOrigin("10202")
-//            } else {
-//                self.store.clearOrigin()
-//            }
             self.modal = .origin
         }
     }
@@ -132,11 +128,6 @@ extension MainContentView {
     @ViewBuilder
     func DestinationPick() -> some View {
         PickButton(pickType: .destination, label: "Destination") {
-//            if self.store.selectedDestination == nil {
-//                self.store.selectDestination("10203")
-//            } else {
-//                self.store.clearDestination()
-//            }
             self.modal = .destination
         }
     }
@@ -144,7 +135,7 @@ extension MainContentView {
     @ViewBuilder
     func DatePick() -> some View {
         PickButton(pickType: .date, label: "Date") {
-
+//            self.modal = .date
         }
     }
 
@@ -160,24 +151,17 @@ extension MainContentView {
 
     @ViewBuilder
     func SubmitButton() -> some View {
-        RoundButton(action: self.loadTrip) {
+        RoundButton(action: self.submit) {
             Text("Get Times")
         }
         .scaleEffect(self.shouldShowSubmit ? 1 : 0)
         .opacity(self.shouldShowSubmit ? 1 : 0)
-        .animation(.interactiveSpring())
+        .animation(Animation.interactiveSpring().delay(0.3))
     }
 
-    // MARK: Functions
-
-    func loadTrip() {
-        let request = CercTripRequest(core: store.selectedZone?.id ?? "",
-                                      origin: store.selectedOrigin?.id ?? "",
-                                      destination: store.selectedDestination?.id ?? "",
-                                      date: store.selectedDate.cercString)
-
-        APIService.shared.load(.trip(request)) { (result: Result<CercTrip, APIService.APIError>) in
-            print(result)
+    func submit() {
+        store.loadTrip {
+            self.modal = .trip
         }
     }
 
