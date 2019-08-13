@@ -29,18 +29,14 @@ struct ZoneSelectionList: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            ModalHandler()
-            
-            ScrollView {
-                VStack(spacing: 15) {
-                    ForEach(items) { item in
-                        SelectionListRow(title: item.name) { self.action(item) }
-                        .tag(item.id)
-                    }
+        ScrollView {
+            VStack(spacing: 15) {
+                ForEach(items) { item in
+                    SelectionListRow(title: item.name) { self.action(item) }
+                    .tag(item.id)
                 }
-                .padding()
             }
+            .padding()
         }
     }
 
@@ -57,18 +53,14 @@ struct StationSelectionList: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            ModalHandler()
-
-            ScrollView {
-                VStack(spacing: 20) {
-                    ForEach(items) { item in
-                        SelectionListRow(title: item.name) { self.action(item) }
-                        .tag(item.id)
-                    }
+        ScrollView {
+            VStack(spacing: 20) {
+                ForEach(items) { item in
+                    SelectionListRow(title: item.name) { self.action(item) }
+                    .tag(item.id)
                 }
-                .padding()
             }
+            .padding()
         }
     }
 

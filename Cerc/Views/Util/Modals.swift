@@ -21,3 +21,21 @@ struct ModalHandler: View {
     }
 
 }
+
+struct ModalView<Content: View>: View {
+
+    let content: () -> Content
+
+    init(@ViewBuilder _ content: @escaping () -> Content) {
+        self.content = content
+    }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            ModalHandler()
+
+            self.content()
+        }
+    }
+
+}

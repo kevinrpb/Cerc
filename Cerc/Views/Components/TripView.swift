@@ -13,23 +13,19 @@ struct TripView: View {
     @EnvironmentObject var store: CercStore
 
     var body: some View {
-        VStack(spacing: 0) {
-            ModalHandler()
-            
-            ScrollView {
-                VStack {
-                    TripStationView(kind: .origin)
+        ScrollView {
+            VStack {
+                TripStationView(kind: .origin)
+                TripSegmentView()
+
+                if store.tripTransfer != nil {
+                    TripStationView(kind: .transfer)
                     TripSegmentView()
-
-                    if store.tripTransfer != nil {
-                        TripStationView(kind: .transfer)
-                        TripSegmentView()
-                    }
-
-                    TripStationView(kind: .destination)
                 }
-                .padding()
+
+                TripStationView(kind: .destination)
             }
+            .padding()
         }
     }
 

@@ -40,34 +40,36 @@ struct MainContentView: View {
             self.fake()
         }
         .sheet(isPresented: $displayModal) {
-            if self.modal == .zones {
-                ZoneSelectionList { zone in
-//                    self.store.selectZone(zone.id)
-                    self.fake()
-                    self.modal = .none
-                }
-                .environmentObject(self.store)
-            } else if self.modal == .origin {
-                StationSelectionList { station in
-                    self.store.selectOrigin(station.id)
-                    self.modal = .none
-                }
-                .environmentObject(self.store)
-            } else if self.modal == .destination {
-                StationSelectionList { station in
-                    self.store.selectDestination(station.id)
-                    self.modal = .none
-                }
-                .environmentObject(self.store)
-            } else if self.modal == .date {
-                EmptyView()
-                    .onAppear { self.modal = .none }
-            } else if self.modal == .trip {
-                TripView()
+            ModalView {
+                if self.modal == .zones {
+                    ZoneSelectionList { zone in
+    //                    self.store.selectZone(zone.id)
+                        self.fake()
+                        self.modal = .none
+                    }
                     .environmentObject(self.store)
-            } else {
-                EmptyView()
-                    .onAppear { self.modal = .none }
+                } else if self.modal == .origin {
+                    StationSelectionList { station in
+                        self.store.selectOrigin(station.id)
+                        self.modal = .none
+                    }
+                    .environmentObject(self.store)
+                } else if self.modal == .destination {
+                    StationSelectionList { station in
+                        self.store.selectDestination(station.id)
+                        self.modal = .none
+                    }
+                    .environmentObject(self.store)
+                } else if self.modal == .date {
+                    EmptyView()
+                        .onAppear { self.modal = .none }
+                } else if self.modal == .trip {
+                    TripView()
+                        .environmentObject(self.store)
+                } else {
+                    EmptyView()
+                        .onAppear { self.modal = .none }
+                }
             }
         }
     }
