@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1300"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7AB7DEA22E197C000A34336"
+               BlueprintIdentifier = "D7A72A1F26753567009A6C9C"
                BuildableName = "Cerc.app"
                BlueprintName = "Cerc"
                ReferencedContainer = "container:Cerc.xcodeproj">
@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D7A72A2F26753569009A6C9C"
+               BuildableName = "CercTests.xctest"
+               BlueprintName = "CercTests"
+               ReferencedContainer = "container:Cerc.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D7A72A3926753569009A6C9C"
+               BuildableName = "CercUITests.xctest"
+               BlueprintName = "CercUITests"
+               ReferencedContainer = "container:Cerc.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -44,7 +64,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7AB7DEA22E197C000A34336"
+            BlueprintIdentifier = "D7A72A1F26753567009A6C9C"
             BuildableName = "Cerc.app"
             BlueprintName = "Cerc"
             ReferencedContainer = "container:Cerc.xcodeproj">
@@ -61,7 +81,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7AB7DEA22E197C000A34336"
+            BlueprintIdentifier = "D7A72A1F26753567009A6C9C"
             BuildableName = "Cerc.app"
             BlueprintName = "Cerc"
             ReferencedContainer = "container:Cerc.xcodeproj">

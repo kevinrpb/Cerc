@@ -3,191 +3,272 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D70D175C22EC67AA009AB0D4 /* PickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70D175B22EC67AA009AB0D4 /* PickButton.swift */; };
-		D716CEF722FAA90800F180EA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D716CEF622FAA90800F180EA /* Model.swift */; };
-		D779B18422E4C28100CC1D8B /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B17F22E4C25B00CC1D8B /* BlurView.swift */; };
-		D779B18622E4C31300CC1D8B /* LocalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18522E4C31300CC1D8B /* LocalService.swift */; };
-		D779B18D22E4C35600CC1D8B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18B22E4C35600CC1D8B /* Extensions.swift */; };
-		D779B18E22E4C35600CC1D8B /* Nameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779B18C22E4C35600CC1D8B /* Nameable.swift */; };
-		D7AB7DEF22E197C000A34336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB7DEE22E197C000A34336 /* AppDelegate.swift */; };
-		D7AB7DF122E197C000A34336 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB7DF022E197C000A34336 /* SceneDelegate.swift */; };
-		D7AB7DF322E197C000A34336 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AB7DF222E197C000A34336 /* MainContentView.swift */; };
-		D7AB7DF522E197C200A34336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AB7DF422E197C200A34336 /* Assets.xcassets */; };
-		D7AB7DF822E197C200A34336 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AB7DF722E197C200A34336 /* Preview Assets.xcassets */; };
-		D7AB7DFB22E197C200A34336 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AB7DF922E197C200A34336 /* LaunchScreen.storyboard */; };
-		D7C5B73522E199A100003298 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D7C5B73422E199A100003298 /* SwiftSoup */; };
-		D7C5B74F22E1AB4100003298 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = D7C5B74D22E1AB4100003298 /* stations.json */; };
-		D7C5B75022E1AB4100003298 /* zones.json in Resources */ = {isa = PBXBuildFile; fileRef = D7C5B74E22E1AB4100003298 /* zones.json */; };
-		D7DAA32122F455140075C1D6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DAA32022F455140075C1D6 /* Store.swift */; };
-		D7E18E632301418700EB121F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E18E622301418700EB121F /* APIService.swift */; };
-		D7E18E652301556600EB121F /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E18E642301556600EB121F /* RoundButton.swift */; };
-		D7E18E672302902600EB121F /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E18E662302902600EB121F /* TripView.swift */; };
-		D7E18E692302942B00EB121F /* Modals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E18E682302942B00EB121F /* Modals.swift */; };
-		D7E18E6B2302A16D00EB121F /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E18E6A2302A16D00EB121F /* ActivityView.swift */; };
-		D7E7AD5C22FBFEBB0063A7EA /* SelectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E7AD5B22FBFEBB0063A7EA /* SelectionList.swift */; };
+		D75F0C3F26764E8B00F5CF90 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C3E26764E8B00F5CF90 /* Settings.swift */; };
+		D75F0C412676527E00F5CF90 /* CercSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C402676527E00F5CF90 /* CercSettingsView.swift */; };
+		D75F0C4326765BD500F5CF90 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C4226765BD500F5CF90 /* Environment.swift */; };
+		D75F0C462676631300F5CF90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C452676631300F5CF90 /* ContentView.swift */; };
+		D75F0C48267663C100F5CF90 /* CercTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C47267663C100F5CF90 /* CercTripView.swift */; };
+		D7652F862675403300BEF7C5 /* CercError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F852675403300BEF7C5 /* CercError.swift */; };
+		D7652F8826754BFD00BEF7C5 /* CercSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F8726754BFD00BEF7C5 /* CercSelectionView.swift */; };
+		D7652F8A267628E000BEF7C5 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F89267628E000BEF7C5 /* Defaults.swift */; };
+		D7A72A2426753567009A6C9C /* CercApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A2326753567009A6C9C /* CercApp.swift */; };
+		D7A72A2826753569009A6C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A72A2726753569009A6C9C /* Assets.xcassets */; };
+		D7A72A2B26753569009A6C9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A72A2A26753569009A6C9C /* Preview Assets.xcassets */; };
+		D7A72A3526753569009A6C9C /* CercTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A3426753569009A6C9C /* CercTests.swift */; };
+		D7A72A3F26753569009A6C9C /* CercUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A3E26753569009A6C9C /* CercUITests.swift */; };
+		D7A72A50267535A2009A6C9C /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D7A72A4F267535A2009A6C9C /* SwiftSoup */; };
+		D7A72A53267535AB009A6C9C /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = D7A72A52267535AB009A6C9C /* Defaults */; };
+		D7A72A5F267535FA009A6C9C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A5B267535FA009A6C9C /* Trip.swift */; };
+		D7A72A60267535FA009A6C9C /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A5C267535FA009A6C9C /* Station.swift */; };
+		D7A72A61267535FA009A6C9C /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A5D267535FA009A6C9C /* Zone.swift */; };
+		D7A72A62267535FA009A6C9C /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A5E267535FA009A6C9C /* Search.swift */; };
+		D7A72A6426753613009A6C9C /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A6326753613009A6C9C /* Network.swift */; };
+		D7A72A682675369B009A6C9C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A662675369B009A6C9C /* Date.swift */; };
+		D7A72A692675369B009A6C9C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A672675369B009A6C9C /* Color.swift */; };
+		D7A72A6E267536F0009A6C9C /* CercListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A6C267536F0009A6C9C /* CercListItem.swift */; };
+		D7A72A6F267536F0009A6C9C /* CercButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A6D267536F0009A6C9C /* CercButtonStyle.swift */; };
+		D7A72A742675372F009A6C9C /* CompactLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A732675372F009A6C9C /* CompactLayoutView.swift */; };
+		D7A72A7B26753925009A6C9C /* CercFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A7A26753925009A6C9C /* CercFormView.swift */; };
+		D7A72A7D26753AC1009A6C9C /* CercController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A7C26753AC1009A6C9C /* CercController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D7A72A3126753569009A6C9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7A72A1826753567009A6C9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7A72A1F26753567009A6C9C;
+			remoteInfo = Cerc;
+		};
+		D7A72A3B26753569009A6C9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7A72A1826753567009A6C9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7A72A1F26753567009A6C9C;
+			remoteInfo = Cerc;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		D70D175B22EC67AA009AB0D4 /* PickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickButton.swift; path = ../../../../../../../System/Volumes/Data/Users/kevs/Developer/Cerc/Cerc/Views/Components/PickButton.swift; sourceTree = "<group>"; };
-		D716CEF622FAA90800F180EA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		D779B17F22E4C25B00CC1D8B /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		D779B18522E4C31300CC1D8B /* LocalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalService.swift; sourceTree = "<group>"; };
-		D779B18B22E4C35600CC1D8B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		D779B18C22E4C35600CC1D8B /* Nameable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nameable.swift; sourceTree = "<group>"; };
-		D7AB7DEB22E197C000A34336 /* Cerc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cerc.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7AB7DEE22E197C000A34336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D7AB7DF022E197C000A34336 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D7AB7DF222E197C000A34336 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
-		D7AB7DF422E197C200A34336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D7AB7DF722E197C200A34336 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D7AB7DFA22E197C200A34336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D7AB7DFC22E197C200A34336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7C5B74D22E1AB4100003298 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
-		D7C5B74E22E1AB4100003298 /* zones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zones.json; sourceTree = "<group>"; };
-		D7DAA32022F455140075C1D6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Store.swift; path = ../../../../../../../System/Volumes/Data/Users/kevs/Developer/Cerc/Cerc/Application/Common/Store.swift; sourceTree = "<group>"; };
-		D7E18E622301418700EB121F /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		D7E18E642301556600EB121F /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		D7E18E662302902600EB121F /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
-		D7E18E682302942B00EB121F /* Modals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modals.swift; sourceTree = "<group>"; };
-		D7E18E6A2302A16D00EB121F /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
-		D7E7AD5B22FBFEBB0063A7EA /* SelectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionList.swift; sourceTree = "<group>"; };
+		D75F0C3E26764E8B00F5CF90 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		D75F0C402676527E00F5CF90 /* CercSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercSettingsView.swift; sourceTree = "<group>"; };
+		D75F0C4226765BD500F5CF90 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		D75F0C452676631300F5CF90 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D75F0C47267663C100F5CF90 /* CercTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercTripView.swift; sourceTree = "<group>"; };
+		D7652F852675403300BEF7C5 /* CercError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercError.swift; sourceTree = "<group>"; };
+		D7652F8726754BFD00BEF7C5 /* CercSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercSelectionView.swift; sourceTree = "<group>"; };
+		D7652F89267628E000BEF7C5 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		D7A72A2026753567009A6C9C /* Cerc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cerc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7A72A2326753567009A6C9C /* CercApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercApp.swift; sourceTree = "<group>"; };
+		D7A72A2726753569009A6C9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D7A72A2A26753569009A6C9C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D7A72A3026753569009A6C9C /* CercTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CercTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7A72A3426753569009A6C9C /* CercTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercTests.swift; sourceTree = "<group>"; };
+		D7A72A3A26753569009A6C9C /* CercUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CercUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7A72A3E26753569009A6C9C /* CercUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercUITests.swift; sourceTree = "<group>"; };
+		D7A72A5B267535FA009A6C9C /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		D7A72A5C267535FA009A6C9C /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		D7A72A5D267535FA009A6C9C /* Zone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		D7A72A5E267535FA009A6C9C /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		D7A72A6326753613009A6C9C /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		D7A72A662675369B009A6C9C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		D7A72A672675369B009A6C9C /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D7A72A6A267536BD009A6C9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7A72A6C267536F0009A6C9C /* CercListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercListItem.swift; sourceTree = "<group>"; };
+		D7A72A6D267536F0009A6C9C /* CercButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercButtonStyle.swift; sourceTree = "<group>"; };
+		D7A72A732675372F009A6C9C /* CompactLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactLayoutView.swift; sourceTree = "<group>"; };
+		D7A72A7A26753925009A6C9C /* CercFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercFormView.swift; sourceTree = "<group>"; };
+		D7A72A7C26753AC1009A6C9C /* CercController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D7AB7DE822E197C000A34336 /* Frameworks */ = {
+		D7A72A1D26753567009A6C9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7C5B73522E199A100003298 /* SwiftSoup in Frameworks */,
+				D7A72A53267535AB009A6C9C /* Defaults in Frameworks */,
+				D7A72A50267535A2009A6C9C /* SwiftSoup in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7A72A2D26753569009A6C9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7A72A3726753569009A6C9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D7AB7DE222E197C000A34336 = {
+		D75F0C44267662B000F5CF90 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				D7AB7DED22E197C000A34336 /* Cerc */,
-				D7AB7DEC22E197C000A34336 /* Products */,
+				D7A72A6C267536F0009A6C9C /* CercListItem.swift */,
+				D7A72A6D267536F0009A6C9C /* CercButtonStyle.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		D7A72A1726753567009A6C9C = {
+			isa = PBXGroup;
+			children = (
+				D7A72A2226753567009A6C9C /* Cerc */,
+				D7A72A3326753569009A6C9C /* CercTests */,
+				D7A72A3D26753569009A6C9C /* CercUITests */,
+				D7A72A2126753567009A6C9C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D7AB7DEC22E197C000A34336 /* Products */ = {
+		D7A72A2126753567009A6C9C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D7AB7DEB22E197C000A34336 /* Cerc.app */,
+				D7A72A2026753567009A6C9C /* Cerc.app */,
+				D7A72A3026753569009A6C9C /* CercTests.xctest */,
+				D7A72A3A26753569009A6C9C /* CercUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D7AB7DED22E197C000A34336 /* Cerc */ = {
+		D7A72A2226753567009A6C9C /* Cerc */ = {
 			isa = PBXGroup;
 			children = (
-				D7C5B72F22E1983C00003298 /* Application */,
-				D7C5B73022E1984D00003298 /* Views */,
-				D7C5B75122E1AB5B00003298 /* Services */,
-				D7AB7E0222E197DC00A34336 /* Resources */,
+				D7A72A4C2675357C009A6C9C /* Application */,
+				D7A72A4D26753582009A6C9C /* Views */,
+				D7A72A4B26753574009A6C9C /* Support Files */,
 			);
 			path = Cerc;
 			sourceTree = "<group>";
 		};
-		D7AB7DF622E197C200A34336 /* Preview Content */ = {
+		D7A72A2926753569009A6C9C /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				D7AB7DF722E197C200A34336 /* Preview Assets.xcassets */,
+				D7A72A2A26753569009A6C9C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		D7AB7E0222E197DC00A34336 /* Resources */ = {
+		D7A72A3326753569009A6C9C /* CercTests */ = {
 			isa = PBXGroup;
 			children = (
-				D7C5B74E22E1AB4100003298 /* zones.json */,
-				D7C5B74D22E1AB4100003298 /* stations.json */,
-				D7AB7DF422E197C200A34336 /* Assets.xcassets */,
-				D7AB7DF922E197C200A34336 /* LaunchScreen.storyboard */,
-				D7AB7DFC22E197C200A34336 /* Info.plist */,
-				D7AB7DF622E197C200A34336 /* Preview Content */,
+				D7A72A3426753569009A6C9C /* CercTests.swift */,
 			);
-			path = Resources;
+			path = CercTests;
 			sourceTree = "<group>";
 		};
-		D7C5B72F22E1983C00003298 /* Application */ = {
+		D7A72A3D26753569009A6C9C /* CercUITests */ = {
 			isa = PBXGroup;
 			children = (
-				D7AB7DEE22E197C000A34336 /* AppDelegate.swift */,
-				D7AB7DF022E197C000A34336 /* SceneDelegate.swift */,
-				D7C5B73B22E1A38B00003298 /* Common */,
+				D7A72A3E26753569009A6C9C /* CercUITests.swift */,
+			);
+			path = CercUITests;
+			sourceTree = "<group>";
+		};
+		D7A72A4B26753574009A6C9C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7A72A6A267536BD009A6C9C /* Info.plist */,
+				D7A72A2726753569009A6C9C /* Assets.xcassets */,
+				D7A72A2926753569009A6C9C /* Preview Content */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		D7A72A4C2675357C009A6C9C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D7A72A2326753567009A6C9C /* CercApp.swift */,
+				D7A72A7C26753AC1009A6C9C /* CercController.swift */,
+				D7652F852675403300BEF7C5 /* CercError.swift */,
+				D7A72A57267535C4009A6C9C /* Data */,
+				D7A72A652675369B009A6C9C /* Extensions */,
 			);
 			path = Application;
 			sourceTree = "<group>";
 		};
-		D7C5B73022E1984D00003298 /* Views */ = {
+		D7A72A4D26753582009A6C9C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D7D449CE2302A86D0009907B /* Util */,
-				D7C5B75722E221CF00003298 /* Components */,
-				D7AB7DF222E197C000A34336 /* MainContentView.swift */,
+				D75F0C44267662B000F5CF90 /* Util */,
+				D7A72A6B267536F0009A6C9C /* Shared */,
+				D7A72A70267536FB009A6C9C /* Compact */,
+				D75F0C452676631300F5CF90 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D7C5B73B22E1A38B00003298 /* Common */ = {
+		D7A72A57267535C4009A6C9C /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				D779B18B22E4C35600CC1D8B /* Extensions.swift */,
-				D779B18C22E4C35600CC1D8B /* Nameable.swift */,
-				D716CEF622FAA90800F180EA /* Model.swift */,
-				D7DAA32022F455140075C1D6 /* Store.swift */,
+				D7A72A5A267535FA009A6C9C /* Models */,
+				D7A72A6326753613009A6C9C /* Network.swift */,
 			);
-			path = Common;
+			path = Data;
 			sourceTree = "<group>";
 		};
-		D7C5B75122E1AB5B00003298 /* Services */ = {
+		D7A72A5A267535FA009A6C9C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D779B18522E4C31300CC1D8B /* LocalService.swift */,
-				D7E18E622301418700EB121F /* APIService.swift */,
+				D7A72A5E267535FA009A6C9C /* Search.swift */,
+				D7A72A5C267535FA009A6C9C /* Station.swift */,
+				D7A72A5B267535FA009A6C9C /* Trip.swift */,
+				D7A72A5D267535FA009A6C9C /* Zone.swift */,
+				D75F0C3E26764E8B00F5CF90 /* Settings.swift */,
 			);
-			path = Services;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		D7C5B75722E221CF00003298 /* Components */ = {
+		D7A72A652675369B009A6C9C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D70D175B22EC67AA009AB0D4 /* PickButton.swift */,
-				D7E7AD5B22FBFEBB0063A7EA /* SelectionList.swift */,
-				D7E18E662302902600EB121F /* TripView.swift */,
+				D7A72A662675369B009A6C9C /* Date.swift */,
+				D7A72A672675369B009A6C9C /* Color.swift */,
+				D7652F89267628E000BEF7C5 /* Defaults.swift */,
+				D75F0C4226765BD500F5CF90 /* Environment.swift */,
 			);
-			path = Components;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D7D449CE2302A86D0009907B /* Util */ = {
+		D7A72A6B267536F0009A6C9C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D779B17F22E4C25B00CC1D8B /* BlurView.swift */,
-				D7E18E642301556600EB121F /* RoundButton.swift */,
-				D7E18E6A2302A16D00EB121F /* ActivityView.swift */,
-				D7E18E682302942B00EB121F /* Modals.swift */,
+				D7A72A7A26753925009A6C9C /* CercFormView.swift */,
+				D75F0C47267663C100F5CF90 /* CercTripView.swift */,
+				D75F0C402676527E00F5CF90 /* CercSettingsView.swift */,
+				D7652F8726754BFD00BEF7C5 /* CercSelectionView.swift */,
 			);
-			path = Util;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		D7A72A70267536FB009A6C9C /* Compact */ = {
+			isa = PBXGroup;
+			children = (
+				D7A72A732675372F009A6C9C /* CompactLayoutView.swift */,
+			);
+			path = Compact;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D7AB7DEA22E197C000A34336 /* Cerc */ = {
+		D7A72A1F26753567009A6C9C /* Cerc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D7AB7DFF22E197C200A34336 /* Build configuration list for PBXNativeTarget "Cerc" */;
+			buildConfigurationList = D7A72A4226753569009A6C9C /* Build configuration list for PBXNativeTarget "Cerc" */;
 			buildPhases = (
-				D7AB7DE722E197C000A34336 /* Sources */,
-				D7AB7DE822E197C000A34336 /* Frameworks */,
-				D7AB7DE922E197C000A34336 /* Resources */,
+				D7A72A1C26753567009A6C9C /* Sources */,
+				D7A72A1D26753567009A6C9C /* Frameworks */,
+				D7A72A1E26753567009A6C9C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -195,102 +276,184 @@
 			);
 			name = Cerc;
 			packageProductDependencies = (
-				D7C5B73422E199A100003298 /* SwiftSoup */,
+				D7A72A4F267535A2009A6C9C /* SwiftSoup */,
+				D7A72A52267535AB009A6C9C /* Defaults */,
 			);
 			productName = Cerc;
-			productReference = D7AB7DEB22E197C000A34336 /* Cerc.app */;
+			productReference = D7A72A2026753567009A6C9C /* Cerc.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D7A72A2F26753569009A6C9C /* CercTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7A72A4526753569009A6C9C /* Build configuration list for PBXNativeTarget "CercTests" */;
+			buildPhases = (
+				D7A72A2C26753569009A6C9C /* Sources */,
+				D7A72A2D26753569009A6C9C /* Frameworks */,
+				D7A72A2E26753569009A6C9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7A72A3226753569009A6C9C /* PBXTargetDependency */,
+			);
+			name = CercTests;
+			productName = CercTests;
+			productReference = D7A72A3026753569009A6C9C /* CercTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D7A72A3926753569009A6C9C /* CercUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7A72A4826753569009A6C9C /* Build configuration list for PBXNativeTarget "CercUITests" */;
+			buildPhases = (
+				D7A72A3626753569009A6C9C /* Sources */,
+				D7A72A3726753569009A6C9C /* Frameworks */,
+				D7A72A3826753569009A6C9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7A72A3C26753569009A6C9C /* PBXTargetDependency */,
+			);
+			name = CercUITests;
+			productName = CercUITests;
+			productReference = D7A72A3A26753569009A6C9C /* CercUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D7AB7DE322E197C000A34336 /* Project object */ = {
+		D7A72A1826753567009A6C9C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
-				ORGANIZATIONNAME = "Kevin Romero Peces-Barba";
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
-					D7AB7DEA22E197C000A34336 = {
-						CreatedOnToolsVersion = 11.0;
+					D7A72A1F26753567009A6C9C = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					D7A72A2F26753569009A6C9C = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = D7A72A1F26753567009A6C9C;
+					};
+					D7A72A3926753569009A6C9C = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = D7A72A1F26753567009A6C9C;
 					};
 				};
 			};
-			buildConfigurationList = D7AB7DE622E197C000A34336 /* Build configuration list for PBXProject "Cerc" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = D7A72A1B26753567009A6C9C /* Build configuration list for PBXProject "Cerc" */;
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = D7AB7DE222E197C000A34336;
+			mainGroup = D7A72A1726753567009A6C9C;
 			packageReferences = (
-				D7C5B73322E199A100003298 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				D7A72A4E267535A2009A6C9C /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				D7A72A51267535AB009A6C9C /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
-			productRefGroup = D7AB7DEC22E197C000A34336 /* Products */;
+			productRefGroup = D7A72A2126753567009A6C9C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D7AB7DEA22E197C000A34336 /* Cerc */,
+				D7A72A1F26753567009A6C9C /* Cerc */,
+				D7A72A2F26753569009A6C9C /* CercTests */,
+				D7A72A3926753569009A6C9C /* CercUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D7AB7DE922E197C000A34336 /* Resources */ = {
+		D7A72A1E26753567009A6C9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7AB7DFB22E197C200A34336 /* LaunchScreen.storyboard in Resources */,
-				D7AB7DF822E197C200A34336 /* Preview Assets.xcassets in Resources */,
-				D7C5B74F22E1AB4100003298 /* stations.json in Resources */,
-				D7C5B75022E1AB4100003298 /* zones.json in Resources */,
-				D7AB7DF522E197C200A34336 /* Assets.xcassets in Resources */,
+				D7A72A2B26753569009A6C9C /* Preview Assets.xcassets in Resources */,
+				D7A72A2826753569009A6C9C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7A72A2E26753569009A6C9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7A72A3826753569009A6C9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D7AB7DE722E197C000A34336 /* Sources */ = {
+		D7A72A1C26753567009A6C9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D716CEF722FAA90800F180EA /* Model.swift in Sources */,
-				D70D175C22EC67AA009AB0D4 /* PickButton.swift in Sources */,
-				D779B18422E4C28100CC1D8B /* BlurView.swift in Sources */,
-				D7E18E672302902600EB121F /* TripView.swift in Sources */,
-				D7AB7DEF22E197C000A34336 /* AppDelegate.swift in Sources */,
-				D7E18E692302942B00EB121F /* Modals.swift in Sources */,
-				D7E18E6B2302A16D00EB121F /* ActivityView.swift in Sources */,
-				D7DAA32122F455140075C1D6 /* Store.swift in Sources */,
-				D7E18E652301556600EB121F /* RoundButton.swift in Sources */,
-				D779B18622E4C31300CC1D8B /* LocalService.swift in Sources */,
-				D7AB7DF122E197C000A34336 /* SceneDelegate.swift in Sources */,
-				D7E18E632301418700EB121F /* APIService.swift in Sources */,
-				D779B18D22E4C35600CC1D8B /* Extensions.swift in Sources */,
-				D7AB7DF322E197C000A34336 /* MainContentView.swift in Sources */,
-				D779B18E22E4C35600CC1D8B /* Nameable.swift in Sources */,
-				D7E7AD5C22FBFEBB0063A7EA /* SelectionList.swift in Sources */,
+				D75F0C48267663C100F5CF90 /* CercTripView.swift in Sources */,
+				D7652F8826754BFD00BEF7C5 /* CercSelectionView.swift in Sources */,
+				D7A72A5F267535FA009A6C9C /* Trip.swift in Sources */,
+				D75F0C462676631300F5CF90 /* ContentView.swift in Sources */,
+				D75F0C412676527E00F5CF90 /* CercSettingsView.swift in Sources */,
+				D7652F862675403300BEF7C5 /* CercError.swift in Sources */,
+				D7A72A60267535FA009A6C9C /* Station.swift in Sources */,
+				D7A72A6426753613009A6C9C /* Network.swift in Sources */,
+				D7A72A7D26753AC1009A6C9C /* CercController.swift in Sources */,
+				D7A72A692675369B009A6C9C /* Color.swift in Sources */,
+				D7A72A6E267536F0009A6C9C /* CercListItem.swift in Sources */,
+				D75F0C4326765BD500F5CF90 /* Environment.swift in Sources */,
+				D7652F8A267628E000BEF7C5 /* Defaults.swift in Sources */,
+				D7A72A6F267536F0009A6C9C /* CercButtonStyle.swift in Sources */,
+				D7A72A7B26753925009A6C9C /* CercFormView.swift in Sources */,
+				D7A72A2426753567009A6C9C /* CercApp.swift in Sources */,
+				D7A72A61267535FA009A6C9C /* Zone.swift in Sources */,
+				D7A72A682675369B009A6C9C /* Date.swift in Sources */,
+				D7A72A62267535FA009A6C9C /* Search.swift in Sources */,
+				D7A72A742675372F009A6C9C /* CompactLayoutView.swift in Sources */,
+				D75F0C3F26764E8B00F5CF90 /* Settings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7A72A2C26753569009A6C9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7A72A3526753569009A6C9C /* CercTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7A72A3626753569009A6C9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7A72A3F26753569009A6C9C /* CercUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		D7AB7DF922E197C200A34336 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D7AB7DFA22E197C200A34336 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		D7A72A3226753569009A6C9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7A72A1F26753567009A6C9C /* Cerc */;
+			targetProxy = D7A72A3126753569009A6C9C /* PBXContainerItemProxy */;
 		};
-/* End PBXVariantGroup section */
+		D7A72A3C26753569009A6C9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7A72A1F26753567009A6C9C /* Cerc */;
+			targetProxy = D7A72A3B26753569009A6C9C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		D7AB7DFD22E197C200A34336 /* Debug */ = {
+		D7A72A4026753569009A6C9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -316,6 +479,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -340,7 +504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -350,7 +514,7 @@
 			};
 			name = Debug;
 		};
-		D7AB7DFE22E197C200A34336 /* Release */ = {
+		D7A72A4126753569009A6C9C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -376,6 +540,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -394,7 +559,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -404,65 +569,203 @@
 			};
 			name = Release;
 		};
-		D7AB7E0022E197C200A34336 /* Debug */ = {
+		D7A72A4326753569009A6C9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "Cerc/Resources/Preview\\ Content";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Cerc/Support Files/Preview Content\"";
 				DEVELOPMENT_TEAM = YUN383XGPH;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Cerc/Resources/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Cerc/Support Files/Info.plist";
+				INFOPLIST_KEY_CFBundleExecutable = Cerc;
+				INFOPLIST_KEY_CFBundleName = Cerc;
+				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.0.0-alpha.1";
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.kevinrpb.Cerc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		D7AB7E0122E197C200A34336 /* Release */ = {
+		D7A72A4426753569009A6C9C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "Cerc/Resources/Preview\\ Content";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Cerc/Support Files/Preview Content\"";
 				DEVELOPMENT_TEAM = YUN383XGPH;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Cerc/Resources/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Cerc/Support Files/Info.plist";
+				INFOPLIST_KEY_CFBundleExecutable = Cerc;
+				INFOPLIST_KEY_CFBundleName = Cerc;
+				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "1.0.0-alpha.1";
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.kevinrpb.Cerc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D7A72A4626753569009A6C9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YUN383XGPH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.kevinrpb.CercTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cerc.app/Cerc";
+			};
+			name = Debug;
+		};
+		D7A72A4726753569009A6C9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YUN383XGPH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.kevinrpb.CercTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cerc.app/Cerc";
+			};
+			name = Release;
+		};
+		D7A72A4926753569009A6C9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YUN383XGPH;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.kevinrpb.CercUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Cerc;
+			};
+			name = Debug;
+		};
+		D7A72A4A26753569009A6C9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YUN383XGPH;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.kevinrpb.CercUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Cerc;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D7AB7DE622E197C000A34336 /* Build configuration list for PBXProject "Cerc" */ = {
+		D7A72A1B26753567009A6C9C /* Build configuration list for PBXProject "Cerc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D7AB7DFD22E197C200A34336 /* Debug */,
-				D7AB7DFE22E197C200A34336 /* Release */,
+				D7A72A4026753569009A6C9C /* Debug */,
+				D7A72A4126753569009A6C9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D7AB7DFF22E197C200A34336 /* Build configuration list for PBXNativeTarget "Cerc" */ = {
+		D7A72A4226753569009A6C9C /* Build configuration list for PBXNativeTarget "Cerc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D7AB7E0022E197C200A34336 /* Debug */,
-				D7AB7E0122E197C200A34336 /* Release */,
+				D7A72A4326753569009A6C9C /* Debug */,
+				D7A72A4426753569009A6C9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7A72A4526753569009A6C9C /* Build configuration list for PBXNativeTarget "CercTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7A72A4626753569009A6C9C /* Debug */,
+				D7A72A4726753569009A6C9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7A72A4826753569009A6C9C /* Build configuration list for PBXNativeTarget "CercUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7A72A4926753569009A6C9C /* Debug */,
+				D7A72A4A26753569009A6C9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -470,23 +773,36 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D7C5B73322E199A100003298 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+		D7A72A4E267535A2009A6C9C /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.0;
+				minimumVersion = 2.0.0;
+			};
+		};
+		D7A72A51267535AB009A6C9C /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D7C5B73422E199A100003298 /* SwiftSoup */ = {
+		D7A72A4F267535A2009A6C9C /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D7C5B73322E199A100003298 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			package = D7A72A4E267535A2009A6C9C /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		D7A72A52267535AB009A6C9C /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7A72A51267535AB009A6C9C /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = D7AB7DE322E197C000A34336 /* Project object */;
+	rootObject = D7A72A1826753567009A6C9C /* Project object */;
 }
