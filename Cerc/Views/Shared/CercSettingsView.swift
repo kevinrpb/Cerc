@@ -70,7 +70,7 @@ struct CercSettingsView: View {
                     Button {
                         openURL(.init(string: "https://github.com/kevinrpb")!)
                     } label: {
-                        Label("/kevinrpb", systemImage: "github")
+                        Label("kevinrpb", systemImage: "github")
                     }
                     .buttonStyle(CercButtonStyle(settings.tintColor))
                 }

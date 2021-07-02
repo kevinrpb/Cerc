@@ -21,10 +21,11 @@ struct CercFormView: View {
             }
             Spacer(minLength: 30)
         } else {
-            if controller.state == .error {
+            if let error = controller.error {
                 CercListItem(tint: tintColor) {
                     Image(systemName: "exclamationmark.octagon")
-                    Text(controller.error?.description ?? "")
+                    Text(error.description)
+                        .textSelection(.enabled)
                     Spacer()
                 }
                 .foregroundColor(.red)
@@ -59,18 +60,21 @@ struct CercFormView: View {
                                selection: $controller.date,
                                in: Date.now...Date.now.addingTimeInterval(.init(1209600)), // 14*(24*60*60) (14 days)
                                displayedComponents: [.date])
+                        .accentColor(tintColor)
                 }
                 FormPicker("Between") {
                     DatePicker("Between",
                                selection: $controller.hourStart,
                                in: controller.date.dayRange,
                                displayedComponents: [.hourAndMinute])
+                        .accentColor(tintColor)
                 }
                 FormPicker("And") {
                     DatePicker("And",
                                selection: $controller.hourEnd,
                                in: controller.hourStart...controller.date.endOfDay,
                                displayedComponents: [.hourAndMinute])
+                        .accentColor(tintColor)
                 }
             }
         }
@@ -78,7 +82,7 @@ struct CercFormView: View {
     }
 
     private func FormHeader(_ title: String, image: String) -> some View {
-        HStack {
+        HStack(alignment: .center) {
             Label(title, systemImage: image)
                 .font(.body.bold())
                 .padding(.leading, 6)

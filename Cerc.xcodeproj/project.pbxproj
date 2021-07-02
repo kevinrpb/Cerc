@@ -20,7 +20,6 @@
 		D7A72A2B26753569009A6C9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A72A2A26753569009A6C9C /* Preview Assets.xcassets */; };
 		D7A72A3526753569009A6C9C /* CercTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A3426753569009A6C9C /* CercTests.swift */; };
 		D7A72A3F26753569009A6C9C /* CercUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A3E26753569009A6C9C /* CercUITests.swift */; };
-		D7A72A50267535A2009A6C9C /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D7A72A4F267535A2009A6C9C /* SwiftSoup */; };
 		D7A72A53267535AB009A6C9C /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = D7A72A52267535AB009A6C9C /* Defaults */; };
 		D7A72A5F267535FA009A6C9C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A5B267535FA009A6C9C /* Trip.swift */; };
 		D7A72A60267535FA009A6C9C /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A5C267535FA009A6C9C /* Station.swift */; };
@@ -91,7 +90,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7A72A53267535AB009A6C9C /* Defaults in Frameworks */,
-				D7A72A50267535A2009A6C9C /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +274,6 @@
 			);
 			name = Cerc;
 			packageProductDependencies = (
-				D7A72A4F267535A2009A6C9C /* SwiftSoup */,
 				D7A72A52267535AB009A6C9C /* Defaults */,
 			);
 			productName = Cerc;
@@ -352,7 +349,6 @@
 			);
 			mainGroup = D7A72A1726753567009A6C9C;
 			packageReferences = (
-				D7A72A4E267535A2009A6C9C /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				D7A72A51267535AB009A6C9C /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = D7A72A2126753567009A6C9C /* Products */;
@@ -773,14 +769,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D7A72A4E267535A2009A6C9C /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		D7A72A51267535AB009A6C9C /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
@@ -792,11 +780,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D7A72A4F267535A2009A6C9C /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D7A72A4E267535A2009A6C9C /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
 		D7A72A52267535AB009A6C9C /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D7A72A51267535AB009A6C9C /* XCRemoteSwiftPackageReference "Defaults" */;

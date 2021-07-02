@@ -45,4 +45,8 @@ extension Date {
         let str = Self.hourFormatter.string(from: self)
         return str == "23" ? "26" : str // The renfe search uses 26 to denote end of day
     }
+
+    static func from(_ date: Date, hour: Int, minute: Int, second: Int = 0) -> Date? {
+        Calendar.current.date(bySettingHour: hour, minute: minute, second: second, of: date)
+    }
 }

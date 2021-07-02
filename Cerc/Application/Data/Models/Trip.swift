@@ -14,7 +14,7 @@ struct Trip {
     let arrival: Date
     let line: String?
 
-    let transfer: Station?
+    let transfer: String? // TODO: Convert to Station? idk if it's worth it
     let transferArrival: Date?
     let transferDeparture: Date?
     let transferLine: String?

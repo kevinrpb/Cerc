@@ -53,11 +53,13 @@ struct CercStationSelectionView: View {
     }
 
     private var favourites: [Station] {
-        searchResults.filter { $0.isFavourite }
+//        searchResults.filter { ($0.isFavourite ?? false) }
+        searchResults.filter { _ in false } // TODO: Implement some other form of storing favourites...
     }
 
     private var nonFavourites: [Station] {
-        searchResults.filter { !$0.isFavourite }
+//        searchResults.filter { !($0.isFavourite ?? false) }
+        searchResults.filter { _ in true } // TODO: Implement some other form of storing favourites...
     }
 
     var body: some View {

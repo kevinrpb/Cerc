@@ -20,7 +20,6 @@ class CercController: ObservableObject {
         case selectingDestination
         case loadingTrips
         case displayingTrips
-        case error
     }
 
     // App state
@@ -81,23 +80,21 @@ class CercController: ObservableObject {
         error = nil
 
         do {
-            zones = try Network.getZones()
-            stations = try await Network.getStations(for: zones)
+            zones = try await Network.get(.zones)
+            stations = try await Network.get(.stations)
 
-            if let selectedZone = Defaults[.selectedZone] {
+            if let selectedZone = Defaults[.selectedZone], zones.contains(selectedZone) {
                 zone = selectedZone
             } else {
                 Defaults[.selectedZone] = nil
             }
-            
-            state = .normal
-        } catch (let error as CercError) {
-            state = .error
+        } catch let error as CercError {
             self.error = error
         } catch {
-            state = .error
             self.error = .generic(error: error)
         }
+        
+        state = .normal
     }
 
     func startSearch() async {
@@ -105,17 +102,14 @@ class CercController: ObservableObject {
 
         guard let zone = zone else {
             error = .formMissingZone
-            state = .error
             return
         }
         guard let origin = origin else {
             error = .formMissingOrigin
-            state = .error
             return
         }
         guard let destination = destination else {
             error = .formMissingDestination
-            state = .error
             return
         }
 
@@ -124,15 +118,11 @@ class CercController: ObservableObject {
 
         // Get the stuff
         do {
-            trips = try await Network.getTrips(for: tripSearch!) // trip search is init two lines above... should be fine?
+            trips = try await Network.get(.trip(search: tripSearch!)) // trip search is init two lines above... should be fine?
             state = .displayingTrips
-            print("trips:")
-            print(trips)
-        } catch (let error as CercError) {
-            state = .error
+        } catch let error as CercError {
             self.error = error
         } catch {
-            state = .error
             self.error = .generic(error: error)
         }
     }

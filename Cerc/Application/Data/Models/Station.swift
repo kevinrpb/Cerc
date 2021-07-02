@@ -10,8 +10,6 @@ import Foundation
 struct Station {
     let id: String
     let name: String
-    let isFavourite: Bool
-
     let zoneID: String
 }
 
