@@ -8,25 +8,62 @@
 import Foundation
 
 struct Trip {
-    let origin: Station
-    let destination: Station
-    let departure: Date
-    let arrival: Date
-    let line: String?
+    struct Transfer {
+        let stationID: String
 
-    let transfer: String? // TODO: Convert to Station? idk if it's worth it
-    let transferArrival: Date?
-    let transferDeparture: Date?
-    let transferLine: String?
+        let arrivalString: String
+        let departureString: String
 
-    var duration: DateComponents {
+        let line: String
+    }
+
+    let zoneID: String
+    let originID: String
+    let destinationID: String
+
+    let dateString: String
+    let departureString: String
+    let arrivalString: String
+
+    let line: String
+    let isCivis: Bool
+    let isAccessible: Bool
+
+    let transfers: [Transfer]
+
+    lazy var date: Date? = {
+        return Date.from(simpleString: dateString)
+    }()
+
+    lazy var departure: Date? = {
+        guard let date = date else { return nil }
+        return Date.from(date, hourAndMinute: departureString)
+    }()
+
+    lazy var arrival: Date? = {
+        guard let date = date else { return nil }
+        return Date.from(date, hourAndMinute: arrivalString)
+    }()
+
+    lazy var duration: DateComponents? = {
+        guard let departure = departure,
+              let arrival = arrival else { return nil }
+
         return Calendar.current.dateComponents([.hour, .minute], from: departure, to: arrival)
+    }()
+}
+
+extension Trip.Transfer: Identifiable {
+    var id: String {
+        "\(stationID)_\(departureString)-\(arrivalString)"
     }
 }
+extension Trip.Transfer: Codable {}
+extension Trip.Transfer: Equatable {}
 
 extension Trip: Identifiable {
     var id: String {
-        "\(line ?? "?")-\(origin.id)-\(destination.id)_\(departure.ISO8601Format())-\(arrival.ISO8601Format())"
+        "\(zoneID)_\(originID)-\(destinationID)_\(dateString)_\(departureString)-\(arrivalString)"
     }
 }
 extension Trip: Codable {}

@@ -41,6 +41,7 @@ struct CercSettingsView: View {
                                     .fill(settings.tintColor)
                                     .frame(width: 20, height: 20)
                                 Text(settings.tintColorKey.capitalized)
+                                Text("AAA")
                             }
                         }
                         .buttonStyle(CercButtonStyle(settings.tintColor))

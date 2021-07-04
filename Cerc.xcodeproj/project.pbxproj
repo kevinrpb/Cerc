@@ -12,6 +12,7 @@
 		D75F0C4326765BD500F5CF90 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C4226765BD500F5CF90 /* Environment.swift */; };
 		D75F0C462676631300F5CF90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C452676631300F5CF90 /* ContentView.swift */; };
 		D75F0C48267663C100F5CF90 /* CercTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C47267663C100F5CF90 /* CercTripView.swift */; };
+		D760E96C2691D2ED00D943B6 /* CercBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760E96B2691D2ED00D943B6 /* CercBackgroundModifier.swift */; };
 		D7652F862675403300BEF7C5 /* CercError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F852675403300BEF7C5 /* CercError.swift */; };
 		D7652F8826754BFD00BEF7C5 /* CercSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F8726754BFD00BEF7C5 /* CercSelectionView.swift */; };
 		D7652F8A267628E000BEF7C5 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F89267628E000BEF7C5 /* Defaults.swift */; };
@@ -58,6 +59,7 @@
 		D75F0C4226765BD500F5CF90 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D75F0C452676631300F5CF90 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D75F0C47267663C100F5CF90 /* CercTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercTripView.swift; sourceTree = "<group>"; };
+		D760E96B2691D2ED00D943B6 /* CercBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercBackgroundModifier.swift; sourceTree = "<group>"; };
 		D7652F852675403300BEF7C5 /* CercError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercError.swift; sourceTree = "<group>"; };
 		D7652F8726754BFD00BEF7C5 /* CercSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercSelectionView.swift; sourceTree = "<group>"; };
 		D7652F89267628E000BEF7C5 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				D7A72A6C267536F0009A6C9C /* CercListItem.swift */,
+				D760E96B2691D2ED00D943B6 /* CercBackgroundModifier.swift */,
 				D7A72A6D267536F0009A6C9C /* CercButtonStyle.swift */,
 			);
 			path = Util;
@@ -406,6 +409,7 @@
 				D7A72A6E267536F0009A6C9C /* CercListItem.swift in Sources */,
 				D75F0C4326765BD500F5CF90 /* Environment.swift in Sources */,
 				D7652F8A267628E000BEF7C5 /* Defaults.swift in Sources */,
+				D760E96C2691D2ED00D943B6 /* CercBackgroundModifier.swift in Sources */,
 				D7A72A6F267536F0009A6C9C /* CercButtonStyle.swift in Sources */,
 				D7A72A7B26753925009A6C9C /* CercFormView.swift in Sources */,
 				D7A72A2426753567009A6C9C /* CercApp.swift in Sources */,

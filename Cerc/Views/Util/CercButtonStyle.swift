@@ -16,13 +16,14 @@ struct CercButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(.vertical, 6)
-            .padding(.horizontal, 12)
-            .background(
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-//                    .fill(tint.opacity(0.2)) // Would like to do this but I can't for native date pickers...
-                    .fill(.gray.opacity(0.2))
-            )
+//            .padding(.vertical, 6)
+//            .padding(.horizontal, 12)
+//            .background(
+//                RoundedRectangle(cornerRadius: 10, style: .continuous)
+////                    .fill(tint.opacity(0.2)) // Would like to do this but I can't for native date pickers...
+//                    .fill(.gray.opacity(0.2))
+//            )
+            .cercBackground()
             .foregroundColor(configuration.isPressed ? tint.opacity(0.5) : .primary.opacity(0.8))
     }
 }

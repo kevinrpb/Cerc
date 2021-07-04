@@ -10,7 +10,7 @@ import Foundation
 extension Date {
     private static let simpleDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYYMMdd"
+        formatter.dateFormat = "YYYYMMdd "
 
         return formatter
     }()
@@ -46,7 +46,18 @@ extension Date {
         return str == "23" ? "26" : str // The renfe search uses 26 to denote end of day
     }
 
+    static func from(simpleString: String) -> Date? {
+        return Self.simpleDateFormatter.date(from: simpleString)
+    }
+
     static func from(_ date: Date, hour: Int, minute: Int, second: Int = 0) -> Date? {
         Calendar.current.date(bySettingHour: hour, minute: minute, second: second, of: date)
+    }
+
+    static func from(_ date: Date, hourAndMinute: String) -> Date? {
+        guard let hour = Int(hourAndMinute.split(separator: ":")[0]),
+              let minute = Int(hourAndMinute.split(separator: ":")[1]) else { return nil }
+
+        return Self.from(date, hour: hour, minute: minute)
     }
 }

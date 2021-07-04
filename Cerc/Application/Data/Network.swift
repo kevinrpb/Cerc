@@ -28,10 +28,11 @@ enum Endpoint: Equatable {
                 .appendingPathComponent("stations")
         case .trip(let search):
             return Self.API_URL
+                .appendingPathComponent("zone=\(search.zone.id)")
                 .appendingPathComponent("trips")
-                .appendingPathComponent("\(search.origin.id)")
-                .appendingPathComponent("\(search.destination.id)")
-                .appendingPathComponent("\(search.date.simpleDateString)")
+                .appendingPathComponent("from=\(search.origin.id)")
+                .appendingPathComponent("to=\(search.destination.id)")
+                .appendingPathComponent("on=\(search.date.simpleDateString)")
         }
     }
 }

@@ -62,20 +62,20 @@ struct CercFormView: View {
                                displayedComponents: [.date])
                         .accentColor(tintColor)
                 }
-                FormPicker("Between") {
-                    DatePicker("Between",
-                               selection: $controller.hourStart,
-                               in: controller.date.dayRange,
-                               displayedComponents: [.hourAndMinute])
-                        .accentColor(tintColor)
-                }
-                FormPicker("And") {
-                    DatePicker("And",
-                               selection: $controller.hourEnd,
-                               in: controller.hourStart...controller.date.endOfDay,
-                               displayedComponents: [.hourAndMinute])
-                        .accentColor(tintColor)
-                }
+//                FormPicker("Between") {
+//                    DatePicker("Between",
+//                               selection: $controller.hourStart,
+//                               in: controller.date.dayRange,
+//                               displayedComponents: [.hourAndMinute])
+//                        .accentColor(tintColor)
+//                }
+//                FormPicker("And") {
+//                    DatePicker("And",
+//                               selection: $controller.hourEnd,
+//                               in: controller.hourStart...controller.date.endOfDay,
+//                               displayedComponents: [.hourAndMinute])
+//                        .accentColor(tintColor)
+//                }
             }
         }
         Spacer(minLength: 30)
