@@ -31,26 +31,32 @@ struct Trip {
 
     let transfers: [Transfer]
 
-    lazy var date: Date? = {
+    func date() -> Date? {
         return Date.from(simpleString: dateString)
-    }()
+    }
 
-    lazy var departure: Date? = {
-        guard let date = date else { return nil }
+    func departure() -> Date? {
+        guard let date = self.date() else { return nil }
         return Date.from(date, hourAndMinute: departureString)
-    }()
+    }
 
-    lazy var arrival: Date? = {
-        guard let date = date else { return nil }
+    func arrival() -> Date? {
+        guard let date = self.date() else { return nil }
         return Date.from(date, hourAndMinute: arrivalString)
-    }()
+    }
 
-    lazy var duration: DateComponents? = {
-        guard let departure = departure,
-              let arrival = arrival else { return nil }
+    func duration() -> DateComponents? {
+        guard let departure = self.departure(),
+              let arrival = self.arrival() else { return nil }
 
         return Calendar.current.dateComponents([.hour, .minute], from: departure, to: arrival)
-    }()
+    }
+
+    func relativeTimeString() -> String? {
+        guard let departure = self.departure() else { return nil }
+
+        return Date.string(for: departure, relativeTo: Date()).capitalized
+    }
 }
 
 extension Trip.Transfer: Identifiable {

@@ -23,8 +23,9 @@ struct CercTripItemView: View {
             VStack {
                 HStack {
                     if isExpanded {
-                        // TODO: Calculate
-                        Text("Departs in ... minutes")
+                        if let relativeTime = trip.relativeTimeString() {
+                            Text("\(relativeTime)")
+                        }
                     } else {
                         Text(trip.departureString)
                             .cercBackground()

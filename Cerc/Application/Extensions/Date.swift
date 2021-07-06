@@ -22,6 +22,8 @@ extension Date {
         return formatter
     }()
 
+    private static let relativeFormatter = RelativeDateTimeFormatter()
+
     var startOfDay: Date {
         Calendar.current.startOfDay(for: self)
     }
@@ -59,5 +61,9 @@ extension Date {
               let minute = Int(hourAndMinute.split(separator: ":")[1]) else { return nil }
 
         return Self.from(date, hour: hour, minute: minute)
+    }
+
+    static func string(for date: Date, relativeTo referenceDate: Date) -> String {
+        return Self.relativeFormatter.localizedString(for: date, relativeTo: referenceDate)
     }
 }
