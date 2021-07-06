@@ -120,6 +120,7 @@ class CercController: ObservableObject {
         do {
             trips = try await Network.get(.trip(search: tripSearch!)) // trip search is init two lines above... should be fine?
             state = .displayingTrips
+            error = nil
         } catch let error as CercError {
             self.error = error
         } catch {
