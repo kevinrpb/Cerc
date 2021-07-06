@@ -57,32 +57,32 @@ struct CercSettingsView: View {
         CercListItem(tint: tintColor) {
             VStack {
                 HStack {
-                    Text("Website")
+                    Label("Website", systemImage: "network")
                     Spacer()
                     Button {
                         openURL(.init(string: "https://kevinrpb.me")!)
                     } label: {
-                        Label("kevinrpb.me", systemImage: "network")
+                        Text("kevinrpb.me")
                     }
                     .buttonStyle(CercButtonStyle(tintColor))
                 }
                 HStack {
-                    Text("GitHub")
+                    Label("GitHub", image: "github")
                     Spacer()
                     Button {
                         openURL(.init(string: "https://github.com/kevinrpb")!)
                     } label: {
-                        Label("kevinrpb", systemImage: "github")
+                        Text("kevinrpb")
                     }
                     .buttonStyle(CercButtonStyle(tintColor))
                 }
                 HStack {
-                    Text("Twitter")
+                    Label("Twitter", image: "twitter")
                     Spacer()
                     Button {
                         openURL(.init(string: "https://twitter.com/kevinrpb")!)
                     } label: {
-                        Label("@kevinrpb", systemImage: "twitter")
+                        Text("@kevinrpb")
                     }
                     .buttonStyle(CercButtonStyle(tintColor))
                 }
@@ -98,14 +98,6 @@ struct CercSettingsView: View {
                     Spacer()
                     Button("MIT") {
                         openURL(.init(string: "https://github.com/sindresorhus/Defaults")!)
-                    }
-                    .buttonStyle(CercButtonStyle(tintColor))
-                }
-                HStack {
-                    Text("SwiftSoup (Nabil Chatbi)")
-                    Spacer()
-                    Button("MIT") {
-                        openURL(.init(string: "https://github.com/scinfu/SwiftSoup")!)
                     }
                     .buttonStyle(CercButtonStyle(tintColor))
                 }

@@ -59,13 +59,13 @@ struct CercTripItemView: View {
                         .background(tintColor.opacity(0.2))
                     if trip.isCivis || trip.isAccessible {
                         HStack {
-                            Spacer()
-                            if trip.isCivis {
-                                Image(systemName: "civis")
-                            }
                             if trip.isAccessible {
-                                Image(systemName: "wheelchair")
+                                Label("Accessible", image: "wheelchair")
                             }
+                            if trip.isCivis {
+                                Label("CIVIS", image: "zap")
+                            }
+                            Spacer()
                         }
                         .padding(.horizontal)
                     }

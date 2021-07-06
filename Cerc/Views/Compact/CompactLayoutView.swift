@@ -90,12 +90,12 @@ struct CompactLayoutView: View {
         .onAppear {
             async {
                 await controller.loadData()
-                if let origin = controller.stations.first(where: { $0.id == "10202" }),
-                   let destination = controller.stations.first(where: { $0.id == "70003" }) {
-                    controller.origin = origin
-                    controller.destination = destination
-                    await controller.startSearch()
-                }
+//                if let origin = controller.stations.first(where: { $0.id == "10202" }),
+//                   let destination = controller.stations.first(where: { $0.id == "70003" }) {
+//                    controller.origin = origin
+//                    controller.destination = destination
+//                    await controller.startSearch()
+//                }
             }
         }
     }
