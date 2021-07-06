@@ -42,17 +42,17 @@ struct CercTripItemView: View {
                     Divider()
                         .background(tintColor.opacity(0.2))
                     VStack {
-                        StationEntry(origin.name, departureString: trip.departureString)
+                        StationEntry(origin.name, firstTimeString: trip.departureString, firstIsDeparture: true)
                         Separator()
                         ForEach(trip.transfers) { transfer in
                             if let station = controller.stations.first(where: { $0.id == transfer.stationID }) {
-                                StationEntry(station.name, arrivalString: transfer.arrivalString, departureString: transfer.departureString)
+                                StationEntry(station.name, firstTimeString: transfer.arrivalString, otherTimeStrings: [transfer.departureString])
                             } else {
-                                StationEntry("??", arrivalString: transfer.arrivalString, departureString: transfer.departureString)
+                                StationEntry("??", firstTimeString: transfer.arrivalString, otherTimeStrings: [transfer.departureString])
                             }
                             Separator()
                         }
-                        StationEntry(destination.name, arrivalString: trip.arrivalString)
+                        StationEntry(destination.name, firstTimeString: trip.arrivalString)
                     }
                     .padding(.horizontal)
                     Divider()
@@ -78,21 +78,29 @@ struct CercTripItemView: View {
         }
     }
 
-    private func StationEntry(_ name: String, arrivalString: String? = nil, departureString: String? = nil) -> some View {
-        HStack {
-            VStack {
-                if let arrivalString = arrivalString {
-                    Text(arrivalString)
-                        .cercBackground()
-                }
-                if let departureString = departureString {
-                    Text(departureString)
-                        .cercBackground()
-                }
-            }
-            Spacer()
-            VStack {
+    private func StationEntry(_ name: String, firstTimeString: String, firstIsDeparture: Bool = false, otherTimeStrings: [String] = []) -> some View {
+        VStack {
+            HStack {
+                Image(systemName: firstIsDeparture ? "arrow.up.right" : "arrow.down.right")
+                Text(firstTimeString)
+                    .cercBackground()
+                Spacer()
                 Text(name)
+            }
+            if otherTimeStrings.count > 0 {
+                HStack {
+                    Image(systemName: "arrow.up.right")
+//                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(otherTimeStrings, id: \.self) { timeString in
+                                Text(timeString)
+                                    .cercBackground()
+                            }
+                            Spacer()
+                        }
+                        .padding(.bottom, 2)
+//                    }
+                }
             }
         }
     }
@@ -109,8 +117,6 @@ struct CercTripView: View {
 
     @EnvironmentObject var controller: CercController
 
-//    private var tintColor: Color { controller.settings.tintColor }
-    
     var body: some View {
         switch controller.state {
         case .loadingTrips:
@@ -119,15 +125,14 @@ struct CercTripView: View {
                 Text("Loading...")
                 Spacer()
             }
-        case .displayingTrips:
+        default:
             if let trips = controller.trips,
-               let origin = controller.tripSearch?.origin,
-               let destination = controller.tripSearch?.destination {
+               let search = controller.tripSearch {
                 HStack {
                     Image(systemName: "tram")
-                    Text(origin.name)
+                    Text(search.origin.name)
                     Image(systemName: "arrow.right")
-                    Text(destination.name)
+                    Text(search.destination.name)
                     Spacer()
                 }
                 .font(.body.bold())
@@ -135,20 +140,14 @@ struct CercTripView: View {
                 .foregroundColor(tintColor)
 
                 ForEach(trips) { trip in
-                    CercTripItemView(trip: trip, origin: origin, destination: destination)
+                    CercTripItemView(trip: trip, origin: search.origin, destination: search.destination)
                 }
             } else {
                 CercListItem(tint: tintColor) {
                     Image(systemName: "exclamationmark.octagon")
-                    Text("There was an error loading trips!")
+                    Text("Search for a trip")
                     Spacer()
                 }
-            }
-        default:
-            CercListItem(tint: tintColor) {
-                Image(systemName: "exclamationmark.octagon")
-                Text("Search for a trip")
-                Spacer()
             }
         }
     }

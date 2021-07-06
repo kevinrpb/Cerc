@@ -12,20 +12,24 @@ struct ContentView: View {
 
     @EnvironmentObject var controller: CercController
 
+    private var tintColor: Color { controller.settings.tintColor }
+
     var body: some View {
         NavigationView {
             CompactLayoutView()
                 .environmentObject(controller)
                 .environment(\.horizontalSizeClass, horizontalSizeClass)
+                .environment(\.tintColor, tintColor)
             if horizontalSizeClass == .regular {
                 ScrollView {
                     VStack {
                         CercTripView()
                             .environmentObject(controller)
+                            .environment(\.tintColor, tintColor)
                     }
                     .padding()
                 }
-                .background(controller.settings.tintColor.opacity(0.1))
+                .background(tintColor.opacity(0.1))
                 .navigationTitle("Trip")
                 .navigationBarTitleDisplayMode(.inline)
             }

@@ -20,7 +20,7 @@ struct CercSettingsView: View {
         SettingsHeader("Links", image: "link")
         LinksSection()
         Spacer(minLength: 30)
-        SettingsHeader("Licenses", image: "doc.text")
+        SettingsHeader("Third Party Software", image: "doc.text")
         LicensesSection()
         Spacer(minLength: 30)
     }

@@ -25,12 +25,11 @@ extension CercController.State {
 
 struct CompactLayoutView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.tintColor) var tintColor
 
     @EnvironmentObject var controller: CercController
 
     @State private var showSheet: Bool = false
-
-    private var tintColor: Color { controller.settings.tintColor }
     
     var body: some View {
         ScrollView {
@@ -70,10 +69,7 @@ struct CompactLayoutView: View {
             }
         }
         .onChange(of: controller.state) { newState in
-            guard CercState.withSheet.contains(newState) else {
-                showSheet = false
-                return
-            }
+            guard CercState.withSheet.contains(newState) else { return }
 
             if CercState.tripRelated.contains(newState) {
                 showSheet = horizontalSizeClass == .compact
@@ -81,21 +77,17 @@ struct CompactLayoutView: View {
                 showSheet = true
             }
         }
-        .onChange(of: showSheet, perform: { newValue in
-            guard newValue == false,
-                  CercState.tripRelated.contains(controller.state) else { return }
-
-            controller.cancelSearch()
-        })
         .onAppear {
             async {
                 await controller.loadData()
-//                if let origin = controller.stations.first(where: { $0.id == "10202" }),
-//                   let destination = controller.stations.first(where: { $0.id == "70003" }) {
-//                    controller.origin = origin
-//                    controller.destination = destination
-//                    await controller.startSearch()
-//                }
+                #if DEBUG
+                if let origin = controller.stations.first(where: { $0.id == "10202" }),
+                   let destination = controller.stations.first(where: { $0.id == "70003" }) {
+                    controller.origin = origin
+                    controller.destination = destination
+                    await controller.startSearch()
+                }
+                #endif
             }
         }
     }

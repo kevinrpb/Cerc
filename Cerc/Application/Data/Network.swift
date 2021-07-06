@@ -12,11 +12,7 @@ enum Endpoint: Equatable {
     case stations
     case trip(search: TripSearch)
 
-    #if DEBUG
-    static let API_URL: URL = URL(string: "https://localhost:3000")!
-    #else
     static let API_URL: URL = URL(string: "https://cerc-api.glitch.me")!
-    #endif
 
     var url: URL {
         switch self {
