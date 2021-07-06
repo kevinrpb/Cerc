@@ -7,81 +7,78 @@
 
 import SwiftUI
 
-struct CercTripView: View {
-    @EnvironmentObject var controller: CercController
+struct CercTripItemView: View {
+    @Environment(\.tintColor) var tintColor
     
+    @EnvironmentObject var controller: CercController
+
+    @State private var isExpanded: Bool = false
+
+    let trip: Trip
+    let origin: Station
+    let destination: Station
+
     var body: some View {
-        switch controller.state {
-        case .loadingTrips:
-            CercListItem(tint: controller.settings.tintColor) {
-                Image(systemName: "network")
-                Text("Loading...")
-                Spacer()
-            }
-        case .displayingTrips:
-            if let trips = controller.trips,
-               let origin = controller.tripSearch?.origin,
-               let destination = controller.tripSearch?.destination {
-              TripsContent(trips, origin, destination)
-            } else {
-                CercListItem(tint: controller.settings.tintColor) {
-                    Image(systemName: "exclamationmark.octagon")
-                    Text("There was an error loading trips!")
+        CercListItem(padding: 0, tint: tintColor) {
+            VStack {
+                HStack {
+                    if isExpanded {
+                        // TODO: Calculate
+                        Text("Departs in ... minutes")
+                    } else {
+                        Text(trip.departureString)
+                            .cercBackground()
+                        Text("-")
+                        Text(trip.arrivalString)
+                            .cercBackground()
+                    }
                     Spacer()
+                    Image(systemName: "chevron.right")
+                        .rotationEffect(isExpanded ? .degrees(90) : .degrees(0))
+                        .cercBackground()
                 }
-            }
-        default:
-            CercListItem(tint: controller.settings.tintColor) {
-                Image(systemName: "exclamationmark.octagon")
-                Text("Search for a trip")
-                Spacer()
-            }
-        }
-    }
-
-    private func TripsContent(_ trips: [Trip], _ origin: Station, _ destination: Station) -> some View {
-        ForEach(trips) { trip in
-            CercListItem(tint: controller.settings.tintColor) {
-                VStack {
-                    HStack {
-                        Text("In ... minutes")
-
-                        Spacer()
-
-                        if (trip.isCivis) {
-//                            Image(systemName: "civis.logo")
-                            Image(systemName: "circle.fill")
+                .padding(.horizontal)
+                if isExpanded {
+                    Divider()
+                        .background(tintColor.opacity(0.2))
+                    VStack {
+                        StationEntry(origin.name, departureString: trip.departureString)
+                        Separator()
+                        ForEach(trip.transfers) { transfer in
+                            if let station = controller.stations.first(where: { $0.id == transfer.stationID }) {
+                                StationEntry(station.name, arrivalString: transfer.arrivalString, departureString: transfer.departureString)
+                            } else {
+                                StationEntry("??", arrivalString: transfer.arrivalString, departureString: transfer.departureString)
+                            }
+                            Separator()
                         }
-                        if (trip.isAccessible) {
-//                            Image(systemName: "wheelchair")
-                            Image(systemName: "circle.fill")
-                        }
+                        StationEntry(destination.name, arrivalString: trip.arrivalString)
                     }
-                    StationEntry(origin.name, arrivalString: nil, departureString: trip.departureString)
-                    HStack {
-                        Spacer()
-                        Image(systemName: "arrow.down")
-                        Spacer()
-                    }
-                    ForEach(trip.transfers) { transfer in
-                        if let station = controller.stations.first(where: { $0.id == transfer.stationID }) {
-                            StationEntry(station.name, arrivalString: transfer.arrivalString, departureString: transfer.departureString)
-                        } else {
-                            StationEntry("??", arrivalString: transfer.arrivalString, departureString: transfer.departureString)
-                        }
+                    .padding(.horizontal)
+                    Divider()
+                        .background(tintColor.opacity(0.2))
+                    if trip.isCivis || trip.isAccessible {
                         HStack {
                             Spacer()
-                            Image(systemName: "arrow.down")
-                            Spacer()
+                            if trip.isCivis {
+                                Image(systemName: "civis")
+                            }
+                            if trip.isAccessible {
+                                Image(systemName: "wheelchair")
+                            }
                         }
+                        .padding(.horizontal)
                     }
-                    StationEntry(destination.name, arrivalString: trip.arrivalString, departureString: nil)
                 }
             }
+            .padding(.vertical)
+        }
+        .onTapGesture {
+            withAnimation(.interactiveSpring(response: 0.5)) { isExpanded.toggle() }
         }
     }
 
-    private func StationEntry(_ name: String, arrivalString: String?, departureString: String?) -> some View {
+    private func StationEntry(_ name: String, arrivalString: String? = nil, departureString: String? = nil) -> some View {
         HStack {
             VStack {
                 if let arrivalString = arrivalString {
@@ -96,6 +93,62 @@ struct CercTripView: View {
             Spacer()
             VStack {
                 Text(name)
+            }
+        }
+    }
+
+    private func Separator() -> some View {
+        RoundedRectangle(cornerRadius: 1)
+            .fill(tintColor.opacity(0.2))
+            .frame(width: 50, height: 2)
+    }
+}
+
+struct CercTripView: View {
+    @Environment(\.tintColor) var tintColor
+
+    @EnvironmentObject var controller: CercController
+
+//    private var tintColor: Color { controller.settings.tintColor }
+    
+    var body: some View {
+        switch controller.state {
+        case .loadingTrips:
+            CercListItem(tint: tintColor) {
+                Image(systemName: "network")
+                Text("Loading...")
+                Spacer()
+            }
+        case .displayingTrips:
+            if let trips = controller.trips,
+               let origin = controller.tripSearch?.origin,
+               let destination = controller.tripSearch?.destination {
+                HStack {
+                    Image(systemName: "tram")
+                    Text(origin.name)
+                    Image(systemName: "arrow.right")
+                    Text(destination.name)
+                    Spacer()
+                }
+                .font(.body.bold())
+                .padding(.leading, 6)
+                .foregroundColor(tintColor)
+
+                ForEach(trips) { trip in
+                    CercTripItemView(trip: trip, origin: origin, destination: destination)
+                }
+            } else {
+                CercListItem(tint: tintColor) {
+                    Image(systemName: "exclamationmark.octagon")
+                    Text("There was an error loading trips!")
+                    Spacer()
+                }
+            }
+        default:
+            CercListItem(tint: tintColor) {
+                Image(systemName: "exclamationmark.octagon")
+                Text("Search for a trip")
+                Spacer()
             }
         }
     }

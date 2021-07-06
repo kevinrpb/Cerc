@@ -116,9 +116,3 @@ struct CercStationSelectionView: View {
 //        elements.first { $0.id == station.id }?.isFavourite.toggle()
     }
 }
-
-//struct SelectionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SelectionView()
-//    }
-//}

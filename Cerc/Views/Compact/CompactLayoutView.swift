@@ -30,15 +30,14 @@ struct CompactLayoutView: View {
 
     @State private var showSheet: Bool = false
 
-    private var tintColor: Color {
-        controller.settings.tintColor
-    }
+    private var tintColor: Color { controller.settings.tintColor }
     
     var body: some View {
         ScrollView {
             VStack {
                 CercFormView()
                     .environmentObject(controller)
+                    .environment(\.tintColor, tintColor)
             }
             .padding()
         }
@@ -60,6 +59,7 @@ struct CompactLayoutView: View {
                 ScrollView {
                     VStack {
                         SheetContent(for: controller.state)
+                            .environment(\.tintColor, tintColor)
                     }
                     .padding()
                 }
@@ -110,19 +110,16 @@ struct CompactLayoutView: View {
                 controller.zone = $0
                 showSheet = false
             }
-            .environment(\.tintColor, tintColor)
         case .selectingOrigin:
             CercStationSelectionView(stations: $controller.displayedStations) {
                 controller.origin = $0
                 showSheet = false
             }
-            .environment(\.tintColor, tintColor)
         case .selectingDestination:
             CercStationSelectionView(stations: $controller.displayedStations) {
                 controller.destination = $0
                 showSheet = false
             }
-            .environment(\.tintColor, tintColor)
         case .loadingTrips, .displayingTrips:
             CercTripView()
                 .environmentObject(controller)

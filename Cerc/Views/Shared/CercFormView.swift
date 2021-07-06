@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct CercFormView: View {
-    @EnvironmentObject var controller: CercController
+    @Environment(\.tintColor) var tintColor
 
-    private var tintColor: Color { controller.settings.tintColor }
+    @EnvironmentObject var controller: CercController
 
     var body: some View {
         if controller.state == .loading {

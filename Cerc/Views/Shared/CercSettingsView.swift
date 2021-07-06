@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CercSettingsView: View {
     @Environment(\.openURL) var openURL
+    @Environment(\.tintColor) var tintColor
 
     @Binding var settings: Settings
 
@@ -25,7 +26,7 @@ struct CercSettingsView: View {
     }
 
     private func ColorsSection() -> some View {
-        CercListItem(tint: settings.tintColor) {
+        CercListItem(tint: tintColor) {
             VStack {
                 HStack {
                     Text("Tint Color")
@@ -38,13 +39,13 @@ struct CercSettingsView: View {
                         Button {} label: {
                             HStack {
                                 Circle()
-                                    .fill(settings.tintColor)
+                                    .fill(tintColor)
                                     .frame(width: 20, height: 20)
                                 Text(settings.tintColorKey.capitalized)
                                 Text("AAA")
                             }
                         }
-                        .buttonStyle(CercButtonStyle(settings.tintColor))
+                        .buttonStyle(CercButtonStyle(tintColor))
                     }
                     .pickerStyle(.menu)
                 }
@@ -53,7 +54,7 @@ struct CercSettingsView: View {
     }
 
     private func LinksSection() -> some View {
-        CercListItem(tint: settings.tintColor) {
+        CercListItem(tint: tintColor) {
             VStack {
                 HStack {
                     Text("Website")
@@ -63,7 +64,7 @@ struct CercSettingsView: View {
                     } label: {
                         Label("kevinrpb.me", systemImage: "network")
                     }
-                    .buttonStyle(CercButtonStyle(settings.tintColor))
+                    .buttonStyle(CercButtonStyle(tintColor))
                 }
                 HStack {
                     Text("GitHub")
@@ -73,7 +74,7 @@ struct CercSettingsView: View {
                     } label: {
                         Label("kevinrpb", systemImage: "github")
                     }
-                    .buttonStyle(CercButtonStyle(settings.tintColor))
+                    .buttonStyle(CercButtonStyle(tintColor))
                 }
                 HStack {
                     Text("Twitter")
@@ -83,14 +84,14 @@ struct CercSettingsView: View {
                     } label: {
                         Label("@kevinrpb", systemImage: "twitter")
                     }
-                    .buttonStyle(CercButtonStyle(settings.tintColor))
+                    .buttonStyle(CercButtonStyle(tintColor))
                 }
             }
         }
     }
 
     private func LicensesSection() -> some View {
-        CercListItem(tint: settings.tintColor) {
+        CercListItem(tint: tintColor) {
             VStack {
                 HStack {
                     Text("Defaults (Sindre Sorhus)")
@@ -98,7 +99,7 @@ struct CercSettingsView: View {
                     Button("MIT") {
                         openURL(.init(string: "https://github.com/sindresorhus/Defaults")!)
                     }
-                    .buttonStyle(CercButtonStyle(settings.tintColor))
+                    .buttonStyle(CercButtonStyle(tintColor))
                 }
                 HStack {
                     Text("SwiftSoup (Nabil Chatbi)")
@@ -106,7 +107,7 @@ struct CercSettingsView: View {
                     Button("MIT") {
                         openURL(.init(string: "https://github.com/scinfu/SwiftSoup")!)
                     }
-                    .buttonStyle(CercButtonStyle(settings.tintColor))
+                    .buttonStyle(CercButtonStyle(tintColor))
                 }
             }
         }
@@ -119,7 +120,7 @@ struct CercSettingsView: View {
                 .padding(.leading, 6)
             Spacer()
         }
-        .foregroundColor(settings.tintColor)
+        .foregroundColor(tintColor)
     }
 }
 
