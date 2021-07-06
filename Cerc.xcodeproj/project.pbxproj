@@ -54,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D74DEFD5269495C60019E768 /* Cerc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cerc.entitlements; sourceTree = "<group>"; };
 		D75F0C3E26764E8B00F5CF90 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D75F0C402676527E00F5CF90 /* CercSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercSettingsView.swift; sourceTree = "<group>"; };
 		D75F0C4226765BD500F5CF90 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				D7A72A6A267536BD009A6C9C /* Info.plist */,
+				D74DEFD5269495C60019E768 /* Cerc.entitlements */,
 				D7A72A2726753569009A6C9C /* Assets.xcassets */,
 				D7A72A2926753569009A6C9C /* Preview Content */,
 			);
@@ -574,6 +576,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Cerc/Support Files/Cerc.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cerc/Support Files/Preview Content\"";
@@ -596,6 +599,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.kevinrpb.Cerc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -607,6 +612,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Cerc/Support Files/Cerc.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cerc/Support Files/Preview Content\"";
@@ -629,6 +635,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.kevinrpb.Cerc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
