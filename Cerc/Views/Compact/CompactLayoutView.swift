@@ -81,11 +81,11 @@ struct CompactLayoutView: View {
             async {
                 await controller.loadData()
                 #if DEBUG
-                if let origin = controller.stations.first(where: { $0.id == "10202" }),
-                   let destination = controller.stations.first(where: { $0.id == "70003" }) {
+                if let origin = controller.stations.first(where: { $0.id == "70003" }),
+                   let destination = controller.stations.first(where: { $0.id == "10202" }) {
                     controller.origin = origin
                     controller.destination = destination
-                    await controller.startSearch()
+//                    await controller.startSearch()
                 }
                 #endif
             }

@@ -65,9 +65,9 @@ struct CercTripItemView: View {
                         TimesEntry(destination.name, timeStrings: trip.arrivalStrings, arrival: true)
                     }
                     .padding(.horizontal)
-                    Divider()
-                        .background(tintColor.opacity(0.2))
                     if trip.isCivis || trip.isAccessible {
+                        Divider()
+                            .background(tintColor.opacity(0.2))
                         HStack {
                             if trip.isAccessible {
                                 Label("Accessible", image: "wheelchair")
@@ -150,6 +150,15 @@ struct CercTripView: View {
 
     @EnvironmentObject var controller: CercController
 
+    private var filteredTrips: [Trip] {
+        guard let trips = controller.trips else { return [] }
+        let now = Date.now
+        return trips.filter { trip in
+            guard let departure = trip.departure() else { return false }
+            return departure >= now
+        }
+    }
+
     var body: some View {
         switch controller.state {
         case .loadingTrips:
@@ -159,8 +168,7 @@ struct CercTripView: View {
                 Spacer()
             }
         default:
-            if let trips = controller.trips,
-               let search = controller.tripSearch {
+            if let search = controller.tripSearch {
                 HStack {
                     Image(systemName: "tram")
                     Text(search.origin.name)
@@ -172,7 +180,7 @@ struct CercTripView: View {
                 .padding(.leading, 6)
                 .foregroundColor(tintColor)
 
-                ForEach(trips) { trip in
+                ForEach(filteredTrips) { trip in
                     CercTripItemView(trip: trip, origin: search.origin, destination: search.destination)
                 }
             } else {
