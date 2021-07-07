@@ -30,8 +30,16 @@ struct CercTripItemView: View {
                         Text(trip.departureString)
                             .cercBackground()
                         Text("-")
-                        Text(trip.arrivalString)
-                            .cercBackground()
+                        if let first = trip.arrivalStrings.first {
+                            Text(first)
+                                .cercBackground()
+                            if trip.arrivalStrings.count > 1 {
+                                Text("(+\(trip.arrivalStrings.count - 1))")
+                            }
+                        } else {
+                            Text("??:??")
+                                .cercBackground()
+                        }
                     }
                     Spacer()
                     Image(systemName: "chevron.right")
@@ -43,7 +51,8 @@ struct CercTripItemView: View {
                     Divider()
                         .background(tintColor.opacity(0.2))
                     VStack {
-                        StationEntry(origin.name, firstTimeString: trip.departureString, firstIsDeparture: true)
+                        TimesEntry(origin.name, timeStrings: [trip.departureString], arrival: false)
+//                        StationEntry(origin.name, firstTimeString: trip.departureString, firstIsDeparture: true)
                         Separator()
                         ForEach(trip.transfers) { transfer in
                             if let station = controller.stations.first(where: { $0.id == transfer.stationID }) {
@@ -53,7 +62,7 @@ struct CercTripItemView: View {
                             }
                             Separator()
                         }
-                        StationEntry(destination.name, firstTimeString: trip.arrivalString)
+                        TimesEntry(destination.name, timeStrings: trip.arrivalStrings, arrival: true)
                     }
                     .padding(.horizontal)
                     Divider()
@@ -76,6 +85,27 @@ struct CercTripItemView: View {
         }
         .onTapGesture {
             withAnimation(.interactiveSpring(response: 0.5)) { isExpanded.toggle() }
+        }
+    }
+
+    private func TimesEntry(_ name: String, timeStrings: [String], arrival: Bool) -> some View {
+        VStack {
+            HStack {
+                Image(systemName: arrival ? "arrow.down.right" : "arrow.up.right")
+                    .opacity(0.5)
+//                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(timeStrings, id: \.self) { timeString in
+                            Text(timeString)
+                                .cercBackground()
+                        }
+                        Spacer()
+                    }
+                    .padding(.bottom, 2)
+//                }
+                Spacer()
+                Text(name)
+            }
         }
     }
 

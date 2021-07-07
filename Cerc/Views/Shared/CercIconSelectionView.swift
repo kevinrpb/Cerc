@@ -26,7 +26,7 @@ struct CercIconSelectionView: View {
                         Spacer()
                         Button("Select") {
                             settings.setAppIcon(appIcon)
-                        }.cercBackground()
+                        }.buttonStyle(CercButtonStyle(tintColor))
                     }
                 }
                 Spacer()

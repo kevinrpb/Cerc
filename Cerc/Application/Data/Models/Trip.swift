@@ -23,7 +23,7 @@ struct Trip {
 
     let dateString: String
     let departureString: String
-    let arrivalString: String
+    let arrivalStrings: [String]
 
     let line: String
     let isCivis: Bool
@@ -41,7 +41,8 @@ struct Trip {
     }
 
     func arrival() -> Date? {
-        guard let date = self.date() else { return nil }
+        guard let date = self.date(),
+              let arrivalString = arrivalStrings.first else { return nil }
         return Date.from(date, hourAndMinute: arrivalString)
     }
 
@@ -69,7 +70,7 @@ extension Trip.Transfer: Equatable {}
 
 extension Trip: Identifiable {
     var id: String {
-        "\(zoneID)_\(originID)-\(destinationID)_\(dateString)_\(departureString)-\(arrivalString)"
+        "\(zoneID)_\(originID)-\(destinationID)_\(dateString)_\(departureString)-\(arrivalStrings.joined(separator: ";"))"
     }
 }
 extension Trip: Codable {}
