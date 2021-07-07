@@ -14,8 +14,11 @@
 		D75F0C48267663C100F5CF90 /* CercTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C47267663C100F5CF90 /* CercTripView.swift */; };
 		D760E96C2691D2ED00D943B6 /* CercBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760E96B2691D2ED00D943B6 /* CercBackgroundModifier.swift */; };
 		D7652F862675403300BEF7C5 /* CercError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F852675403300BEF7C5 /* CercError.swift */; };
-		D7652F8826754BFD00BEF7C5 /* CercSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F8726754BFD00BEF7C5 /* CercSelectionView.swift */; };
+		D7652F8826754BFD00BEF7C5 /* CercStationSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F8726754BFD00BEF7C5 /* CercStationSelectionView.swift */; };
 		D7652F8A267628E000BEF7C5 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F89267628E000BEF7C5 /* Defaults.swift */; };
+		D769D6F826961761008A2584 /* CercZoneSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769D6F726961761008A2584 /* CercZoneSelectionView.swift */; };
+		D769D6FA2696178E008A2584 /* CercIconSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769D6F92696178E008A2584 /* CercIconSelectionView.swift */; };
+		D769D6FC26961B14008A2584 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769D6FB26961B14008A2584 /* AppIcon.swift */; };
 		D7A72A2426753567009A6C9C /* CercApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A2326753567009A6C9C /* CercApp.swift */; };
 		D7A72A2826753569009A6C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A72A2726753569009A6C9C /* Assets.xcassets */; };
 		D7A72A2B26753569009A6C9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A72A2A26753569009A6C9C /* Preview Assets.xcassets */; };
@@ -62,8 +65,11 @@
 		D75F0C47267663C100F5CF90 /* CercTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercTripView.swift; sourceTree = "<group>"; };
 		D760E96B2691D2ED00D943B6 /* CercBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercBackgroundModifier.swift; sourceTree = "<group>"; };
 		D7652F852675403300BEF7C5 /* CercError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercError.swift; sourceTree = "<group>"; };
-		D7652F8726754BFD00BEF7C5 /* CercSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercSelectionView.swift; sourceTree = "<group>"; };
+		D7652F8726754BFD00BEF7C5 /* CercStationSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercStationSelectionView.swift; sourceTree = "<group>"; };
 		D7652F89267628E000BEF7C5 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		D769D6F726961761008A2584 /* CercZoneSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercZoneSelectionView.swift; sourceTree = "<group>"; };
+		D769D6F92696178E008A2584 /* CercIconSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercIconSelectionView.swift; sourceTree = "<group>"; };
+		D769D6FB26961B14008A2584 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		D7A72A2026753567009A6C9C /* Cerc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cerc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A72A2326753567009A6C9C /* CercApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercApp.swift; sourceTree = "<group>"; };
 		D7A72A2726753569009A6C9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -228,6 +234,7 @@
 				D7A72A5B267535FA009A6C9C /* Trip.swift */,
 				D7A72A5D267535FA009A6C9C /* Zone.swift */,
 				D75F0C3E26764E8B00F5CF90 /* Settings.swift */,
+				D769D6FB26961B14008A2584 /* AppIcon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,7 +256,9 @@
 				D7A72A7A26753925009A6C9C /* CercFormView.swift */,
 				D75F0C47267663C100F5CF90 /* CercTripView.swift */,
 				D75F0C402676527E00F5CF90 /* CercSettingsView.swift */,
-				D7652F8726754BFD00BEF7C5 /* CercSelectionView.swift */,
+				D769D6F726961761008A2584 /* CercZoneSelectionView.swift */,
+				D7652F8726754BFD00BEF7C5 /* CercStationSelectionView.swift */,
+				D769D6F92696178E008A2584 /* CercIconSelectionView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -399,7 +408,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D75F0C48267663C100F5CF90 /* CercTripView.swift in Sources */,
-				D7652F8826754BFD00BEF7C5 /* CercSelectionView.swift in Sources */,
+				D769D6F826961761008A2584 /* CercZoneSelectionView.swift in Sources */,
+				D7652F8826754BFD00BEF7C5 /* CercStationSelectionView.swift in Sources */,
 				D7A72A5F267535FA009A6C9C /* Trip.swift in Sources */,
 				D75F0C462676631300F5CF90 /* ContentView.swift in Sources */,
 				D75F0C412676527E00F5CF90 /* CercSettingsView.swift in Sources */,
@@ -410,12 +420,14 @@
 				D7A72A692675369B009A6C9C /* Color.swift in Sources */,
 				D7A72A6E267536F0009A6C9C /* CercListItem.swift in Sources */,
 				D75F0C4326765BD500F5CF90 /* Environment.swift in Sources */,
+				D769D6FA2696178E008A2584 /* CercIconSelectionView.swift in Sources */,
 				D7652F8A267628E000BEF7C5 /* Defaults.swift in Sources */,
 				D760E96C2691D2ED00D943B6 /* CercBackgroundModifier.swift in Sources */,
 				D7A72A6F267536F0009A6C9C /* CercButtonStyle.swift in Sources */,
 				D7A72A7B26753925009A6C9C /* CercFormView.swift in Sources */,
 				D7A72A2426753567009A6C9C /* CercApp.swift in Sources */,
 				D7A72A61267535FA009A6C9C /* Zone.swift in Sources */,
+				D769D6FC26961B14008A2584 /* AppIcon.swift in Sources */,
 				D7A72A682675369B009A6C9C /* Date.swift in Sources */,
 				D7A72A62267535FA009A6C9C /* Search.swift in Sources */,
 				D7A72A742675372F009A6C9C /* CompactLayoutView.swift in Sources */,
@@ -574,8 +586,10 @@
 		D7A72A4326753569009A6C9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = CoolSkyIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = CercIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Cerc/Support Files/Cerc.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -610,8 +624,10 @@
 		D7A72A4426753569009A6C9C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = CoolSkyIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = CercIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Cerc/Support Files/Cerc.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

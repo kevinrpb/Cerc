@@ -9,7 +9,7 @@ import Defaults
 import Foundation
 import SwiftUI
 
-struct Settings {
+final class Settings {
     var tintColorKey: String
     var tintColor: Color {
         if let color = Color.colorForKey[tintColorKey] {
@@ -19,8 +19,25 @@ struct Settings {
         }
     }
 
-    mutating func setTintColor(_ key: String) {
+    var appIcon: AppIcon
+
+    init(tintColorKey: String, appIcon: AppIcon) {
+        self.tintColorKey = tintColorKey
+        self.appIcon = appIcon
+    }
+
+    func setTintColor(_ key: String) {
         tintColorKey = key
+    }
+
+    func setAppIcon(_ to: AppIcon) {
+        UIApplication.shared.setAlternateIconName(to == .CercIcon ? nil : to.rawValue) { [self] error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                appIcon = to
+            }
+        }
     }
 }
 
@@ -28,5 +45,5 @@ extension Settings: Codable {}
 extension Settings: Defaults.Serializable {}
 
 extension Settings {
-    static let base: Settings = .init(tintColorKey: "purple")
+    static let base: Settings = .init(tintColorKey: "indigo", appIcon: .CercIcon)
 }

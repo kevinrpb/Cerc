@@ -14,8 +14,8 @@ struct CercSettingsView: View {
     @Binding var settings: Settings
 
     var body: some View {
-        SettingsHeader("Colors", image: "paintpalette")
-        ColorsSection()
+        SettingsHeader("Customization", image: "paintpalette")
+        CustomizationSection()
         Spacer(minLength: 30)
         SettingsHeader("Links", image: "link")
         LinksSection()
@@ -25,7 +25,7 @@ struct CercSettingsView: View {
         Spacer(minLength: 30)
     }
 
-    private func ColorsSection() -> some View {
+    private func CustomizationSection() -> some View {
         CercListItem(tint: tintColor) {
             VStack {
                 HStack {
@@ -48,6 +48,26 @@ struct CercSettingsView: View {
                         .buttonStyle(CercButtonStyle(tintColor))
                     }
                     .pickerStyle(.menu)
+                }
+                if UIApplication.shared.supportsAlternateIcons {
+                    HStack {
+                        Text("App Icon")
+                        Spacer()
+                        NavigationLink(destination:
+                            CercIconSelectionView(settings: $settings)
+                                .environment(\.tintColor, tintColor)
+                        ) {
+                            HStack {
+                                Image(uiImage: settings.appIcon.image)
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .mask(RoundedRectangle(cornerRadius: 5.28, style: .continuous))
+                                Text(settings.appIcon.name)
+                                    .foregroundColor(.primary)
+                            }
+                            .cercBackground()
+                        }
+                    }
                 }
             }
         }
