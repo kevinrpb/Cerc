@@ -148,9 +148,7 @@ struct CompactLayoutView: View {
 
     private func RefreshButton() -> some View {
         Button {
-            async {
-                await controller.loadData(force: true)
-            }
+            async { await controller.loadData(force: true) }
         } label: {
             Label("Refresh", systemImage: "arrow.triangle.2.circlepath")
         }

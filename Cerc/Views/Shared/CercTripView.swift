@@ -47,9 +47,9 @@ struct CercTripItemView: View {
                         Separator()
                         ForEach(trip.transfers) { transfer in
                             if let station = controller.stations.first(where: { $0.id == transfer.stationID }) {
-                                StationEntry(station.name, firstTimeString: transfer.arrivalString, otherTimeStrings: [transfer.departureString])
+                                StationEntry(station.name, firstTimeString: transfer.arrivalString, otherTimeStrings: transfer.departureStrings)
                             } else {
-                                StationEntry("??", firstTimeString: transfer.arrivalString, otherTimeStrings: [transfer.departureString])
+                                StationEntry("??", firstTimeString: transfer.arrivalString, otherTimeStrings: transfer.departureStrings)
                             }
                             Separator()
                         }
@@ -83,6 +83,7 @@ struct CercTripItemView: View {
         VStack {
             HStack {
                 Image(systemName: firstIsDeparture ? "arrow.up.right" : "arrow.down.right")
+                    .opacity(0.5)
                 Text(firstTimeString)
                     .cercBackground()
                 Spacer()
@@ -91,6 +92,7 @@ struct CercTripItemView: View {
             if otherTimeStrings.count > 0 {
                 HStack {
                     Image(systemName: "arrow.up.right")
+                        .opacity(0.5)
 //                    ScrollView(.horizontal) {
                         HStack {
                             ForEach(otherTimeStrings, id: \.self) { timeString in

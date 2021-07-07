@@ -12,7 +12,7 @@ struct Trip {
         let stationID: String
 
         let arrivalString: String
-        let departureString: String
+        let departureStrings: [String]
 
         let line: String
     }
@@ -61,7 +61,7 @@ struct Trip {
 
 extension Trip.Transfer: Identifiable {
     var id: String {
-        "\(stationID)_\(departureString)-\(arrivalString)"
+        "\(stationID)_\(departureStrings.joined(separator: "-"))-\(arrivalString)"
     }
 }
 extension Trip.Transfer: Codable {}

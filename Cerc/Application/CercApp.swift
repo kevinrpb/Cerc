@@ -16,5 +16,9 @@ struct CercApp: App {
             ContentView()
                 .environmentObject(controller)
         }
+//        MARK: Maybe this will be availalbe some day?
+//        #if targetEnvironment(macCatalyst)
+//        .windowStyle(.hiddenTitleBar)
+//        #endif
     }
 }
