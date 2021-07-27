@@ -56,12 +56,19 @@ class CercController: ObservableObject {
                 
                 self.displayedStations = self.stations.filter { $0.zoneID == newZone.id }
 //                Defaults[.selectedZone] = newZone
+                UserDefaults.standard.set(try? PropertyListEncoder().encode(newZone), forKey: "CercSelectedZone")
             }
             .store(in: &cancellables)
+
+        if let settingsData = UserDefaults.standard.object(forKey: "CercSettings") as? Data,
+           let settings = try? PropertyListDecoder().decode(Settings.self, from: settingsData) {
+            self.settings = settings
+        }
 
         $settings
             .sink { newSettings in
 //                Defaults[.settings] = newSettings
+                UserDefaults.standard.set(try? PropertyListEncoder().encode(newSettings), forKey: "CercSettings")
             }
             .store(in: &cancellables)
     }
@@ -80,6 +87,14 @@ class CercController: ObservableObject {
         do {
             zones = try await Network.get(.zones)
             stations = try await Network.get(.stations)
+
+            if let selectedZoneData = UserDefaults.standard.object(forKey: "CercSelectedZone") as? Data,
+               let selectedZone = try? PropertyListDecoder().decode(Zone.self, from: selectedZoneData),
+               zones.contains(selectedZone) {
+                zone = selectedZone
+            } else {
+                UserDefaults.standard.set(nil, forKey: "CercSelectedZone")
+            }
 
 //            if let selectedZone = Defaults[.selectedZone], zones.contains(selectedZone) {
 //                zone = selectedZone
