@@ -32,7 +32,7 @@ struct CercSettingsView: View {
                     Text("Tint Color")
                     Spacer()
                     NavigationLink(destination:
-                        CercSelectionView(title: "Tint Color", selected: $settings.tintColorKey, elements: .constant(Color.keys)) { colorKey in
+                        CercSelectionView(title: "Tint Color", selected: $settings.tintColorKey, elements: .constant(Color.keys), dismissOnSelect: false) { colorKey in
                             HStack {
                                 Circle()
                                     .fill(Color.colorForKey[colorKey]!)
@@ -57,10 +57,9 @@ struct CercSettingsView: View {
                         Text("App Icon")
                         Spacer()
                         NavigationLink(destination:
-                            CercSelectionView(title: "App Icon", selected: $settings.appIcon, elements: .constant(AppIcon.allCases)) { icon, dismiss in
+                            CercSelectionView(title: "App Icon", selected: $settings.appIcon, elements: .constant(AppIcon.allCases), dismissOnSelect: false) { icon in
                                 if let icon = icon {
                                     settings.setAppIcon(icon)
-                                    dismiss()
                                 }
                             } labelProvider: { icon in
                                 HStack {

@@ -16,25 +16,29 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
     @Binding var selected: Element?
     @Binding var elements: [Element]
 
-    private let onSelect: ((Element?, DismissAction) -> Void)?
+    let dismissOnSelect: Bool
+
+    private let onSelect: ((Element?) -> Void)?
     private let labelProvider: (Element) -> ElementLabel
 
     @State private var searchText: String = ""
 
-    init(title: String, selected: Binding<Element?>, elements: Binding<[Element]>, onSelect: ((Element?, DismissAction) -> Void)? = nil,
+    init(title: String, selected: Binding<Element?>, elements: Binding<[Element]>, dismissOnSelect: Bool = true, onSelect: ((Element?) -> Void)? = nil,
          labelProvider: @escaping (Element) -> ElementLabel) {
         self.title = title
         self._selected = selected
         self._elements = elements
+        self.dismissOnSelect = dismissOnSelect
         self.onSelect = onSelect
         self.labelProvider = labelProvider
     }
 
-    init(title: String, selected: Binding<Element>, elements: Binding<[Element]>, onSelect: ((Element?, DismissAction) -> Void)? = nil,
+    init(title: String, selected: Binding<Element>, elements: Binding<[Element]>, dismissOnSelect: Bool = true, onSelect: ((Element?) -> Void)? = nil,
          labelProvider: @escaping (Element) -> ElementLabel) {
         self.title = title
         self._selected = .init(selected)
         self._elements = elements
+        self.dismissOnSelect = dismissOnSelect
         self.onSelect = onSelect
         self.labelProvider = labelProvider
     }
@@ -68,10 +72,13 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
                             labelProvider(element)
                             Spacer()
                             Button {
+                                selected = element
+
                                 if let onSelect = onSelect {
-                                    onSelect(element, dismiss)
-                                } else {
-                                    selected = element
+                                    onSelect(element)
+                                }
+
+                                if dismissOnSelect {
                                     dismiss()
                                 }
                             } label: {
