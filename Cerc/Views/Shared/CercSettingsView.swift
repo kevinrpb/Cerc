@@ -40,6 +40,7 @@ struct CercSettingsView: View {
                                 Text(colorKey.capitalized)
                             }
                         }
+                        .environment(\.tintColor, tintColor)
                     ) {
                         HStack {
                             Circle()
@@ -70,6 +71,7 @@ struct CercSettingsView: View {
                                     Text(icon.name.capitalized)
                                 }
                             }
+                            .environment(\.tintColor, tintColor)
                         ) {
                             HStack {
                                 Image(uiImage: settings.appIcon.image)

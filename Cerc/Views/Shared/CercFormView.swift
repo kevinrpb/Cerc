@@ -40,10 +40,10 @@ struct CercFormView: View {
         FormHeader("Location", image: "map")
         CercListItem(tint: tintColor) {
             FormSelector("Zone", badge: controller.zone?.name ?? "Select") {
-//                CercZoneSelectionView(selected: $controller.zone, zones: $controller.zones)
                 CercSelectionView(title: "Zone", selected: $controller.zone, elements: $controller.zones) { zone in
                     Text(zone.name)
                 }
+                .environment(\.tintColor, tintColor)
             }
         }
         Spacer(minLength: 30)
@@ -55,11 +55,13 @@ struct CercFormView: View {
                     CercSelectionView(title: "Origin", selected: $controller.origin, elements: $controller.displayedStations) { station in
                         Text(station.name)
                     }
+                    .environment(\.tintColor, tintColor)
                 }
                 FormSelector("Destination", badge: controller.destination?.name ?? "Select") {
                     CercSelectionView(title: "Destination", selected: $controller.destination, elements: $controller.displayedStations) { station in
                         Text(station.name)
                     }
+                    .environment(\.tintColor, tintColor)
                 }
             }
         }
