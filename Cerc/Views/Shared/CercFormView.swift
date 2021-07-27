@@ -39,15 +39,28 @@ struct CercFormView: View {
     private func Form() -> some View {
         FormHeader("Location", image: "map")
         CercListItem(tint: tintColor) {
-            FormButton("Zone", badge: controller.zone?.name ?? "Select", state: .selectingZone)
+            FormSelector("Zone", badge: controller.zone?.name ?? "Select") {
+//                CercZoneSelectionView(selected: $controller.zone, zones: $controller.zones)
+                CercSelectionView(title: "Zone", selected: $controller.zone, elements: $controller.zones) { zone in
+                    Text(zone.name)
+                }
+            }
         }
         Spacer(minLength: 30)
 
         FormHeader("Stations", image: "tram")
         CercListItem(tint: tintColor) {
             VStack {
-                FormButton("Origin", badge: controller.origin?.name ?? "Select", state: .selectingOrigin)
-                FormButton("Destination", badge: controller.destination?.name ?? "Select", state: .selectingDestination)
+                FormSelector("Origin", badge: controller.origin?.name ?? "Select") {
+                    CercSelectionView(title: "Origin", selected: $controller.origin, elements: $controller.displayedStations) { station in
+                        Text(station.name)
+                    }
+                }
+                FormSelector("Destination", badge: controller.destination?.name ?? "Select") {
+                    CercSelectionView(title: "Destination", selected: $controller.destination, elements: $controller.displayedStations) { station in
+                        Text(station.name)
+                    }
+                }
             }
         }
         Spacer(minLength: 30)
@@ -91,16 +104,16 @@ struct CercFormView: View {
         .foregroundColor(tintColor)
     }
 
-    private func FormButton(_ title: String, badge: String, state: CercController.State) -> some View {
+    private func FormSelector<Content: View>(_ title: String, badge: String,
+                                             destination: @escaping () -> Content) -> some View {
         HStack {
             Text(title)
             Spacer()
-            Button {
-                controller.state = state
-            } label: {
+            NavigationLink(destination: destination) {
                 Text(badge)
+                    .foregroundColor(.primary)
             }
-            .buttonStyle(CercButtonStyle(tintColor))
+            .cercBackground()
         }
     }
 

@@ -14,17 +14,16 @@
 		D75F0C48267663C100F5CF90 /* CercTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C47267663C100F5CF90 /* CercTripView.swift */; };
 		D760E96C2691D2ED00D943B6 /* CercBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760E96B2691D2ED00D943B6 /* CercBackgroundModifier.swift */; };
 		D7652F862675403300BEF7C5 /* CercError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F852675403300BEF7C5 /* CercError.swift */; };
-		D7652F8826754BFD00BEF7C5 /* CercStationSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F8726754BFD00BEF7C5 /* CercStationSelectionView.swift */; };
 		D7652F8A267628E000BEF7C5 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7652F89267628E000BEF7C5 /* Defaults.swift */; };
-		D769D6F826961761008A2584 /* CercZoneSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769D6F726961761008A2584 /* CercZoneSelectionView.swift */; };
-		D769D6FA2696178E008A2584 /* CercIconSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769D6F92696178E008A2584 /* CercIconSelectionView.swift */; };
 		D769D6FC26961B14008A2584 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769D6FB26961B14008A2584 /* AppIcon.swift */; };
+		D76C0CC826B0A307005E9423 /* CercSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C0CC726B0A307005E9423 /* CercSelectionView.swift */; };
+		D76C0CCB26B0A3FE005E9423 /* Nameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C0CCA26B0A3FE005E9423 /* Nameable.swift */; };
+		D76C0CD026B0ADB3005E9423 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76C0CCF26B0ADB3005E9423 /* String.swift */; };
 		D7A72A2426753567009A6C9C /* CercApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A2326753567009A6C9C /* CercApp.swift */; };
 		D7A72A2826753569009A6C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A72A2726753569009A6C9C /* Assets.xcassets */; };
 		D7A72A2B26753569009A6C9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A72A2A26753569009A6C9C /* Preview Assets.xcassets */; };
 		D7A72A3526753569009A6C9C /* CercTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A3426753569009A6C9C /* CercTests.swift */; };
 		D7A72A3F26753569009A6C9C /* CercUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A3E26753569009A6C9C /* CercUITests.swift */; };
-		D7A72A53267535AB009A6C9C /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = D7A72A52267535AB009A6C9C /* Defaults */; };
 		D7A72A5F267535FA009A6C9C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A5B267535FA009A6C9C /* Trip.swift */; };
 		D7A72A60267535FA009A6C9C /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A5C267535FA009A6C9C /* Station.swift */; };
 		D7A72A61267535FA009A6C9C /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A5D267535FA009A6C9C /* Zone.swift */; };
@@ -65,11 +64,11 @@
 		D75F0C47267663C100F5CF90 /* CercTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercTripView.swift; sourceTree = "<group>"; };
 		D760E96B2691D2ED00D943B6 /* CercBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercBackgroundModifier.swift; sourceTree = "<group>"; };
 		D7652F852675403300BEF7C5 /* CercError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercError.swift; sourceTree = "<group>"; };
-		D7652F8726754BFD00BEF7C5 /* CercStationSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CercStationSelectionView.swift; sourceTree = "<group>"; };
 		D7652F89267628E000BEF7C5 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
-		D769D6F726961761008A2584 /* CercZoneSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercZoneSelectionView.swift; sourceTree = "<group>"; };
-		D769D6F92696178E008A2584 /* CercIconSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercIconSelectionView.swift; sourceTree = "<group>"; };
 		D769D6FB26961B14008A2584 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		D76C0CC726B0A307005E9423 /* CercSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercSelectionView.swift; sourceTree = "<group>"; };
+		D76C0CCA26B0A3FE005E9423 /* Nameable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nameable.swift; sourceTree = "<group>"; };
+		D76C0CCF26B0ADB3005E9423 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D7A72A2026753567009A6C9C /* Cerc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cerc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A72A2326753567009A6C9C /* CercApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercApp.swift; sourceTree = "<group>"; };
 		D7A72A2726753569009A6C9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,7 +97,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7A72A53267535AB009A6C9C /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +125,14 @@
 				D7A72A6D267536F0009A6C9C /* CercButtonStyle.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		D76C0CC926B0A3E9005E9423 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D76C0CCA26B0A3FE005E9423 /* Nameable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		D7A72A1726753567009A6C9C = {
@@ -202,6 +208,7 @@
 				D7652F852675403300BEF7C5 /* CercError.swift */,
 				D7A72A57267535C4009A6C9C /* Data */,
 				D7A72A652675369B009A6C9C /* Extensions */,
+				D76C0CC926B0A3E9005E9423 /* Protocols */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -242,10 +249,11 @@
 		D7A72A652675369B009A6C9C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D7A72A662675369B009A6C9C /* Date.swift */,
 				D7A72A672675369B009A6C9C /* Color.swift */,
+				D7A72A662675369B009A6C9C /* Date.swift */,
 				D7652F89267628E000BEF7C5 /* Defaults.swift */,
 				D75F0C4226765BD500F5CF90 /* Environment.swift */,
+				D76C0CCF26B0ADB3005E9423 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -256,9 +264,7 @@
 				D7A72A7A26753925009A6C9C /* CercFormView.swift */,
 				D75F0C47267663C100F5CF90 /* CercTripView.swift */,
 				D75F0C402676527E00F5CF90 /* CercSettingsView.swift */,
-				D769D6F726961761008A2584 /* CercZoneSelectionView.swift */,
-				D7652F8726754BFD00BEF7C5 /* CercStationSelectionView.swift */,
-				D769D6F92696178E008A2584 /* CercIconSelectionView.swift */,
+				D76C0CC726B0A307005E9423 /* CercSelectionView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -288,7 +294,6 @@
 			);
 			name = Cerc;
 			packageProductDependencies = (
-				D7A72A52267535AB009A6C9C /* Defaults */,
 			);
 			productName = Cerc;
 			productReference = D7A72A2026753567009A6C9C /* Cerc.app */;
@@ -363,7 +368,6 @@
 			);
 			mainGroup = D7A72A1726753567009A6C9C;
 			packageReferences = (
-				D7A72A51267535AB009A6C9C /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = D7A72A2126753567009A6C9C /* Products */;
 			projectDirPath = "";
@@ -408,9 +412,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D75F0C48267663C100F5CF90 /* CercTripView.swift in Sources */,
-				D769D6F826961761008A2584 /* CercZoneSelectionView.swift in Sources */,
-				D7652F8826754BFD00BEF7C5 /* CercStationSelectionView.swift in Sources */,
 				D7A72A5F267535FA009A6C9C /* Trip.swift in Sources */,
+				D76C0CD026B0ADB3005E9423 /* String.swift in Sources */,
 				D75F0C462676631300F5CF90 /* ContentView.swift in Sources */,
 				D75F0C412676527E00F5CF90 /* CercSettingsView.swift in Sources */,
 				D7652F862675403300BEF7C5 /* CercError.swift in Sources */,
@@ -420,17 +423,18 @@
 				D7A72A692675369B009A6C9C /* Color.swift in Sources */,
 				D7A72A6E267536F0009A6C9C /* CercListItem.swift in Sources */,
 				D75F0C4326765BD500F5CF90 /* Environment.swift in Sources */,
-				D769D6FA2696178E008A2584 /* CercIconSelectionView.swift in Sources */,
 				D7652F8A267628E000BEF7C5 /* Defaults.swift in Sources */,
 				D760E96C2691D2ED00D943B6 /* CercBackgroundModifier.swift in Sources */,
 				D7A72A6F267536F0009A6C9C /* CercButtonStyle.swift in Sources */,
 				D7A72A7B26753925009A6C9C /* CercFormView.swift in Sources */,
+				D76C0CC826B0A307005E9423 /* CercSelectionView.swift in Sources */,
 				D7A72A2426753567009A6C9C /* CercApp.swift in Sources */,
 				D7A72A61267535FA009A6C9C /* Zone.swift in Sources */,
 				D769D6FC26961B14008A2584 /* AppIcon.swift in Sources */,
 				D7A72A682675369B009A6C9C /* Date.swift in Sources */,
 				D7A72A62267535FA009A6C9C /* Search.swift in Sources */,
 				D7A72A742675372F009A6C9C /* CompactLayoutView.swift in Sources */,
+				D76C0CCB26B0A3FE005E9423 /* Nameable.swift in Sources */,
 				D75F0C3F26764E8B00F5CF90 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -795,25 +799,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D7A72A51267535AB009A6C9C /* XCRemoteSwiftPackageReference "Defaults" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/Defaults";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D7A72A52267535AB009A6C9C /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D7A72A51267535AB009A6C9C /* XCRemoteSwiftPackageReference "Defaults" */;
-			productName = Defaults;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D7A72A1826753567009A6C9C /* Project object */;
 }

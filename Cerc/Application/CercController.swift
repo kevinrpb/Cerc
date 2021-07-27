@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Defaults
+//import Defaults
 import Foundation
 import SwiftUI
 
@@ -15,9 +15,6 @@ class CercController: ObservableObject {
         case loading
         case normal
         case settings
-        case selectingZone
-        case selectingOrigin
-        case selectingDestination
         case loadingTrips
         case displayingTrips
     }
@@ -27,7 +24,8 @@ class CercController: ObservableObject {
     @Published var error: CercError? = nil
 
     // Settings
-    @Published var settings: Settings = Defaults[.settings]
+//    @Published var settings: Settings = Defaults[.settings]
+    @Published var settings: Settings = .base
 
     // Zones and stations data
     @Published var zones: [Zone] = []
@@ -57,13 +55,13 @@ class CercController: ObservableObject {
                 guard let newZone = newZone else { return }
                 
                 self.displayedStations = self.stations.filter { $0.zoneID == newZone.id }
-                Defaults[.selectedZone] = newZone
+//                Defaults[.selectedZone] = newZone
             }
             .store(in: &cancellables)
 
         $settings
             .sink { newSettings in
-                Defaults[.settings] = newSettings
+//                Defaults[.settings] = newSettings
             }
             .store(in: &cancellables)
     }
@@ -83,11 +81,11 @@ class CercController: ObservableObject {
             zones = try await Network.get(.zones)
             stations = try await Network.get(.stations)
 
-            if let selectedZone = Defaults[.selectedZone], zones.contains(selectedZone) {
-                zone = selectedZone
-            } else {
-                Defaults[.selectedZone] = nil
-            }
+//            if let selectedZone = Defaults[.selectedZone], zones.contains(selectedZone) {
+//                zone = selectedZone
+//            } else {
+//                Defaults[.selectedZone] = nil
+//            }
         } catch let error as CercError {
             self.error = error
         } catch {

@@ -167,6 +167,12 @@ struct CercTripView: View {
                 Text("Loading...")
                 Spacer()
             }
+            .onReceive(controller.$error) { error in
+                if error != nil {
+                    print("ERROR")
+                    controller.state = .normal
+                }
+            }
         default:
             if let search = controller.tripSearch {
                 HStack {

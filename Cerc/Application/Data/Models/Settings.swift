@@ -5,7 +5,7 @@
 //  Created by Kevin Romero Peces-Barba on 13/6/21.
 //
 
-import Defaults
+//import Defaults
 import Foundation
 import SwiftUI
 
@@ -26,23 +26,23 @@ final class Settings {
         self.appIcon = appIcon
     }
 
-    func setTintColor(_ key: String) {
-        tintColorKey = key
+    func setTintColor(_ toKey: String) {
+        tintColorKey = toKey
     }
 
-    func setAppIcon(_ to: AppIcon) {
-        UIApplication.shared.setAlternateIconName(to == .CercIcon ? nil : to.rawValue) { [self] error in
+    func setAppIcon(_ toIcon: AppIcon) {
+        UIApplication.shared.setAlternateIconName(toIcon == .CercIcon ? nil : toIcon.rawValue) { [self] error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                appIcon = to
+                appIcon = toIcon
             }
         }
     }
 }
 
 extension Settings: Codable {}
-extension Settings: Defaults.Serializable {}
+//extension Settings: Defaults.Serializable {}
 
 extension Settings {
     static let base: Settings = .init(tintColorKey: "indigo", appIcon: .CercIcon)

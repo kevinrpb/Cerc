@@ -14,5 +14,6 @@ struct Station {
 }
 
 extension Station: Identifiable {}
+extension Station: Nameable {}
 extension Station: Codable {}
 extension Station: Equatable {}

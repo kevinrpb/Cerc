@@ -29,4 +29,5 @@ enum AppIcon: String, CaseIterable {
 extension AppIcon: Identifiable {
     var id: String { self.rawValue }
 }
+extension AppIcon: Nameable {}
 extension AppIcon: Codable {}

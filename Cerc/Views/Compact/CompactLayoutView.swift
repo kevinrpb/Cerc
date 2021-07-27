@@ -9,9 +9,6 @@ import SwiftUI
 
 extension CercController.State {
     static let withSheet: [Self] = [
-        .selectingZone,
-        .selectingOrigin,
-        .selectingDestination,
         .settings,
         .loadingTrips,
         .displayingTrips
@@ -69,7 +66,10 @@ struct CompactLayoutView: View {
             }
         }
         .onChange(of: controller.state) { newState in
-            guard CercState.withSheet.contains(newState) else { return }
+            guard CercState.withSheet.contains(newState) else {
+                showSheet = false
+                return
+            }
 
             if CercState.tripRelated.contains(newState) {
                 showSheet = horizontalSizeClass == .compact
@@ -97,21 +97,6 @@ struct CompactLayoutView: View {
         switch state {
         case .settings:
             CercSettingsView(settings: $controller.settings)
-        case .selectingZone:
-            CercZoneSelectionView(zones: $controller.zones) {
-                controller.zone = $0
-                showSheet = false
-            }
-        case .selectingOrigin:
-            CercStationSelectionView(stations: $controller.displayedStations) {
-                controller.origin = $0
-                showSheet = false
-            }
-        case .selectingDestination:
-            CercStationSelectionView(stations: $controller.displayedStations) {
-                controller.destination = $0
-                showSheet = false
-            }
         case .loadingTrips, .displayingTrips:
             CercTripView()
                 .environmentObject(controller)
@@ -124,12 +109,6 @@ struct CompactLayoutView: View {
         switch state {
         case .settings:
             return "Settings"
-        case .selectingZone:
-            return "Zone"
-        case .selectingOrigin:
-            return "Origin"
-        case .selectingDestination:
-            return "Destination"
         case .loadingTrips, .displayingTrips:
             return "Trip"
         default:

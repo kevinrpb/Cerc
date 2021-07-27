@@ -31,31 +31,45 @@ struct CercSettingsView: View {
                 HStack {
                     Text("Tint Color")
                     Spacer()
-                    Picker(selection: $settings.tintColorKey) {
-                        ForEach(Color.keys, id: \.self) { colorKey in
-                            Text(colorKey.capitalized)
-                        }
-                    } label: {
-                        Button {} label: {
+                    NavigationLink(destination:
+                        CercSelectionView(title: "Tint Color", selected: $settings.tintColorKey, elements: .constant(Color.keys)) { colorKey in
                             HStack {
                                 Circle()
-                                    .fill(tintColor)
+                                    .fill(Color.colorForKey[colorKey]!)
                                     .frame(width: 20, height: 20)
-                                Text(settings.tintColorKey.capitalized)
-                                Text("AAA")
+                                Text(colorKey.capitalized)
                             }
                         }
-                        .buttonStyle(CercButtonStyle(tintColor))
+                    ) {
+                        HStack {
+                            Circle()
+                                .fill(tintColor)
+                                .frame(width: 20, height: 20)
+                            Text(settings.tintColorKey.capitalized)
+                                .foregroundColor(.primary)
+                        }
+                        .cercBackground()
                     }
-                    .pickerStyle(.menu)
                 }
                 if UIApplication.shared.supportsAlternateIcons {
                     HStack {
                         Text("App Icon")
                         Spacer()
                         NavigationLink(destination:
-                            CercIconSelectionView(settings: $settings)
-                                .environment(\.tintColor, tintColor)
+                            CercSelectionView(title: "App Icon", selected: $settings.appIcon, elements: .constant(AppIcon.allCases)) { icon, dismiss in
+                                if let icon = icon {
+                                    settings.setAppIcon(icon)
+                                    dismiss()
+                                }
+                            } labelProvider: { icon in
+                                HStack {
+                                    Image(uiImage: icon.image)
+                                        .resizable()
+                                        .frame(width: 40, height: 40)
+                                        .mask(RoundedRectangle(cornerRadius: 8.8, style: .continuous))
+                                    Text(icon.name.capitalized)
+                                }
+                            }
                         ) {
                             HStack {
                                 Image(uiImage: settings.appIcon.image)
