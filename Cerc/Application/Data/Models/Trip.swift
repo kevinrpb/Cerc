@@ -12,9 +12,13 @@ struct Trip {
         let stationID: String
 
         let arrivalString: String
-        let departureStrings: [String]
+        var departureStrings: [String]
 
         let line: String
+
+        mutating func setDepartureStrings(to strings: [String]) {
+            self.departureStrings = strings
+        }
     }
 
     let zoneID: String
@@ -23,13 +27,17 @@ struct Trip {
 
     let dateString: String
     let departureString: String
-    let arrivalStrings: [String]
+    var arrivalStrings: [String]
 
     let line: String
     let isCivis: Bool
     let isAccessible: Bool
 
-    let transfers: [Transfer]
+    var transfers: [Transfer]
+
+    mutating func setArrivalStrings(to strings: [String]) {
+        self.arrivalStrings = strings
+    }
 
     func date() -> Date? {
         return Date.from(simpleString: dateString)

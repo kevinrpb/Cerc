@@ -23,3 +23,33 @@ extension TripSearch: Identifiable {
 }
 extension TripSearch: Codable {}
 extension TripSearch: Equatable {}
+
+// Result
+struct TripSearchResult {
+    struct Entry {
+        struct Transfer {
+            let cdgoEstacion: String
+            let descEstacion: String
+            let horaLlegada: String
+            let horaSalida: String
+            let linea: String
+            let cdgoTren: String
+        }
+
+        let linea: String?
+        let lineaEstOrigen: String
+        let lineaEstDestino: String
+        let cdgoTren: String
+        let horaSalida: String
+        let horaLlegada: String
+        let duracion: String
+        let civis: String?
+        let accesible: Bool?
+        let trans: [Transfer]?
+    }
+
+    let horario: [Entry]?
+}
+extension TripSearchResult.Entry.Transfer: Codable {}
+extension TripSearchResult.Entry: Codable {}
+extension TripSearchResult: Codable {}

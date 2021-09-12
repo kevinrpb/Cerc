@@ -85,8 +85,8 @@ class CercController: ObservableObject {
         error = nil
 
         do {
-            zones = try await Network.get(.zones)
-            stations = try await Network.get(.stations)
+            zones = try Scrapper.getZones()
+            stations = try await Scrapper.getAllStations()
 
             if let selectedZoneData = UserDefaults.standard.object(forKey: "CercSelectedZone") as? Data,
                let selectedZone = try? PropertyListDecoder().decode(Zone.self, from: selectedZoneData),
@@ -131,7 +131,7 @@ class CercController: ObservableObject {
 
         // Get the stuff
         do {
-            trips = try await Network.get(.trip(search: tripSearch!)) // trip search is init two lines above... should be fine?
+            trips = try await Scrapper.getTrips(for: tripSearch!) // trip search is init two lines above... should be fine?
             state = .displayingTrips
             error = nil
         } catch let error as CercError {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D75847C426EE8B0C00E252A7 /* Scrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75847C326EE8B0C00E252A7 /* Scrapper.swift */; };
+		D75847C726EE8B2400E252A7 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = D75847C626EE8B2400E252A7 /* SwiftSoup */; };
 		D75F0C3F26764E8B00F5CF90 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C3E26764E8B00F5CF90 /* Settings.swift */; };
 		D75F0C412676527E00F5CF90 /* CercSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C402676527E00F5CF90 /* CercSettingsView.swift */; };
 		D75F0C4326765BD500F5CF90 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F0C4226765BD500F5CF90 /* Environment.swift */; };
@@ -57,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		D74DEFD5269495C60019E768 /* Cerc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cerc.entitlements; sourceTree = "<group>"; };
+		D75847C326EE8B0C00E252A7 /* Scrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrapper.swift; sourceTree = "<group>"; };
 		D75F0C3E26764E8B00F5CF90 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D75F0C402676527E00F5CF90 /* CercSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercSettingsView.swift; sourceTree = "<group>"; };
 		D75F0C4226765BD500F5CF90 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -97,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75847C726EE8B2400E252A7 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +233,7 @@
 			children = (
 				D7A72A5A267535FA009A6C9C /* Models */,
 				D7A72A6326753613009A6C9C /* Network.swift */,
+				D75847C326EE8B0C00E252A7 /* Scrapper.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 			);
 			name = Cerc;
 			packageProductDependencies = (
+				D75847C626EE8B2400E252A7 /* SwiftSoup */,
 			);
 			productName = Cerc;
 			productReference = D7A72A2026753567009A6C9C /* Cerc.app */;
@@ -368,6 +374,7 @@
 			);
 			mainGroup = D7A72A1726753567009A6C9C;
 			packageReferences = (
+				D75847C526EE8B2400E252A7 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = D7A72A2126753567009A6C9C /* Products */;
 			projectDirPath = "";
@@ -424,6 +431,7 @@
 				D7A72A6E267536F0009A6C9C /* CercListItem.swift in Sources */,
 				D75F0C4326765BD500F5CF90 /* Environment.swift in Sources */,
 				D7652F8A267628E000BEF7C5 /* Defaults.swift in Sources */,
+				D75847C426EE8B0C00E252A7 /* Scrapper.swift in Sources */,
 				D760E96C2691D2ED00D943B6 /* CercBackgroundModifier.swift in Sources */,
 				D7A72A6F267536F0009A6C9C /* CercButtonStyle.swift in Sources */,
 				D7A72A7B26753925009A6C9C /* CercFormView.swift in Sources */,
@@ -799,6 +807,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D75847C526EE8B2400E252A7 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D75847C626EE8B2400E252A7 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D75847C526EE8B2400E252A7 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D7A72A1826753567009A6C9C /* Project object */;
 }

@@ -136,6 +136,15 @@ struct CercSettingsView: View {
                     }
                     .buttonStyle(CercButtonStyle(tintColor))
                 }
+
+                HStack {
+                    Text("SwiftSoup (Nabil Chatbi)")
+                    Spacer()
+                    Button("MIT") {
+                        openURL(.init(string: "https://github.com/scinfu/SwiftSoup")!)
+                    }
+                    .buttonStyle(CercButtonStyle(tintColor))
+                }
             }
         }
     }

@@ -9,55 +9,70 @@ import Foundation
 
 enum Endpoint: Equatable {
     case zones
-    case stations
+    case stations(zone: Zone)
     case trip(search: TripSearch)
-
-    static let API_URL: URL = URL(string: "https://cerc-api.glitch.me")!
 
     var url: URL {
         switch self {
         case .zones:
-            return Self.API_URL
-                .appendingPathComponent("zones")
-        case .stations:
-            return Self.API_URL
-                .appendingPathComponent("stations")
+            return .init(string: "https://horarios.renfe.com/cer/hjcer300.jsp")!
+        case .stations(let zone):
+            return .init(string: "https://horarios.renfe.com/cer/hjcer300.jsp?NUCLEO=\(zone.id)")!
+        case .trip:
+            return .init(string: "https://horarios.renfe.com/cer/HorariosServlet")!
+        }
+    }
+
+    var method: String {
+        switch self {
+        case .trip:
+            return "POST"
+        default:
+            return "GET"
+        }
+    }
+
+    var parameters: [String: String] {
+        switch self {
         case .trip(let search):
-            return Self.API_URL
-                .appendingPathComponent("zone=\(search.zone.id)")
-                .appendingPathComponent("trips")
-                .appendingPathComponent("from=\(search.origin.id)")
-                .appendingPathComponent("to=\(search.destination.id)")
-                .appendingPathComponent("on=\(search.date.simpleDateString)")
+            return [
+                "nucleo": search.zone.id,
+                "origen": search.origin.id,
+                "destino": search.destination.id,
+                "fchaViaje": search.date.simpleDateString,
+                "horaViajeOrigen": "00",
+                "horaViajeLlegada": "26",
+                "servicioHorarios": "VTI",
+                "validaReglaNegocio": "false",
+                "tiempoReal": "false",
+                "accesibilidadTrenes": "true",
+            ]
+        default:
+            return [:]
         }
     }
 }
 
 
 struct Network {
-    private static let decoder: JSONDecoder = .init()
-
-    static func get<Result>(_ endpoint: Endpoint) async throws -> [Result] where Result: Codable {
+    private static let encoder: JSONEncoder = .init()
+    
+    static func get(_ endpoint: Endpoint) async throws -> Data {
         do {
-            let (data, _) = try await URLSession.shared.data(from: endpoint.url)
+            var request = URLRequest(url: endpoint.url)
 
-            return try Self.decoder.decode([Result].self, from: data)
-        } catch let DecodingError.dataCorrupted(context) {
-            print(context)
-        } catch let DecodingError.keyNotFound(key, context) {
-            print("Key '\(key)' not found:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch let DecodingError.valueNotFound(value, context) {
-            print("Value '\(value)' not found:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch let DecodingError.typeMismatch(type, context)  {
-            print("Type '\(type)' mismatch:", context.debugDescription)
-            print("codingPath:", context.codingPath)
+            request.httpMethod = endpoint.method
+            if endpoint.method == "POST" {
+                request.httpBody = try encoder.encode(endpoint.parameters)
+                request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            }
+
+            let (data, _) = try await URLSession.shared.data(for: request)
+
+            return data
         } catch {
             throw CercError.networkError
         }
-
-        throw CercError.parsingError
     }
 }
 
