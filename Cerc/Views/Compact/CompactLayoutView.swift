@@ -78,7 +78,7 @@ struct CompactLayoutView: View {
             }
         }
         .onAppear {
-            async {
+            Task {
                 await controller.loadData()
                 #if DEBUG
                 if let origin = controller.stations.first(where: { $0.id == "70003" }),
@@ -127,7 +127,7 @@ struct CompactLayoutView: View {
 
     private func RefreshButton() -> some View {
         Button {
-            async { await controller.loadData(force: true) }
+            Task { await controller.loadData(force: true) }
         } label: {
             Label("Refresh", systemImage: "arrow.triangle.2.circlepath")
         }
@@ -136,7 +136,7 @@ struct CompactLayoutView: View {
 
     private func SearchButton() -> some View {
         Button {
-            async { await controller.startSearch() }
+            Task { await controller.startSearch() }
         } label: {
             Label("Search", systemImage: "magnifyingglass")
         }

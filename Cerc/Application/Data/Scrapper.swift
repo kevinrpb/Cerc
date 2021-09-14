@@ -47,7 +47,8 @@ struct Scrapper {
     }
 
     static private func simplify(trips: [Trip]) -> [Trip] {
-        var uniqueTrips: [String: [Trip]] = [:]
+        var uniqueDepartureTrips: [String: [Trip]] = [:]
+        var uniqueArrivalTrips: [String: [Trip]] = [:]
 
         // Simplify departures for multiple trips
         for trip in trips {
@@ -55,34 +56,72 @@ struct Scrapper {
                .map { $0.stationID }
                .joined(separator: "-")
 
-            let tripID = "\(trip.departureString)_\(transferStations)"
+            let departureString = trip.departureStrings.joined(separator: "-")
+            let arrivalString = trip.arrivalStrings.joined(separator: "-")
 
-            if uniqueTrips[tripID] != nil {
-                uniqueTrips[tripID]!.append(trip)
+            let tripDepartureID = "\(departureString)_\(transferStations)"
+            let tripArrivalID = "\(arrivalString)_\(transferStations)"
+
+            if uniqueDepartureTrips[tripDepartureID] != nil {
+                uniqueDepartureTrips[tripDepartureID]!.append(trip)
             } else {
-                uniqueTrips[tripID] = [trip]
+                uniqueDepartureTrips[tripDepartureID] = [trip]
+            }
+
+            if uniqueArrivalTrips[tripArrivalID] != nil {
+                uniqueArrivalTrips[tripArrivalID]!.append(trip)
+            } else {
+                uniqueArrivalTrips[tripArrivalID] = [trip]
             }
         }
 
-        let trips: [Trip] = uniqueTrips.keys.compactMap { tripSetID in
-            let trips = uniqueTrips[tripSetID]!
+        let trips: [Trip]
 
-            var trip = trips.first! // must have otherwise the array wouldn't exist
+        print("uniqueDepartures: \(uniqueDepartureTrips.count)")
+        print("uniqueArrivals: \(uniqueArrivalTrips.count)")
 
-            for i in 0..<trip.transfers.count {
-                var departureStrings: [String] = []
-                var arrivalStrings: [String] = []
+        if uniqueDepartureTrips.count <= uniqueArrivalTrips.count {
+            trips = uniqueDepartureTrips.keys.compactMap { tripSetID in
+                let trips = uniqueDepartureTrips[tripSetID]!
 
-                for trip in trips {
-                    departureStrings.append(contentsOf: trip.transfers[i].departureStrings)
-                    arrivalStrings.append(contentsOf: trip.arrivalStrings)
+                var trip = trips.first! // must have otherwise the array wouldn't exist
+
+                for i in 0..<trip.transfers.count {
+                    var departureStrings: [String] = []
+                    var arrivalStrings: [String] = []
+
+                    for trip in trips {
+                        departureStrings.append(contentsOf: trip.transfers[i].departureStrings)
+                        arrivalStrings.append(contentsOf: trip.arrivalStrings)
+                    }
+
+                    trip.transfers[i].setDepartureStrings(to: departureStrings)
+                    trip.setArrivalStrings(to: arrivalStrings)
                 }
 
-                trip.transfers[i].setDepartureStrings(to: departureStrings)
-                trip.setArrivalStrings(to: arrivalStrings)
+                return trip
             }
+        } else {
+            trips = uniqueArrivalTrips.keys.compactMap { tripSetID in
+                let trips = uniqueArrivalTrips[tripSetID]!
 
-            return trip
+                var trip = trips.first! // must have otherwise the array wouldn't exist
+
+                for i in 0..<trip.transfers.count {
+                    var departureStrings: [String] = []
+                    var arrivalStrings: [String] = []
+
+                    for trip in trips {
+                        departureStrings.append(contentsOf: trip.departureStrings)
+                        arrivalStrings.append(contentsOf: trip.transfers[i].arrivalStrings)
+                    }
+
+                    trip.setDepartureStrings(to: departureStrings)
+                    trip.transfers[i].setArrivalStrings(to: arrivalStrings)
+                }
+
+                return trip
+            }
         }
 
         return trips
@@ -97,7 +136,7 @@ struct Scrapper {
             let transfers: [Trip.Transfer] = (trip.trans ?? []).map { transfer in
                 return .init(
                     stationID: transfer.cdgoEstacion,
-                    arrivalString: transfer.horaLlegada,
+                    arrivalStrings: [transfer.horaLlegada],
                     departureStrings: [transfer.horaSalida],
                     line: transfer.linea
                 )
@@ -108,7 +147,7 @@ struct Scrapper {
                 originID: search.origin.id,
                 destinationID: search.destination.id,
                 dateString: search.date.simpleDateString,
-                departureString: trip.horaSalida,
+                departureStrings: [trip.horaSalida],
                 arrivalStrings: [trip.horaLlegada],
                 line: trip.linea ?? "?",
                 isCivis: (trip.civis ?? "") == "CIVIS",

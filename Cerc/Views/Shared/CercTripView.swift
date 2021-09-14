@@ -27,8 +27,16 @@ struct CercTripItemView: View {
                             Text("\(relativeTime)")
                         }
                     } else {
-                        Text(trip.departureString)
-                            .cercBackground()
+                        if let first = trip.departureStrings.first {
+                            Text(first)
+                                .cercBackground()
+                            if trip.departureStrings.count > 1 {
+                                Text("(+\(trip.departureStrings.count - 1))")
+                            }
+                        } else {
+                            Text("??:??")
+                                .cercBackground()
+                        }
                         Text("-")
                         if let first = trip.arrivalStrings.first {
                             Text(first)
@@ -51,17 +59,18 @@ struct CercTripItemView: View {
                     Divider()
                         .background(tintColor.opacity(0.2))
                     VStack {
-                        TimesEntry(origin.name, timeStrings: [trip.departureString], arrival: false)
-//                        StationEntry(origin.name, firstTimeString: trip.departureString, firstIsDeparture: true)
+                        TimesEntry(origin.name, timeStrings: trip.departureStrings, arrival: false)
+
                         Separator()
                         ForEach(trip.transfers) { transfer in
                             if let station = controller.stations.first(where: { $0.id == transfer.stationID }) {
-                                StationEntry(station.name, firstTimeString: transfer.arrivalString, otherTimeStrings: transfer.departureStrings)
+                                StationEntry(station.name, firstTimesLine: transfer.arrivalStrings, secondTimesLine: transfer.departureStrings)
                             } else {
-                                StationEntry("??", firstTimeString: transfer.arrivalString, otherTimeStrings: transfer.departureStrings)
+                                StationEntry("??", firstTimesLine: transfer.arrivalStrings, secondTimesLine: transfer.departureStrings)
                             }
                             Separator()
                         }
+
                         TimesEntry(destination.name, timeStrings: trip.arrivalStrings, arrival: true)
                     }
                     .padding(.horizontal)
@@ -109,23 +118,29 @@ struct CercTripItemView: View {
         }
     }
 
-    private func StationEntry(_ name: String, firstTimeString: String, firstIsDeparture: Bool = false, otherTimeStrings: [String] = []) -> some View {
+    private func StationEntry(_ name: String, firstTimesLine: [String], firstIsDeparture: Bool = false, secondTimesLine: [String] = []) -> some View {
         VStack {
             HStack {
                 Image(systemName: firstIsDeparture ? "arrow.up.right" : "arrow.down.right")
                     .opacity(0.5)
-                Text(firstTimeString)
-                    .cercBackground()
+                HStack {
+                    ForEach(firstTimesLine, id: \.self) { timeString in
+                        Text(timeString)
+                            .cercBackground()
+                    }
+                    Spacer()
+                }
+                .padding(.bottom, 2)
                 Spacer()
                 Text(name)
             }
-            if otherTimeStrings.count > 0 {
+            if secondTimesLine.count > 0 {
                 HStack {
                     Image(systemName: "arrow.up.right")
                         .opacity(0.5)
 //                    ScrollView(.horizontal) {
                         HStack {
-                            ForEach(otherTimeStrings, id: \.self) { timeString in
+                            ForEach(secondTimesLine, id: \.self) { timeString in
                                 Text(timeString)
                                     .cercBackground()
                             }

@@ -11,10 +11,14 @@ struct Trip {
     struct Transfer {
         let stationID: String
 
-        let arrivalString: String
+        var arrivalStrings: [String]
         var departureStrings: [String]
 
         let line: String
+
+        mutating func setArrivalStrings(to strings: [String]) {
+            self.arrivalStrings = strings
+        }
 
         mutating func setDepartureStrings(to strings: [String]) {
             self.departureStrings = strings
@@ -26,7 +30,7 @@ struct Trip {
     let destinationID: String
 
     let dateString: String
-    let departureString: String
+    var departureStrings: [String]
     var arrivalStrings: [String]
 
     let line: String
@@ -34,6 +38,10 @@ struct Trip {
     let isAccessible: Bool
 
     var transfers: [Transfer]
+
+    mutating func setDepartureStrings(to strings: [String]) {
+        self.departureStrings = strings
+    }
 
     mutating func setArrivalStrings(to strings: [String]) {
         self.arrivalStrings = strings
@@ -44,8 +52,10 @@ struct Trip {
     }
 
     func departure() -> Date? {
-        guard let date = self.date() else { return nil }
-        return Date.from(date, hourAndMinute: departureString)
+        guard let date = self.date(),
+            let timeString = departureStrings.first else { return nil }
+
+        return Date.from(date, hourAndMinute: timeString)
     }
 
     func arrival() -> Date? {
@@ -70,7 +80,7 @@ struct Trip {
 
 extension Trip.Transfer: Identifiable {
     var id: String {
-        "\(stationID)_\(departureStrings.joined(separator: "-"))-\(arrivalString)"
+        "\(stationID)_\(departureStrings.joined(separator: "-"))-\(arrivalStrings.joined(separator: "-"))"
     }
 }
 extension Trip.Transfer: Codable {}
@@ -78,7 +88,7 @@ extension Trip.Transfer: Equatable {}
 
 extension Trip: Identifiable {
     var id: String {
-        "\(zoneID)_\(originID)-\(destinationID)_\(dateString)_\(departureString)-\(arrivalStrings.joined(separator: ";"))"
+        "\(zoneID)_\(originID)-\(destinationID)_\(dateString)_\(departureStrings.joined(separator: "-"))-\(arrivalStrings.joined(separator: "-"))"
     }
 }
 extension Trip: Codable {}
