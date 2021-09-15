@@ -47,7 +47,7 @@ class CercController: ObservableObject {
 
     //
     private var cancellables: Set<AnyCancellable> = .init()
-    private var searchCancellable: AnyCancellable?
+//    private var searchCancellable: AnyCancellable?
 
     init() {
         $zone
@@ -75,7 +75,6 @@ class CercController: ObservableObject {
 
     deinit {
         cancellables.forEach { $0.cancel() }
-        searchCancellable?.cancel()
     }
 
     func loadData(force: Bool = false) async {
@@ -110,6 +109,13 @@ class CercController: ObservableObject {
         state = .normal
     }
 
+    func reverseStations() {
+        let temp = origin
+        
+        origin = destination
+        destination = temp
+    }
+
     func startSearch() async {
         if state == .loadingTrips { cancelSearch() }
 
@@ -126,7 +132,15 @@ class CercController: ObservableObject {
             return
         }
 
-        tripSearch = .init(zone: zone, origin: origin, destination: destination, date: date, hourStart: hourStart, hourEnd: hourEnd)
+        trips = nil
+        tripSearch = .init(
+            zone: zone,
+            origin: origin,
+            destination: destination,
+            date: date,
+            hourStart: hourStart,
+            hourEnd: hourEnd
+        )
         state = .loadingTrips
 
         // Get the stuff
@@ -142,9 +156,11 @@ class CercController: ObservableObject {
     }
 
     func cancelSearch() {
-        searchCancellable?.cancel()
-        tripSearch = nil
+        guard state == .loadingTrips else { return }
+
         trips = nil
+        tripSearch = nil
+        state = .normal
     }
 }
 

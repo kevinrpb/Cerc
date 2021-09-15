@@ -77,9 +77,6 @@ struct Scrapper {
 
         let trips: [Trip]
 
-        print("uniqueDepartures: \(uniqueDepartureTrips.count)")
-        print("uniqueArrivals: \(uniqueArrivalTrips.count)")
-
         if uniqueDepartureTrips.count <= uniqueArrivalTrips.count {
             trips = uniqueDepartureTrips.keys.compactMap { tripSetID in
                 let trips = uniqueDepartureTrips[tripSetID]!

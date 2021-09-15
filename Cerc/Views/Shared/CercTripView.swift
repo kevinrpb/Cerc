@@ -168,10 +168,16 @@ struct CercTripView: View {
     private var filteredTrips: [Trip] {
         guard let trips = controller.trips else { return [] }
         let now = Date.now
-        return trips.filter { trip in
-            guard let departure = trip.departure() else { return false }
-            return departure >= now
-        }
+        return trips
+            .filter { trip in
+                guard let departure = trip.departure() else { return false }
+                return departure >= now
+            }
+            .sorted { tripA, tripB in
+                guard let departureA = tripA.departure(),
+                      let departureB = tripB.departure() else { return false }
+                return departureA <= departureB
+            }
     }
 
     var body: some View {
@@ -196,6 +202,7 @@ struct CercTripView: View {
                     Image(systemName: "arrow.right")
                     Text(search.destination.name)
                     Spacer()
+                    InverseSearchButton()
                 }
                 .font(.body.bold())
                 .padding(.leading, 6)
@@ -212,6 +219,19 @@ struct CercTripView: View {
                 }
             }
         }
+    }
+
+    private func InverseSearchButton() -> some View {
+        Button {
+            Task(priority: .userInitiated) {
+                controller.reverseStations()
+                await controller.startSearch()
+            }
+        } label: {
+            Label("Search other way", systemImage: "arrow.up.arrow.down")
+                .labelStyle(.iconOnly)
+        }
+        .buttonStyle(CercNavButtonStyle(tintColor))
     }
 }
 
