@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiable & Nameable, ElementLabel: View {
+struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiable & Nameable & Equatable, ElementLabel: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.tintColor) var tintColor
 
@@ -64,28 +64,24 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
                 } else {
                     CercListItem(tint: tintColor) {
                         TextField("Search", text: $searchText)
+                            .submitLabel(.go)
+                            .onSubmit {
+                                if let first = searchResults.first { select(first) }
+                            }
                         Image(systemName: "magnifyingglass")
                     }
                     .padding(.bottom)
+
                     ForEach(searchResults) { element in
                         CercListItem(tint: tintColor) {
                             labelProvider(element)
                             Spacer()
-                            Button {
-                                selected = element
-
-                                if let onSelect = onSelect {
-                                    onSelect(element)
-                                }
-
-                                if dismissOnSelect {
-                                    dismiss()
-                                }
-                            } label: {
-                                Text("Select")
+                            if selected == element {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(tintColor)
                             }
-                            .buttonStyle(CercButtonStyle())
                         }
+                        .onTapGesture { select(element) }
                     }
                 }
             }.padding()
@@ -102,6 +98,18 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
             Label("Back", systemImage: "chevron.left")
         }
         .buttonStyle(CercNavButtonStyle(tintColor))
+    }
+
+    private func select(_ element: Element) {
+            selected = element
+
+            if let onSelect = onSelect {
+                onSelect(element)
+            }
+
+            if dismissOnSelect {
+                dismiss()
+            }
     }
 }
 
