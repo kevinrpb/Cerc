@@ -100,6 +100,7 @@
 		D7CABD0B26FF77F9000FDE31 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D7CABD0D26FF7AB5000FDE31 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		D7CABD1326FF8C5E000FDE31 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7CABD4626FFC942000FDE31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -498,6 +499,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D7CABD1326FF8C5E000FDE31 /* es */,
+				D7CABD4626FFC942000FDE31 /* en */,
 			);
 			name = Localizable.strings;
 			path = "Cerc/Support Files";

@@ -17,34 +17,14 @@
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.0" build-num="13A233"/>
     </header>
     <body>
-      <trans-unit id="%@" xml:space="preserve">
-        <source>%@</source>
-        <target>%@</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="+%lld" xml:space="preserve">
-        <source>+%lld</source>
-        <target>+%lld</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="-" xml:space="preserve">
-        <source>-</source>
-        <target>-</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="??:??" xml:space="preserve">
-        <source>??:??</source>
-        <target>??:??</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="@kevinrpb" xml:space="preserve">
         <source>@kevinrpb</source>
         <target>@kevinrpb</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Accessible" xml:space="preserve">
-        <source>Accessible</source>
-        <target>Accessible</target>
+        <source>Accesible</source>
+        <target>Accesible</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="App Icon" xml:space="preserve">
@@ -55,16 +35,6 @@
       <trans-unit id="Back" xml:space="preserve">
         <source>Back</source>
         <target>Back</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="CIVIS" xml:space="preserve">
-        <source>CIVIS</source>
-        <target>CIVIS</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Cerc" xml:space="preserve">
-        <source>Cerc</source>
-        <target>Cerc</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Close" xml:space="preserve">
