@@ -18,6 +18,18 @@ struct CercTripItemView: View {
     let origin: Station
     let destination: Station
 
+    var extraDepartureCountLabel: String? {
+        trip.departureStrings.count > 1
+            ? "+\(trip.departureStrings.count - 1)"
+        : nil
+    }
+
+    var extraArrivalCountLabel: String? {
+        trip.arrivalStrings.count > 1
+            ? "+\(trip.arrivalStrings.count - 1)"
+        : nil
+    }
+
     var body: some View {
         CercListItem(padding: 0, tint: tintColor) {
             VStack {
@@ -29,23 +41,23 @@ struct CercTripItemView: View {
                     } else {
                         if let first = trip.departureStrings.first {
                             Text(first)
+                                .frame(width: 50)
                                 .cercBackground()
-                            if trip.departureStrings.count > 1 {
-                                Text("(+\(trip.departureStrings.count - 1))")
-                            }
+                                .badge(extraDepartureCountLabel, color: tintColor.lighten(by: 40))
                         } else {
                             Text("??:??")
+                                .frame(width: 50)
                                 .cercBackground()
                         }
                         Text("-")
                         if let first = trip.arrivalStrings.first {
                             Text(first)
+                                .frame(width: 50)
                                 .cercBackground()
-                            if trip.arrivalStrings.count > 1 {
-                                Text("(+\(trip.arrivalStrings.count - 1))")
-                            }
+                                .badge(extraArrivalCountLabel, color: tintColor.lighten(by: 40))
                         } else {
                             Text("??:??")
+                                .frame(width: 50)
                                 .cercBackground()
                         }
                     }
@@ -59,19 +71,19 @@ struct CercTripItemView: View {
                     Divider()
                         .background(tintColor.opacity(0.2))
                     VStack {
-                        TimesEntry(origin.name, timeStrings: trip.departureStrings, arrival: false)
+                        StationEntry(origin.name, line: trip.line, firstTimesLine: trip.departureStrings, firstIsDeparture: true)
 
                         Separator()
                         ForEach(trip.transfers) { transfer in
                             if let station = controller.stations.first(where: { $0.id == transfer.stationID }) {
-                                StationEntry(station.name, firstTimesLine: transfer.arrivalStrings, secondTimesLine: transfer.departureStrings)
+                                StationEntry(station.name, line: transfer.line, firstTimesLine: transfer.arrivalStrings, secondTimesLine: transfer.departureStrings)
                             } else {
-                                StationEntry("??", firstTimesLine: transfer.arrivalStrings, secondTimesLine: transfer.departureStrings)
+                                StationEntry("??", line: nil, firstTimesLine: transfer.arrivalStrings, secondTimesLine: transfer.departureStrings)
                             }
                             Separator()
                         }
 
-                        TimesEntry(destination.name, timeStrings: trip.arrivalStrings, arrival: true)
+                        StationEntry(destination.name, line: "", firstTimesLine: trip.arrivalStrings, firstIsDeparture: false)
                     }
                     .padding(.horizontal)
                     if trip.isCivis || trip.isAccessible {
@@ -97,35 +109,18 @@ struct CercTripItemView: View {
         }
     }
 
-    private func TimesEntry(_ name: String, timeStrings: [String], arrival: Bool) -> some View {
+    private func StationEntry(_ name: String, line: String?, firstTimesLine: [String], firstIsDeparture: Bool = false, secondTimesLine: [String] = []) -> some View {
         VStack {
             HStack {
-                Image(systemName: arrival ? "arrow.down.right" : "arrow.up.right")
+                Text(firstIsDeparture ? (line ?? "C?") : "")
+                    .bold()
                     .opacity(0.5)
-//                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(timeStrings, id: \.self) { timeString in
-                            Text(timeString)
-                                .cercBackground()
-                        }
-                        Spacer()
-                    }
-                    .padding(.bottom, 2)
-//                }
-                Spacer()
-                Text(name)
-            }
-        }
-    }
+                    .frame(width: 30)
 
-    private func StationEntry(_ name: String, firstTimesLine: [String], firstIsDeparture: Bool = false, secondTimesLine: [String] = []) -> some View {
-        VStack {
-            HStack {
-                Image(systemName: firstIsDeparture ? "arrow.up.right" : "arrow.down.right")
-                    .opacity(0.5)
                 HStack {
                     ForEach(firstTimesLine, id: \.self) { timeString in
                         Text(timeString)
+                            .frame(width: 50)
                             .cercBackground()
                     }
                     Spacer()
@@ -136,12 +131,15 @@ struct CercTripItemView: View {
             }
             if secondTimesLine.count > 0 {
                 HStack {
-                    Image(systemName: "arrow.up.right")
+                    Text(firstIsDeparture ? "" : (line ?? "C?"))
+                        .bold()
                         .opacity(0.5)
+                        .frame(width: 30)
 //                    ScrollView(.horizontal) {
                         HStack {
                             ForEach(secondTimesLine, id: \.self) { timeString in
                                 Text(timeString)
+                                    .frame(width: 50)
                                     .cercBackground()
                             }
                             Spacer()
@@ -187,6 +185,8 @@ struct CercTripView: View {
                 Image(systemName: "network")
                 Text("Loading...")
                 Spacer()
+                ProgressView()
+                    .progressViewStyle(.circular)
             }
             .onReceive(controller.$error) { error in
                 if error != nil {

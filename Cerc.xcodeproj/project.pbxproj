@@ -38,6 +38,8 @@
 		D7A72A742675372F009A6C9C /* CompactLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A732675372F009A6C9C /* CompactLayoutView.swift */; };
 		D7A72A7B26753925009A6C9C /* CercFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A7A26753925009A6C9C /* CercFormView.swift */; };
 		D7A72A7D26753AC1009A6C9C /* CercController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A7C26753AC1009A6C9C /* CercController.swift */; };
+		D7CABD0A26FF431B000FDE31 /* CercBadgeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CABD0926FF431B000FDE31 /* CercBadgeModifier.swift */; };
+		D7CABD0C26FF77F9000FDE31 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CABD0B26FF77F9000FDE31 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		D7A72A732675372F009A6C9C /* CompactLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactLayoutView.swift; sourceTree = "<group>"; };
 		D7A72A7A26753925009A6C9C /* CercFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercFormView.swift; sourceTree = "<group>"; };
 		D7A72A7C26753AC1009A6C9C /* CercController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercController.swift; sourceTree = "<group>"; };
+		D7CABD0926FF431B000FDE31 /* CercBadgeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercBadgeModifier.swift; sourceTree = "<group>"; };
+		D7CABD0B26FF77F9000FDE31 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 				D7A72A6C267536F0009A6C9C /* CercListItem.swift */,
 				D760E96B2691D2ED00D943B6 /* CercBackgroundModifier.swift */,
 				D7A72A6D267536F0009A6C9C /* CercButtonStyle.swift */,
+				D7CABD0926FF431B000FDE31 /* CercBadgeModifier.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				D7A72A672675369B009A6C9C /* Color.swift */,
+				D7CABD0B26FF77F9000FDE31 /* UIColor.swift */,
 				D7A72A662675369B009A6C9C /* Date.swift */,
 				D7652F89267628E000BEF7C5 /* Defaults.swift */,
 				D75F0C4226765BD500F5CF90 /* Environment.swift */,
@@ -417,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D75F0C48267663C100F5CF90 /* CercTripView.swift in Sources */,
+				D7CABD0C26FF77F9000FDE31 /* UIColor.swift in Sources */,
 				D7A72A5F267535FA009A6C9C /* Trip.swift in Sources */,
 				D76C0CD026B0ADB3005E9423 /* String.swift in Sources */,
 				D75F0C462676631300F5CF90 /* ContentView.swift in Sources */,
@@ -436,6 +443,7 @@
 				D76C0CC826B0A307005E9423 /* CercSelectionView.swift in Sources */,
 				D7A72A2426753567009A6C9C /* CercApp.swift in Sources */,
 				D7A72A61267535FA009A6C9C /* Zone.swift in Sources */,
+				D7CABD0A26FF431B000FDE31 /* CercBadgeModifier.swift in Sources */,
 				D769D6FC26961B14008A2584 /* AppIcon.swift in Sources */,
 				D7A72A682675369B009A6C9C /* Date.swift in Sources */,
 				D7A72A62267535FA009A6C9C /* Search.swift in Sources */,

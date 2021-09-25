@@ -8,8 +8,21 @@
 import SwiftUI
 
 extension Color {
-    public static let CercGradient1: Color = .init(red: 251/255, green: 194/255, blue: 235/255)
-    public static let CercGradient2: Color = .init(red: 166/255, green: 193/255, blue: 238/255)
+    func lighten(by percentage: Double) -> Color {
+        if let lighter = UIColor(self).lighten(by: percentage) {
+            return Color(uiColor: lighter)
+        } else {
+            return self
+        }
+    }
+
+    func darken(by percentage: Double) -> Color {
+        if let darker = UIColor(self).darken(by: percentage) {
+            return Color(uiColor: darker)
+        } else {
+            return self
+        }
+    }
 }
 
 extension Color {

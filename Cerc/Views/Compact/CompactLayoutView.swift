@@ -85,7 +85,7 @@ struct CompactLayoutView: View {
                    let destination = controller.stations.first(where: { $0.id == "10202" }) {
                     controller.origin = origin
                     controller.destination = destination
-//                    await controller.startSearch()
+                    await controller.startSearch()
                 }
                 #endif
             }

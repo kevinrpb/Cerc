@@ -58,6 +58,8 @@ class CercController: ObservableObject {
                 guard let newZone = newZone else { return }
                 
                 self.displayedStations = self.stations.filter { $0.zoneID == newZone.id }
+                self.origin = nil
+                self.destination = nil
 //                Defaults[.selectedZone] = newZone
                 UserDefaults.standard.set(try? PropertyListEncoder().encode(newZone), forKey: "CercSelectedZone")
             }

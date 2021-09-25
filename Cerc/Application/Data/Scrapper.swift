@@ -53,7 +53,7 @@ struct Scrapper {
         // Simplify departures for multiple trips
         for trip in trips {
             let transferStations = trip.transfers
-               .map { $0.stationID }
+                .map { "\($0.line)-\($0.stationID)" }
                .joined(separator: "-")
 
             let departureString = trip.departureStrings.joined(separator: "-")

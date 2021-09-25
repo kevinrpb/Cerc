@@ -18,6 +18,8 @@ struct CercFormView: View {
                 Image(systemName: "network")
                 Text("Loading...")
                 Spacer()
+                ProgressView()
+                    .progressViewStyle(.circular)
             }
             Spacer(minLength: 30)
         } else {
