@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct CercApp: App {
-    private let controller: CercController = CercController()
+    private let controller: CercController = .global
 
     var body: some Scene {
         WindowGroup {

@@ -10,6 +10,7 @@ import Combine
 import Foundation
 import SwiftUI
 
+@MainActor
 class CercController: ObservableObject {
     enum State: Int {
         case loading
@@ -18,6 +19,8 @@ class CercController: ObservableObject {
         case loadingTrips
         case displayingTrips
     }
+
+    static let global = CercController()
 
     // App state
     @Published var state: State = .loading
@@ -49,7 +52,7 @@ class CercController: ObservableObject {
     private var cancellables: Set<AnyCancellable> = .init()
 //    private var searchCancellable: AnyCancellable?
 
-    init() {
+    private init() {
         $zone
             .sink{ newZone in
                 guard let newZone = newZone else { return }
