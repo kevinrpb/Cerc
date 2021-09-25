@@ -11,7 +11,7 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
     @Environment(\.dismiss) var dismiss
     @Environment(\.tintColor) var tintColor
 
-    let title: String
+    let title: LocalizedStringKey
 
     @Binding var selected: Element?
     @Binding var elements: [Element]
@@ -23,7 +23,7 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
 
     @State private var searchText: String = ""
 
-    init(title: String, selected: Binding<Element?>, elements: Binding<[Element]>, dismissOnSelect: Bool = true, onSelect: ((Element?) -> Void)? = nil,
+    init(title: LocalizedStringKey, selected: Binding<Element?>, elements: Binding<[Element]>, dismissOnSelect: Bool = true, onSelect: ((Element?) -> Void)? = nil,
          labelProvider: @escaping (Element) -> ElementLabel) {
         self.title = title
         self._selected = selected
@@ -33,7 +33,7 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
         self.labelProvider = labelProvider
     }
 
-    init(title: String, selected: Binding<Element>, elements: Binding<[Element]>, dismissOnSelect: Bool = true, onSelect: ((Element?) -> Void)? = nil,
+    init(title: LocalizedStringKey, selected: Binding<Element>, elements: Binding<[Element]>, dismissOnSelect: Bool = true, onSelect: ((Element?) -> Void)? = nil,
          labelProvider: @escaping (Element) -> ElementLabel) {
         self.title = title
         self._selected = .init(selected)

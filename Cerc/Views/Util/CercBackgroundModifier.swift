@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CercBackgroundModifier: ViewModifier {
-    let tint: Color
+    let tintColor: Color
 
-    init(_ tint: Color = .gray) {
-        self.tint = tint
+    init(_ tintColor: Color = .gray) {
+        self.tintColor = tintColor
     }
 
     func body(content: Content) -> some View {
@@ -20,14 +20,14 @@ struct CercBackgroundModifier: ViewModifier {
             .padding(.horizontal, 12)
             .background(
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-//                    .fill(tint.opacity(0.2)) // Would like to do this but I can't for native date pickers...
+//                    .fill(tintColor.opacity(0.2)) // Would like to do this but I can't for native date pickers...
                     .fill(.gray.opacity(0.2))
             )
     }
 }
 
 extension View {
-    func cercBackground() -> some View {
-        return self.modifier(CercBackgroundModifier())
+    func cercBackground(_ tintColor: Color = .gray) -> some View {
+        return self.modifier(CercBackgroundModifier(tintColor))
     }
 }

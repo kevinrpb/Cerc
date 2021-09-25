@@ -149,7 +149,7 @@ struct CercSettingsView: View {
         }
     }
 
-    private func SettingsHeader(_ title: String, image: String) -> some View {
+    private func SettingsHeader(_ title: LocalizedStringKey, image: String) -> some View {
         HStack {
             Label(title, systemImage: image)
                 .font(.body.bold())

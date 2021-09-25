@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CercBadgeModifier: ViewModifier {
-    let title: String?
+    let title: LocalizedStringKey?
     let color: Color
     let size: Double = 20
 
@@ -34,7 +34,7 @@ struct CercBadgeModifier: ViewModifier {
 }
 
 extension View {
-    func badge(_ title: String?, color: Color) -> some View {
+    func badge(_ title: LocalizedStringKey?, color: Color) -> some View {
         return self
             .modifier(CercBadgeModifier(title: title, color: color))
     }

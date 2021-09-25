@@ -31,6 +31,9 @@ struct CercFormView: View {
                     Spacer()
                 }
                 .foregroundColor(.red)
+                .onLongPressGesture {
+                    withAnimation { controller.error = nil }
+                }
                 Spacer(minLength: 30)
             }
             Form()
@@ -41,7 +44,7 @@ struct CercFormView: View {
     private func Form() -> some View {
         FormHeader("Location", image: "map")
         CercListItem(tint: tintColor) {
-            FormSelector("Zone", badge: controller.zone?.name ?? "Select") {
+            FormSelector("Zone", badge: LocalizedStringKey(controller.zone?.name ?? "Select")) {
                 CercSelectionView(title: "Zone", selected: $controller.zone, elements: $controller.zones) { zone in
                     Text(zone.name)
                 }
@@ -53,13 +56,13 @@ struct CercFormView: View {
         FormHeader("Stations", image: "tram")
         CercListItem(tint: tintColor) {
             VStack {
-                FormSelector("Origin", badge: controller.origin?.name ?? "Select") {
+                FormSelector("Origin", badge: LocalizedStringKey(controller.origin?.name ?? "Select")) {
                     CercSelectionView(title: "Origin", selected: $controller.origin, elements: $controller.displayedStations) { station in
                         Text(station.name)
                     }
                     .environment(\.tintColor, tintColor)
                 }
-                FormSelector("Destination", badge: controller.destination?.name ?? "Select") {
+                FormSelector("Destination", badge: LocalizedStringKey(controller.destination?.name ?? "Select")) {
                     CercSelectionView(title: "Destination", selected: $controller.destination, elements: $controller.displayedStations) { station in
                         Text(station.name)
                     }
@@ -98,7 +101,7 @@ struct CercFormView: View {
         Spacer(minLength: 30)
     }
 
-    private func FormHeader(_ title: String, image: String) -> some View {
+    private func FormHeader(_ title: LocalizedStringKey, image: String) -> some View {
         HStack(alignment: .center) {
             Label(title, systemImage: image)
                 .font(.body.bold())
@@ -108,7 +111,7 @@ struct CercFormView: View {
         .foregroundColor(tintColor)
     }
 
-    private func FormSelector<Content: View>(_ title: String, badge: String,
+    private func FormSelector<Content: View>(_ title: LocalizedStringKey, badge: LocalizedStringKey,
                                              destination: @escaping () -> Content) -> some View {
         HStack {
             Text(title)
@@ -117,23 +120,23 @@ struct CercFormView: View {
                 Text(badge)
                     .foregroundColor(.primary)
             }
-            .cercBackground()
+            .cercBackground(tintColor)
         }
     }
 
-    private func FormPicker<Content: View>(_ title: String, Picker: @escaping () -> Content) -> some View {
+    private func FormPicker<Content: View>(_ title: LocalizedStringKey, Picker: @escaping () -> Content) -> some View {
         HStack {
             Text(title)
             Spacer()
             Picker()
                 .datePickerStyle(.compact)
                 .labelsHidden()
-                .foregroundColor(.purple)
-                .accentColor(.purple)
+                .foregroundColor(tintColor)
+                .accentColor(tintColor)
             // I'd love to use this background but it doesn't work as expected :/
 //                .background(
 //                    RoundedRectangle(cornerRadius: 10)
-//                        .fill(Color.purple)
+//                        .fill(tintColor.opacity(0.4))
 //                        .opacity(0.2)
 //                )
         }

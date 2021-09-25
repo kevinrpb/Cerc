@@ -40,9 +40,13 @@ struct CompactLayoutView: View {
         .background(tintColor.opacity(0.1))
         .navigationTitle("Cerc")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(leading: SettingsButton(), trailing:
+        .navigationBarItems(leading:
             HStack {
+                SettingsButton()
                 RefreshButton()
+            }
+        , trailing:
+            HStack {
                 SearchButton()
             }
         )
@@ -139,8 +143,10 @@ struct CompactLayoutView: View {
             Task { await controller.startSearch() }
         } label: {
             Label("Search", systemImage: "magnifyingglass")
+                .labelStyle(.titleAndIcon)
+                .padding(.trailing, 2) // otherwise it looks kinda odd...
         }
-        .buttonStyle(CercNavButtonStyle(tintColor))
+        .buttonStyle(CercNavButtonStyle(tintColor, fluid: true))
     }
 
     private func CloseSheetButton() -> some View {

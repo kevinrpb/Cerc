@@ -18,13 +18,13 @@ struct CercTripItemView: View {
     let origin: Station
     let destination: Station
 
-    var extraDepartureCountLabel: String? {
+    var extraDepartureCountLabel: LocalizedStringKey? {
         trip.departureStrings.count > 1
             ? "+\(trip.departureStrings.count - 1)"
         : nil
     }
 
-    var extraArrivalCountLabel: String? {
+    var extraArrivalCountLabel: LocalizedStringKey? {
         trip.arrivalStrings.count > 1
             ? "+\(trip.arrivalStrings.count - 1)"
         : nil
