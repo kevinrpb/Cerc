@@ -40,6 +40,7 @@
 		D7A72A7D26753AC1009A6C9C /* CercController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A72A7C26753AC1009A6C9C /* CercController.swift */; };
 		D7CABD0A26FF431B000FDE31 /* CercBadgeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CABD0926FF431B000FDE31 /* CercBadgeModifier.swift */; };
 		D7CABD0C26FF77F9000FDE31 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CABD0B26FF77F9000FDE31 /* UIColor.swift */; };
+		D7CABD0E26FF7AB5000FDE31 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CABD0D26FF7AB5000FDE31 /* UINavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		D7A72A7C26753AC1009A6C9C /* CercController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercController.swift; sourceTree = "<group>"; };
 		D7CABD0926FF431B000FDE31 /* CercBadgeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercBadgeModifier.swift; sourceTree = "<group>"; };
 		D7CABD0B26FF77F9000FDE31 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		D7CABD0D26FF7AB5000FDE31 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,11 +260,12 @@
 			isa = PBXGroup;
 			children = (
 				D7A72A672675369B009A6C9C /* Color.swift */,
-				D7CABD0B26FF77F9000FDE31 /* UIColor.swift */,
 				D7A72A662675369B009A6C9C /* Date.swift */,
 				D7652F89267628E000BEF7C5 /* Defaults.swift */,
 				D75F0C4226765BD500F5CF90 /* Environment.swift */,
 				D76C0CCF26B0ADB3005E9423 /* String.swift */,
+				D7CABD0B26FF77F9000FDE31 /* UIColor.swift */,
+				D7CABD0D26FF7AB5000FDE31 /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				D7A72A5F267535FA009A6C9C /* Trip.swift in Sources */,
 				D76C0CD026B0ADB3005E9423 /* String.swift in Sources */,
 				D75F0C462676631300F5CF90 /* ContentView.swift in Sources */,
+				D7CABD0E26FF7AB5000FDE31 /* UINavigationController.swift in Sources */,
 				D75F0C412676527E00F5CF90 /* CercSettingsView.swift in Sources */,
 				D7652F862675403300BEF7C5 /* CercError.swift in Sources */,
 				D7A72A60267535FA009A6C9C /* Station.swift in Sources */,
