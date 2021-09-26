@@ -87,8 +87,8 @@ struct CompactLayoutView: View {
                 #if DEBUG
                 if let origin = controller.stations.first(where: { $0.id == "70003" }),
                    let destination = controller.stations.first(where: { $0.id == "10202" }) {
-                    controller.origin = origin
-                    controller.destination = destination
+//                    controller.origin = origin
+//                    controller.destination = destination
 //                    await controller.startSearch()
                 }
                 #endif

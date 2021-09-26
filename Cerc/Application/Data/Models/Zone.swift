@@ -5,7 +5,7 @@
 //  Created by Kevin Romero Peces-Barba on 12/6/21.
 //
 
-//import Defaults
+import Defaults
 import Foundation
 
 struct Zone {
@@ -17,7 +17,7 @@ extension Zone: Identifiable {}
 extension Zone: Nameable {}
 extension Zone: Codable {}
 extension Zone: Equatable {}
-//extension Zone: Defaults.Serializable {}
+extension Zone: Defaults.Serializable {}
 
 extension Zone {
     static let Asturias       = Zone(id: "20", name: "Asturias")

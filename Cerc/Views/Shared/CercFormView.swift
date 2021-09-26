@@ -57,14 +57,46 @@ struct CercFormView: View {
         CercListItem(tint: tintColor) {
             VStack {
                 FormSelector("Origin", badge: LocalizedStringKey(controller.origin?.name ?? "Select")) {
-                    CercSelectionView(title: "Origin", selected: $controller.origin, elements: $controller.displayedStations) { station in
-                        Text(station.name)
+                    CercSelectionView(
+                        title: "Origin",
+                        selected: $controller.origin,
+                        elements: $controller.displayedStations
+                    ) { newOrigin in
+                        if newOrigin == controller.destination { controller.destination = nil }
+                    } labelProvider: { station in
+                        HStack {
+                            Button(action: { toggleFavourite(for: station) }) {
+                                Image(systemName: controller.favouriteStations.contains(station.id)
+                                      ? "star.fill"
+                                      : "star"
+                                )
+                            }
+                            .foregroundColor(tintColor)
+                            
+                            Text(station.name)
+                        }
                     }
                     .environment(\.tintColor, tintColor)
                 }
                 FormSelector("Destination", badge: LocalizedStringKey(controller.destination?.name ?? "Select")) {
-                    CercSelectionView(title: "Destination", selected: $controller.destination, elements: $controller.displayedStations) { station in
-                        Text(station.name)
+                    CercSelectionView(
+                        title: "Destination",
+                        selected: $controller.destination,
+                        elements: $controller.displayedStations
+                    ) { newDestination in
+                        if newDestination == controller.origin { controller.origin = nil }
+                    } labelProvider: { station in
+                        HStack {
+                            Button(action: { toggleFavourite(for: station) }) {
+                                Image(systemName: controller.favouriteStations.contains(station.id)
+                                      ? "star.fill"
+                                      : "star"
+                                )
+                            }
+                            .foregroundColor(tintColor)
+                            
+                            Text(station.name)
+                        }
                     }
                     .environment(\.tintColor, tintColor)
                 }
@@ -140,6 +172,16 @@ struct CercFormView: View {
 //                        .opacity(0.2)
 //                )
         }
+    }
+
+    private func toggleFavourite(for station: Station) {
+//        withAnimation {
+            if let index = controller.favouriteStations.firstIndex(of: station.id) {
+                controller.favouriteStations.remove(at: index)
+            } else {
+                controller.favouriteStations.append(station.id)
+            }
+//        }
     }
 }
 

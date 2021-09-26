@@ -6,7 +6,7 @@
 //
 
 import Combine
-//import Defaults
+import Defaults
 import Foundation
 import SwiftUI
 
@@ -27,14 +27,14 @@ class CercController: ObservableObject {
     @Published var error: CercError? = nil
 
     // Settings
-//    @Published var settings: Settings = Defaults[.settings]
-    @Published var settings: Settings = .base
+    @Published var settings: Settings = Defaults[.settings]
 
     // Zones and stations data
     @Published var zones: [Zone] = []
     @Published var stations: [Station] = []
 
     @Published var displayedStations: [Station] = []
+    @Published var favouriteStations: [String] = Defaults[.favouriteStations]
 
     // Form selections
     @Published var zone: Zone?
@@ -50,30 +50,32 @@ class CercController: ObservableObject {
 
     //
     private var cancellables: Set<AnyCancellable> = .init()
-//    private var searchCancellable: AnyCancellable?
 
     private init() {
         $zone
-            .sink{ newZone in
+            .sink { newZone in
                 guard let newZone = newZone else { return }
-                
-                self.displayedStations = self.stations.filter { $0.zoneID == newZone.id }
+
                 self.origin = nil
                 self.destination = nil
-//                Defaults[.selectedZone] = newZone
-                UserDefaults.standard.set(try? PropertyListEncoder().encode(newZone), forKey: "CercSelectedZone")
+
+                self.updateDisplayedStations(zone: newZone, favourites: self.favouriteStations)
+
+                Defaults[.selectedZone] = newZone
             }
             .store(in: &cancellables)
 
-        if let settingsData = UserDefaults.standard.object(forKey: "CercSettings") as? Data,
-           let settings = try? PropertyListDecoder().decode(Settings.self, from: settingsData) {
-            self.settings = settings
-        }
+        $favouriteStations
+            .sink { newFavourites in
+                self.updateDisplayedStations(zone: self.zone, favourites: newFavourites)
+
+                Defaults[.favouriteStations] = newFavourites
+            }
+            .store(in: &cancellables)
 
         $settings
             .sink { newSettings in
-//                Defaults[.settings] = newSettings
-                UserDefaults.standard.set(try? PropertyListEncoder().encode(newSettings), forKey: "CercSettings")
+                Defaults[.settings] = newSettings
             }
             .store(in: &cancellables)
     }
@@ -92,19 +94,12 @@ class CercController: ObservableObject {
             zones = try Scrapper.getZones()
             stations = try await Scrapper.getAllStations()
 
-            if let selectedZoneData = UserDefaults.standard.object(forKey: "CercSelectedZone") as? Data,
-               let selectedZone = try? PropertyListDecoder().decode(Zone.self, from: selectedZoneData),
-               zones.contains(selectedZone) {
+            if let selectedZone = Defaults[.selectedZone], zones.contains(selectedZone) {
                 zone = selectedZone
+                updateDisplayedStations(zone: zone, favourites: favouriteStations)
             } else {
-                UserDefaults.standard.set(nil, forKey: "CercSelectedZone")
+                Defaults[.selectedZone] = nil
             }
-
-//            if let selectedZone = Defaults[.selectedZone], zones.contains(selectedZone) {
-//                zone = selectedZone
-//            } else {
-//                Defaults[.selectedZone] = nil
-//            }
         } catch let error as CercError {
             self.error = error
         } catch {
@@ -112,6 +107,20 @@ class CercController: ObservableObject {
         }
         
         state = .normal
+    }
+
+    private func updateDisplayedStations(zone: Zone?, favourites: [String]) {
+        let zoneStations = stations.filter { $0.zoneID == zone?.id }
+
+        var newDisplayedStations: [Station] = []
+        newDisplayedStations.append(
+            contentsOf: zoneStations.filter { favourites.contains($0.id) }
+        )
+        newDisplayedStations.append(
+            contentsOf: zoneStations.filter { !favourites.contains($0.id) }
+        )
+
+        displayedStations = newDisplayedStations
     }
 
     func reverseStations() {

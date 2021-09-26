@@ -5,9 +5,11 @@
 //  Created by Kevin Romero Peces-Barba on 13/6/21.
 //
 
-//import Defaults
-//
-//extension Defaults.Keys {
-//    static let settings: Key<Settings> = .init("CercSettings", default: .base)
-//    static let selectedZone: Key<Zone?> = .init("CercSelectedZone")
-//}
+import Defaults
+
+extension Defaults.Keys {
+    static let settings: Key<Settings> = .init("CercSettings", default: .base)
+    static let selectedZone: Key<Zone?> = .init("CercSelectedZone")
+
+    static let favouriteStations: Key<[String]> = .init("CercFavouriteStations", default: [])
+}

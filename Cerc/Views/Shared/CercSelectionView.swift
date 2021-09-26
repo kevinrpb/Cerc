@@ -101,15 +101,15 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
     }
 
     private func select(_ element: Element) {
-            selected = element
+        selected = element
 
-            if let onSelect = onSelect {
-                onSelect(element)
-            }
+        if let onSelect = onSelect {
+            onSelect(element)
+        }
 
-            if dismissOnSelect {
-                dismiss()
-            }
+        if dismissOnSelect {
+            dismiss()
+        }
     }
 }
 

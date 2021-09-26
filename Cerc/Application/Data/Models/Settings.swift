@@ -5,7 +5,7 @@
 //  Created by Kevin Romero Peces-Barba on 13/6/21.
 //
 
-//import Defaults
+import Defaults
 import Foundation
 import SwiftUI
 
@@ -42,7 +42,7 @@ final class Settings {
 }
 
 extension Settings: Codable {}
-//extension Settings: Defaults.Serializable {}
+extension Settings: Defaults.Serializable {}
 
 extension Settings {
     static let base: Settings = .init(tintColorKey: "indigo", appIcon: .CercIcon)
