@@ -44,11 +44,22 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
     }
 
     private var searchResults: [Element] {
-        searchText
-//            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .isEmpty ? elements : elements.filter {
-                $0.name.lowercased().contains(searchText.lowercased())
-            }
+        let search = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        return search.count < 2
+            ? elements
+            : elements
+                // Calculate distances
+                .map { element in (
+                    element: element,
+                    distance: element.name.levenshteinDistance(to: search)
+                )}
+                // Initial filter
+                .filter { (element, distance) in distance > 0.2 }
+                // Sort
+                .sorted { (a, b) in a.distance > b.distance }
+                // Return
+                .map { $0.element }
     }
 
     var body: some View {

@@ -252,12 +252,12 @@
 		D7A72A5A267535FA009A6C9C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D769D6FB26961B14008A2584 /* AppIcon.swift */,
 				D7A72A5E267535FA009A6C9C /* Search.swift */,
+				D75F0C3E26764E8B00F5CF90 /* Settings.swift */,
 				D7A72A5C267535FA009A6C9C /* Station.swift */,
 				D7A72A5B267535FA009A6C9C /* Trip.swift */,
 				D7A72A5D267535FA009A6C9C /* Zone.swift */,
-				D75F0C3E26764E8B00F5CF90 /* Settings.swift */,
-				D769D6FB26961B14008A2584 /* AppIcon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
