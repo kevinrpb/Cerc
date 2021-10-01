@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "Defaults",
-        "repositoryURL": "https://github.com/sindresorhus/Defaults",
+        "repositoryURL": "https://github.com/automactic/Defaults/",
         "state": {
-          "branch": "main",
-          "revision": "04f9b3f45ea33cc54e228debe12a98635fd3515e",
+          "branch": "xcode13",
+          "revision": "1e9719a05d316efb0e60033f8119ecaaad207bb9",
           "version": null
         }
       },

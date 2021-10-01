@@ -102,6 +102,7 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton())
+//        .navigationBarItems(leading: BackButton(), trailing: CloseButton())
     }
 
     private func BackButton() -> some View {
@@ -111,7 +112,16 @@ struct CercSelectionView<Element, ElementLabel>: View where Element: Identifiabl
         .buttonStyle(CercNavButtonStyle(tintColor))
     }
 
-    private func select(_ element: Element) {
+//    private func CloseButton() -> some View {
+//        Button {
+//            dismiss()
+//        } label: {
+//            Label("Close", systemImage: "xmark")
+//        }
+//        .buttonStyle(CercNavButtonStyle(tintColor))
+//    }
+
+    private func select(_ element: Element?) {
         selected = element
 
         if let onSelect = onSelect {

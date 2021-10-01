@@ -46,7 +46,7 @@ class CercController: ObservableObject {
 
     // Trip stuff
     @Published var tripSearch: TripSearch? = nil
-    @Published var trips: [Trip]? = nil
+    @Published var trips: [TripSet]? = nil
 
     //
     private var cancellables: Set<AnyCancellable> = .init()

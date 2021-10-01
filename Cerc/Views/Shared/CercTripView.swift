@@ -14,86 +14,84 @@ struct CercTripItemView: View {
 
     @State private var isExpanded: Bool = false
 
-    let trip: Trip
-    let origin: Station
-    let destination: Station
+    @ScaledMetric private var baseTextWidth:  Double =  50
+    @ScaledMetric private var baseLineWidth:  Double =  80
+    @ScaledMetric private var baseLineHeight: Double =   3
+    @ScaledMetric private var baseDotSize:    Double =  12
 
-    var extraDepartureCountLabel: LocalizedStringKey? {
-        trip.departureStrings.count > 1
-            ? "+\(trip.departureStrings.count - 1)"
-        : nil
+    let tripSet: TripSet
+
+    private var origin: Station? {
+        guard let id = tripSet.trips.first?.originID else { return nil }
+
+        return controller.stations.first { $0.id == id }
     }
 
-    var extraArrivalCountLabel: LocalizedStringKey? {
-        trip.arrivalStrings.count > 1
-            ? "+\(trip.arrivalStrings.count - 1)"
-        : nil
+    private var destination: Station? {
+        guard let id = tripSet.trips.first?.destinationID else { return nil }
+
+        return controller.stations.first { $0.id == id }
+    }
+
+    private var transfers: [Station] {
+        guard let first = tripSet.trips.first else { return [] }
+
+        let ids = first.transfers.map { $0.stationID }
+
+        return controller.stations.filter { ids.contains($0.id) }
+    }
+
+    private var extraDeparturesLabel: LocalizedStringKey? {
+        tripSet.kind == .sameArrival && tripSet.trips.count > 1
+            ? .init("+\(tripSet.trips.count - 1)")
+            : nil
+    }
+
+    private var extraArrivalsLabel: LocalizedStringKey? {
+        tripSet.kind == .sameDeparture && tripSet.trips.count > 1
+            ? .init("+\(tripSet.trips.count - 1)")
+            : nil
+    }
+
+    private var drawingColor: Color {
+        return tintColor.lighten(by: 40)
+    }
+
+    private var isCivis: Bool {
+        guard let first = tripSet.trips.first else { return false }
+
+        return first.isCivis
+    }
+
+    private var isAccessible: Bool {
+        guard let first = tripSet.trips.first else { return false }
+
+        return first.isAccessible
     }
 
     var body: some View {
         CercListItem(padding: 0, tint: tintColor) {
             VStack {
-                HStack {
-                    if isExpanded {
-                        if let relativeTime = trip.relativeTimeString() {
-                            Text("\(relativeTime)")
-                        }
-                    } else {
-                        if let first = trip.departureStrings.first {
-                            Text(first)
-                                .frame(width: 50)
-                                .cercBackground()
-                                .badge(extraDepartureCountLabel, color: tintColor.lighten(by: 40))
-                        } else {
-                            Text("??:??")
-                                .frame(width: 50)
-                                .cercBackground()
-                        }
-                        Text("-")
-                        if let first = trip.arrivalStrings.first {
-                            Text(first)
-                                .frame(width: 50)
-                                .cercBackground()
-                                .badge(extraArrivalCountLabel, color: tintColor.lighten(by: 40))
-                        } else {
-                            Text("??:??")
-                                .frame(width: 50)
-                                .cercBackground()
-                        }
-                    }
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .rotationEffect(isExpanded ? .degrees(90) : .degrees(0))
-                        .cercBackground()
-                }
-                .padding(.horizontal)
+                TripHeader()
+                    .padding(.horizontal)
+
                 if isExpanded {
                     Divider()
                         .background(tintColor.opacity(0.2))
-                    VStack {
-                        StationEntry(origin.name, line: trip.line, firstTimesLine: trip.departureStrings, firstIsDeparture: true)
 
-                        Separator()
-                        ForEach(trip.transfers) { transfer in
-                            if let station = controller.stations.first(where: { $0.id == transfer.stationID }) {
-                                StationEntry(station.name, line: transfer.line, firstTimesLine: transfer.arrivalStrings, secondTimesLine: transfer.departureStrings)
-                            } else {
-                                StationEntry("??", line: nil, firstTimesLine: transfer.arrivalStrings, secondTimesLine: transfer.departureStrings)
-                            }
-                            Separator()
-                        }
-
-                        StationEntry(destination.name, line: "", firstTimesLine: trip.arrivalStrings, firstIsDeparture: false)
+                    ScrollView(.horizontal) {
+                        TripBody()
+                            .padding(.horizontal)
                     }
-                    .padding(.horizontal)
-                    if trip.isCivis || trip.isAccessible {
+
+                    if isCivis || isAccessible {
                         Divider()
                             .background(tintColor.opacity(0.2))
                         HStack {
-                            if trip.isAccessible {
+                            if isAccessible {
                                 Label("Accessible", image: "wheelchair")
                             }
-                            if trip.isCivis {
+                            if isCivis {
                                 Label("CIVIS", image: "zap")
                             }
                             Spacer()
@@ -105,56 +103,223 @@ struct CercTripItemView: View {
             .padding(.vertical)
         }
         .onTapGesture {
-            withAnimation(.interactiveSpring(response: 0.5)) { isExpanded.toggle() }
+            withAnimation(.interactiveSpring(response: 0.25)) { isExpanded.toggle() }
         }
     }
 
-    private func StationEntry(_ name: String, line: String?, firstTimesLine: [String], firstIsDeparture: Bool = false, secondTimesLine: [String] = []) -> some View {
-        VStack {
-            HStack {
-                Text(firstIsDeparture ? (line ?? "C?") : "")
-                    .bold()
-                    .opacity(0.5)
-                    .frame(width: 30)
+    private func TripHeader() -> some View {
+        HStack {
+            if isExpanded {
+                if let time = tripSet.trips.first?.relativeTimeString() {
+                    Text(time)
+                }
+            } else {
+                if let first = tripSet.trips.first {
+                    Text(first.departureString)
+                        .frame(width: baseTextWidth)
+                        .cercBackground()
+                        .badge(extraDeparturesLabel, color: tintColor.lighten(by: 40))
+                    Text("-")
+                    Text(first.arrivalString)
+                        .frame(width: baseTextWidth)
+                        .cercBackground()
+                        .badge(extraArrivalsLabel, color: tintColor.lighten(by: 40))
+                }
+            }
 
+            Spacer()
+            Image(systemName: "chevron.right")
+                .rotationEffect(isExpanded ? .degrees(90) : .degrees(0))
+                .cercBackground()
+        }
+    }
+
+    @ViewBuilder
+    private func TripBody() -> some View {
+        HStack {
+            VStack {// These two stacks make it so that all the inner HStacks take the same width
+                // Station names
                 HStack {
-                    ForEach(firstTimesLine, id: \.self) { timeString in
-                        Text(timeString)
-                            .frame(width: 50)
-                            .cercBackground()
-                    }
+                    Text((origin?.name ?? "??"))
+                        .font(.caption)
+                        .frame(width: baseTextWidth, alignment: .leading)
+                        .lineLimit(2)
+                        .truncationMode(.tail)
                     Spacer()
+
+                    ForEach(transfers) { transfer in
+                        Text(transfer.name)
+                            .font(.caption)
+                            .frame(maxWidth: 2*baseTextWidth, alignment: .center)
+                            .lineLimit(2)
+                            .truncationMode(.tail)
+                        Spacer()
+                    }
+
+                    Text((destination?.name ?? ""))
+                        .font(.caption)
+                        .frame(width: baseTextWidth, alignment: .trailing)
+                        .lineLimit(2)
+                        .truncationMode(.tail)
                 }
-                .padding(.bottom, 2)
-                Spacer()
-                Text(name)
-            }
-            if secondTimesLine.count > 0 {
-                HStack {
-                    Text(firstIsDeparture ? "" : (line ?? "C?"))
-                        .bold()
-                        .opacity(0.5)
-                        .frame(width: 30)
-//                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(secondTimesLine, id: \.self) { timeString in
-                                Text(timeString)
-                                    .frame(width: 50)
-                                    .cercBackground()
-                            }
-                            Spacer()
-                        }
-                        .padding(.bottom, 2)
-//                    }
+
+                if tripSet.kind == .sameDeparture {
+                    // Main Drawing and times
+                    TripBodyTripSection(tripSet.trips.first!)
+
+                    // Rest of drawing and times
+                    ForEach(1..<tripSet.trips.count) { index in
+                        TripBodyTripSection(tripSet.trips[index], kind: .sameDeparture)
+                    }
+                } else {
+                    // Rest of drawing and times
+                    ForEach(0..<(tripSet.trips.count - 1)) { index in
+                        TripBodyTripSection(tripSet.trips[index], kind: .sameArrival)
+                    }
+
+                    // Main Drawing and times
+                    TripBodyTripSection(tripSet.trips.last!)
                 }
             }
         }
+        .frame(minWidth: UIScreen.screenWidth - 4*16)
+        .padding(.bottom) // adds space between content and scrollbar
     }
 
-    private func Separator() -> some View {
-        RoundedRectangle(cornerRadius: 1)
-            .fill(tintColor.opacity(0.2))
-            .frame(width: 50, height: 2)
+    @ViewBuilder
+    private func TripBodyTripSection(_ trip: Trip, kind: TripSet.Kind? = nil) -> some View {
+        ZStack {
+            HStack(spacing: 0) {
+                Circle()
+                    .fill(drawingColor)
+                    .frame(width: baseDotSize, height: baseDotSize)
+                    .padding(.trailing, baseDotSize/2)
+                    .opacity(
+                        kind == nil ? 1.0
+                            : kind == .sameArrival ? 1.0 : 0.0
+                    )
+
+                if trip.transfers.count < 1 {
+                    RoundedRectangle(cornerRadius: baseLineHeight/2, style: .continuous)
+                        .fill(drawingColor)
+                        .frame(width: 3*baseLineWidth, height: baseLineHeight)
+                        .overlay(
+                            Text(trip.line)
+                                .font(.caption)
+                                .offset(y: -baseDotSize)
+                        )
+                } else {
+                    ForEach(0..<trip.transfers.count) { index in
+                        if index == 0 {
+                            RoundedRectangle(cornerRadius: baseLineHeight/2, style: .continuous)
+                                .fill(drawingColor)
+                                .frame(width: baseLineWidth, height: baseLineHeight)
+                                .overlay(
+                                    Text(trip.line)
+                                        .font(.caption)
+                                        .offset(y: -baseDotSize)
+                                )
+                                .opacity(
+                                    kind == nil ? 1.0
+                                        : kind == .sameArrival ? 1.0 : 0.0
+                                )
+                        }
+                        Circle()
+                            .fill(drawingColor)
+                            .frame(width: baseDotSize, height: baseDotSize)
+                            .padding(.leading, baseDotSize)
+                            .padding(.trailing, baseDotSize/4)
+                            .opacity(
+                                kind == nil ? 1.0
+                                    : kind == .sameArrival ? 1.0 : 0.0
+                            )
+                        Spacer()
+                            .frame(width: baseTextWidth/2)
+                        Circle()
+                            .fill(drawingColor)
+                            .frame(width: baseDotSize, height: baseDotSize)
+                            .padding(.leading, baseDotSize/4)
+                            .padding(.trailing, baseDotSize)
+                            .opacity(
+                                kind == nil ? 1.0
+                                    : kind == .sameDeparture ? 1.0 : 0.0
+                            )
+                        RoundedRectangle(cornerRadius: baseLineHeight/2, style: .continuous)
+                            .fill(drawingColor)
+                            .frame(width: baseLineWidth, height: baseLineHeight)
+                            .overlay(
+                                Text(trip.transfers[index].line)
+                                    .font(.caption)
+                                    .offset(y: -baseDotSize)
+                            )
+                            .opacity(
+                                kind == nil ? 1.0
+                                    : kind == .sameDeparture ? 1.0 : 0.0
+                            )
+                    }
+                }
+                Circle()
+                    .fill(drawingColor)
+                    .frame(width: baseDotSize, height: baseDotSize)
+                    .padding(.leading, baseDotSize/2)
+                    .opacity(
+                        kind == nil ? 1.0
+                            : kind == .sameDeparture ? 1.0 : 0.0
+                    )
+            }
+
+            if trip.transfers.count > 0 {
+                HStack(spacing: 0) {
+                    Spacer()
+
+                    ForEach(trip.transfers) { _ in
+                        Ellipse()
+                            .stroke(drawingColor, lineWidth: baseLineHeight)
+                            .frame(width: (6*baseDotSize), height: (3*baseDotSize))
+                            .opacity(
+                                kind == nil ? 1.0 : 0
+                            )
+                        Spacer()
+                    }
+                }
+                .padding(.horizontal, 1.2*baseDotSize)
+            }
+        }
+
+        HStack(spacing: 0) {
+            Text(trip.departureString)
+                .font(.caption)
+                .opacity(
+                    kind == nil ? 1.0
+                        : kind == .sameArrival ? 1.0 : 0.0
+                )
+            Spacer()
+
+            ForEach(trip.transfers) { transfer in
+                Text(transfer.arrivalString)
+                    .font(.caption)
+                    .padding(.trailing, 1.5*baseDotSize)
+                    .opacity(
+                        kind == nil ? 1.0
+                            : kind == .sameArrival ? 1.0 : 0.0
+                    )
+                Text(transfer.departureString)
+                    .font(.caption)
+                    .padding(.leading, 1.5*baseDotSize)
+                    .opacity(
+                        kind == nil ? 1.0
+                            : kind == .sameDeparture ? 1.0 : 0.0
+                    )
+                Spacer()
+            }
+
+            Text(trip.arrivalString)
+                .font(.caption)
+                .opacity(
+                    kind == nil ? 1.0
+                        : kind == .sameDeparture ? 1.0 : 0.0
+                )
+        }
     }
 }
 
@@ -163,19 +328,15 @@ struct CercTripView: View {
 
     @EnvironmentObject var controller: CercController
 
-    private var filteredTrips: [Trip] {
-        guard let trips = controller.trips else { return [] }
-        let now = Date.now
-        return trips
-            .filter { trip in
-                guard let departure = trip.departure() else { return false }
-                return departure >= now
+    private var tripSets: [TripSet] {
+        return (controller.trips ?? [])
+            .filter { tripSet in
+                guard let first = tripSet.trips.first,
+                      let departure = first.departure() else { return false }
+
+                return departure >= .now
             }
-            .sorted { tripA, tripB in
-                guard let departureA = tripA.departure(),
-                      let departureB = tripB.departure() else { return false }
-                return departureA <= departureB
-            }
+            .sorted()
     }
 
     var body: some View {
@@ -202,14 +363,13 @@ struct CercTripView: View {
                     Image(systemName: "arrow.right")
                     Text(search.destination.name)
                     Spacer()
-                    InverseSearchButton()
                 }
                 .font(.body.bold())
                 .padding(.leading, 6)
                 .foregroundColor(tintColor)
 
-                ForEach(filteredTrips) { trip in
-                    CercTripItemView(trip: trip, origin: search.origin, destination: search.destination)
+                ForEach(tripSets) { tripSet in
+                    CercTripItemView(tripSet: tripSet)
                 }
             } else {
                 CercListItem(tint: tintColor) {
@@ -219,19 +379,6 @@ struct CercTripView: View {
                 }
             }
         }
-    }
-
-    private func InverseSearchButton() -> some View {
-        Button {
-            Task(priority: .userInitiated) {
-                controller.reverseStations()
-                await controller.startSearch()
-            }
-        } label: {
-            Label("Search other way", systemImage: "arrow.up.arrow.down")
-                .labelStyle(.iconOnly)
-        }
-        .buttonStyle(CercNavButtonStyle(tintColor))
     }
 }
 

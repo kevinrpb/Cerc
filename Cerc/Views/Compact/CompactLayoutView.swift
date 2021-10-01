@@ -66,7 +66,12 @@ struct CompactLayoutView: View {
                 .background(tintColor.opacity(0.1))
                 .navigationTitle(SheetTitle(for: controller.state))
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: CloseSheetButton())
+                .navigationBarItems(
+                    leading: CercController.State.tripRelated.contains(controller.state)
+                        ? InverseSearchButton()
+                        : nil,
+                    trailing: CloseSheetButton()
+                )
             }
         }
         .onChange(of: controller.state) { newState in
@@ -85,11 +90,14 @@ struct CompactLayoutView: View {
             Task {
                 await controller.loadData()
                 #if DEBUG
-                if let origin = controller.stations.first(where: { $0.id == "70003" }),
+                if controller.zone?.id == "10",
+                   controller.origin == nil,
+                   controller.destination == nil,
+                   let origin = controller.stations.first(where: { $0.id == "70003" }),
                    let destination = controller.stations.first(where: { $0.id == "10202" }) {
-//                    controller.origin = origin
-//                    controller.destination = destination
-//                    await controller.startSearch()
+                    controller.origin = origin
+                    controller.destination = destination
+                    await controller.startSearch()
                 }
                 #endif
             }
@@ -147,6 +155,19 @@ struct CompactLayoutView: View {
                 .padding(.trailing, 2) // otherwise it looks kinda odd...
         }
         .buttonStyle(CercNavButtonStyle(tintColor, fluid: true))
+    }
+
+    private func InverseSearchButton() -> some View {
+        Button {
+            Task {
+                controller.reverseStations()
+                await controller.startSearch()
+            }
+        } label: {
+            Label("Search other way", systemImage: "arrow.up.arrow.down")
+                .labelStyle(.iconOnly)
+        }
+        .buttonStyle(CercNavButtonStyle(tintColor))
     }
 
     private func CloseSheetButton() -> some View {

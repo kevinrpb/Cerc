@@ -11,18 +11,10 @@ struct Trip {
     struct Transfer {
         let stationID: String
 
-        var arrivalStrings: [String]
-        var departureStrings: [String]
+        var arrivalString: String
+        var departureString: String
 
         let line: String
-
-        mutating func setArrivalStrings(to strings: [String]) {
-            self.arrivalStrings = strings
-        }
-
-        mutating func setDepartureStrings(to strings: [String]) {
-            self.departureStrings = strings
-        }
     }
 
     let zoneID: String
@@ -30,8 +22,8 @@ struct Trip {
     let destinationID: String
 
     let dateString: String
-    var departureStrings: [String]
-    var arrivalStrings: [String]
+    var departureString: String
+    var arrivalString: String
 
     let line: String
     let isCivis: Bool
@@ -39,28 +31,17 @@ struct Trip {
 
     var transfers: [Transfer]
 
-    mutating func setDepartureStrings(to strings: [String]) {
-        self.departureStrings = strings
-    }
-
-    mutating func setArrivalStrings(to strings: [String]) {
-        self.arrivalStrings = strings
-    }
-
     func date() -> Date? {
         return Date.from(simpleString: dateString)
     }
 
     func departure() -> Date? {
-        guard let date = self.date(),
-            let timeString = departureStrings.first else { return nil }
-
-        return Date.from(date, hourAndMinute: timeString)
+        guard let date = date() else { return nil }
+        return Date.from(date, hourAndMinute: departureString)
     }
 
     func arrival() -> Date? {
-        guard let date = self.date(),
-              let arrivalString = arrivalStrings.first else { return nil }
+        guard let date = date() else { return nil }
         return Date.from(date, hourAndMinute: arrivalString)
     }
 
@@ -80,7 +61,7 @@ struct Trip {
 
 extension Trip.Transfer: Identifiable {
     var id: String {
-        "\(stationID)_\(departureStrings.joined(separator: "-"))-\(arrivalStrings.joined(separator: "-"))"
+        "\(stationID)_\(departureString)-\(arrivalString)"
     }
 }
 extension Trip.Transfer: Codable {}
@@ -88,8 +69,45 @@ extension Trip.Transfer: Equatable {}
 
 extension Trip: Identifiable {
     var id: String {
-        "\(zoneID)_\(originID)-\(destinationID)_\(dateString)_\(departureStrings.joined(separator: "-"))-\(arrivalStrings.joined(separator: "-"))"
+        "\(zoneID)_\(originID)-\(destinationID)_\(dateString)_\(departureString)-\(arrivalString)"
     }
 }
 extension Trip: Codable {}
 extension Trip: Equatable {}
+extension Trip: Comparable {
+    static func < (lhs: Trip, rhs: Trip) -> Bool {
+        guard let departureA = lhs.departure(),
+              let departureB = rhs.departure(),
+              let arrivalA = lhs.arrival(),
+              let arrivalB = rhs.arrival() else { return false }
+
+        if departureA == departureB {
+            return arrivalA < arrivalB
+        } else {
+            return departureA < departureB
+        }
+    }
+}
+
+struct TripSet {
+    enum Kind: String {
+        case sameArrival, sameDeparture
+    }
+
+    let kind: Kind
+    let trips: [Trip]
+}
+extension TripSet: Identifiable {
+    var id: String {
+        trips.map { $0.id }
+            .joined(separator: "+")
+    }
+}
+extension TripSet: Comparable {
+    static func < (lhs: TripSet, rhs: TripSet) -> Bool {
+        guard let firstA = lhs.trips.first,
+              let firstB = rhs.trips.first else { return false }
+
+        return firstA < firstB
+    }
+}
